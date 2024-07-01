@@ -1,0 +1,3 @@
+package installations commands 
+
+npm install react-multi-carousel
