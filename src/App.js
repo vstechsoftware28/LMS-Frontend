@@ -4,8 +4,8 @@ import './App.css';
 import Login from './Login';
 import ForgotPassword from './ForgotPassword';
 import ResetPassword from './ResetPassword';
-import StudentDashboard from './student/StudentDashboard';
-import Calendar from './student/Calendar';
+import StudentDashboard from './school/student/StudentDashboard';
+import Calendar from './school/student/Calendar';
 import RegistrationFormClgSchool from './Components/RegistrationFormClgSchool';
 import RegistrationForm from './Components/RegistrationForm';
 

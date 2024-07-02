@@ -1,13 +1,19 @@
-// StudentDashboard.js
 import React, { useState } from 'react';
 import Header from './Header';
 import Sidebar from './Sidebar';
-import Dashboard from './Dashboard';
 import Calendar from './Calendar';
-import Subjects from './Subjects';
 import Result from './Result';
-import Modal from '../Modal';
+import Modal from '../../Modal';
 import AddSubjectForm from './AddSubjectForm';
+import Dashboard from './Dashboard';
+import Subjects from './Subjects';
+import Algebra from './subjects/Algebra';
+import Geometry from './subjects/Geometry';
+import Physics from './subjects/Physics';
+import Chemistry from './subjects/Chemistry';
+import History from './subjects/History';
+import Geography from './subjects/Geography';
+import Groups from './Groups';
 import styled from 'styled-components';
 
 const StudentDashboardContainer = styled.div`
@@ -28,17 +34,12 @@ const ContentContainer = styled.div`
 `;
 
 const subjectsData = [
-  { name: 'Physics', standard: '10th', division: 'A', image: 'path/to/physics.jpg' },
-  { name: 'Chemistry', standard: '10th', division: 'A', image: 'path/to/chemistry.jpg' },
-  { name: 'Maths', standard: '10th', division: 'B', image: 'path/to/maths.jpg' },
-  { name: 'Biology', standard: '10th', division: 'B', image: 'path/to/biology.jpg' },
-  { name: 'History', standard: '9th', division: 'A', image: 'path/to/history.jpg' },
-  { name: 'Geography', standard: '9th', division: 'A', image: 'path/to/geography.jpg' },
-  { name: 'Literature', standard: '9th', division: 'B', image: 'path/to/literature.jpg' },
-  { name: 'Art', standard: '9th', division: 'B', image: 'path/to/art.jpg' },
-  { name: 'Music', standard: '8th', division: 'A', image: 'path/to/music.jpg' },
-  { name: 'Computer Science', standard: '8th', division: 'A', image: 'path/to/computer_science.jpg' },
-  { name: 'Economics', standard: '8th', division: 'B', image: 'path/to/economics.jpg' }
+  { id: 'algebra', title: 'Algebra', component: <Algebra /> },
+  { id: 'geometry', title: 'Geometry', component: <Geometry /> },
+  { id: 'physics', title: 'Physics', component: <Physics /> },
+  { id: 'chemistry', title: 'Chemistry', component: <Chemistry /> },
+  { id: 'history', title: 'History', component: <History /> },
+  { id: 'geography', title: 'Geography', component: <Geography /> },
 ];
 
 const StudentDashboard = () => {
@@ -68,29 +69,40 @@ const StudentDashboard = () => {
     setIsModalOpen(false);
   };
 
-  const handleSubjectCardClick = (subjectName) => {
-    console.log('Navigating to subject:', subjectName);
-    setSelectedComponent(`Subject-${subjectName}`);
+  const handleSubjectCardClick = (subjectId) => {
+    setSelectedComponent(`Subject-${subjectId}`);
+  };
+
+  const handleGroupsClick = () => {
+    setSelectedComponent('Groups');
   };
 
   const renderSelectedComponent = () => {
     switch (selectedComponent) {
       case 'Dashboard':
-        return <Dashboard />;
+        return <Dashboard subjects={subjectsData} onSubjectCardClick={handleSubjectCardClick} />;
       case 'Calendar':
         return <Calendar />;
       case 'Subjects':
         return <Subjects subjects={subjectsData} onSubjectCardClick={handleSubjectCardClick} />;
       case 'Result':
         return <Result />;
+      case 'Subject-algebra':
+        return <Algebra onGroupsClick={handleGroupsClick} />; 
+      case 'Groups':
+        return <Groups/>
+      case 'Subject-geometry':
+        return <Geometry />;
+      case 'Subject-physics':
+        return <Physics />;
+      case 'Subject-chemistry':
+        return <Chemistry />;
+      case 'Subject-history':
+        return <History />;
+      case 'Subject-geography':
+        return <Geography />;
       default:
-        // Handle individual subject pages
-        if (selectedComponent.startsWith('Subject-')) {
-          const subjectName = selectedComponent.split('-')[1];
-          const subject = subjectsData.find((s) => s.name === subjectName);
-          return <div>{subjectName} Page: Details of {subject ? subject.name : 'Subject'}</div>;
-        }
-        return <Dashboard />;
+        return <Dashboard subjects={subjectsData} onSubjectCardClick={handleSubjectCardClick} />;
     }
   };
 
@@ -101,18 +113,15 @@ const StudentDashboard = () => {
         isOpen={sidebarOpen} 
         onItemClick={handleSidebarItemClick} 
         selectedComponent={selectedComponent}
-        onAddSubjectClick={handleAddSubjectClick} // Passing handleAddSubjectClick to Sidebar
-        subjects={subjectsData} // Passing subjects to Sidebar
+        onAddSubjectClick={handleAddSubjectClick}
+        subjects={subjectsData}
       />
       <ContentContainer>
         {renderSelectedComponent()}
       </ContentContainer>
       <Modal isOpen={isModalOpen} onClose={handleModalClose}>
         <AddSubjectForm 
-          subjects={subjectsData.map(subject => subject.name)} 
-          standards={['1', '2', '3']} // Example standards
-          divisions={['A', 'B', 'C']} // Example divisions
-          teachers={['Mr. A', 'Ms. B', 'Mrs. C']} // Example teachers
+          subjects={subjectsData.map(subject => subject.title)} 
           onSubmit={handleAddSubjectSubmit} 
         />
       </Modal>
