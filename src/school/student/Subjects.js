@@ -1,20 +1,6 @@
-// Subjects.js
 import React from 'react';
-import styled from 'styled-components';
+import './Subjects.css'; // Import CSS file for traditional styling
 import SubjectCard from './SubjectCard';
-
-const SubjectsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  padding: 1rem;
-`;
-
-const SectionHeading = styled.h2`
-  margin-top: 30px;
-  font-size: 1.5rem;
-  padding: 2rem;
-`;
 
 const subjectsData = [
   { id: 'algebra', name: 'Algebra', standard: '10th', division: 'A', image: 'path/to/Algebra.jpg' },
@@ -28,12 +14,12 @@ const subjectsData = [
 const Subjects = ({ onSubjectCardClick }) => {
   return (
     <div>
-      <SectionHeading>Subjects</SectionHeading>
-      <SubjectsContainer>
+      <h2 className="section-heading">Subjects</h2>
+      <div className="subjects-container">
         {subjectsData.map((subject, index) => (
           <SubjectCard key={index} subject={subject} onClick={onSubjectCardClick} />
         ))}
-      </SubjectsContainer>
+      </div>
     </div>
   );
 };

@@ -1,63 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
-
-// Styled components
-const GroupsContainer = styled.div`
-  padding: 2rem;
-`;
-
-const Table = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 2rem;
-`;
-
-const TableHeader = styled.th`
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-`;
-
-const TableRow = styled.tr`
-  &:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-`;
-
-const TableCell = styled.td`
-  border: 1px solid #ddd;
-  padding: 8px;
-`;
-
-const ShowBatchesButton = styled.button`
-  padding: 0.5rem 1rem;
-  margin-top: 0.5rem;
-`;
-
-const ShowMembersButton = styled.button`
-  padding: 0.5rem 1rem;
-  margin-top: 0.5rem;
-`;
-
-const BatchesModal = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 2rem;
-  border: 1px solid #ddd;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-`;
-
-const ModalContent = styled.div`
-  width: 100%;
-`;
-
-const ModalCloseButton = styled.button`
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-`;
+import './Groups.css';
 
 // Example data for groups
 const groupsData = [
@@ -91,98 +33,98 @@ const Groups = () => {
   };
 
   return (
-    <GroupsContainer>
-      <Table>
+    <div className="groups-container">
+      <table className="table">
         <thead>
-          <TableRow>
-            <TableHeader>Group</TableHeader>
-            <TableHeader>Description</TableHeader>
-            <TableHeader>Members</TableHeader>
-            <TableHeader>Batches</TableHeader>
-          </TableRow>
+          <tr>
+            <th className="table-header">Group</th>
+            <th className="table-header">Description</th>
+            <th className="table-header">Members</th>
+            <th className="table-header">Batches</th>
+          </tr>
         </thead>
         <tbody>
           {groupsData.map((group) => (
-            <TableRow key={group.id}>
-              <TableCell>{group.name}</TableCell>
-              <TableCell>{group.description}</TableCell>
-              <TableCell>
+            <tr key={group.id} className="table-row">
+              <td className="table-cell">{group.name}</td>
+              <td className="table-cell">{group.description}</td>
+              <td className="table-cell">
                 {group.members.length}{' '}
-                <ShowMembersButton onClick={() => toggleMembersModal(group)}>
+                <button className="show-members-button" onClick={() => toggleMembersModal(group)}>
                   Show Members
-                </ShowMembersButton>
-              </TableCell>
-              <TableCell>
+                </button>
+              </td>
+              <td className="table-cell">
                 {group.batches.length}{' '}
-                <ShowBatchesButton onClick={() => toggleBatchesModal(group)}>
+                <button className="show-batches-button" onClick={() => toggleBatchesModal(group)}>
                   Show Batches
-                </ShowBatchesButton>
-              </TableCell>
-            </TableRow>
+                </button>
+              </td>
+            </tr>
           ))}
         </tbody>
-      </Table>
+      </table>
 
       {showMembersModal && selectedGroup && (
-        <BatchesModal>
-          <ModalContent>
+        <div className="batches-modal">
+          <div className="modal-content">
             <h2>All Members of {selectedGroup.name}</h2>
-            <Table>
+            <table className="table">
               <thead>
-                <TableRow>
-                  <TableHeader>Member Name</TableHeader>
-                </TableRow>
+                <tr>
+                  <th className="table-header">Member Name</th>
+                </tr>
               </thead>
               <tbody>
                 {selectedGroup.members.map((member, index) => (
-                  <TableRow key={index}>
-                    <TableCell>{member}</TableCell>
-                  </TableRow>
+                  <tr key={index} className="table-row">
+                    <td className="table-cell">{member}</td>
+                  </tr>
                 ))}
               </tbody>
-            </Table>
-            <ModalCloseButton onClick={() => toggleMembersModal(null)}>Close</ModalCloseButton>
-          </ModalContent>
-        </BatchesModal>
+            </table>
+            <button className="modal-close-button" onClick={() => toggleMembersModal(null)}>Close</button>
+          </div>
+        </div>
       )}
 
       {showBatchesModal && selectedGroup && (
-        <BatchesModal>
-          <ModalContent>
+        <div className="batches-modal">
+          <div className="modal-content">
             <h2>Batches of {selectedGroup.name}</h2>
-            <Table>
+            <table className="table">
               <thead>
-                <TableRow>
-                  <TableHeader>Batch Name</TableHeader>
-                  <TableHeader>Members</TableHeader>
-                </TableRow>
+                <tr>
+                  <th className="table-header">Batch Name</th>
+                  <th className="table-header">Members</th>
+                </tr>
               </thead>
               <tbody>
                 {selectedGroup.batches.map((batch) => (
                   <React.Fragment key={batch.id}>
-                    <TableRow>
-                      <TableCell>{batch.name}</TableCell>
-                      <TableCell>
-                        <Table>
+                    <tr className="table-row">
+                      <td className="table-cell">{batch.name}</td>
+                      <td className="table-cell">
+                        <table className="inner-table">
                           <tbody>
                             {batch.members.map((member, index) => (
-                              <TableRow key={index}>
-                                <TableCell>{member}</TableCell>
-                              </TableRow>
+                              <tr key={index} className="table-row">
+                                <td className="table-cell">{member}</td>
+                              </tr>
                             ))}
                           </tbody>
-                        </Table>
-                      </TableCell>
-                    </TableRow>
+                        </table>
+                      </td>
+                    </tr>
                   </React.Fragment>
                 ))}
               </tbody>
-            </Table>
-            <ModalCloseButton onClick={() => setShowBatchesModal(false)}>Close</ModalCloseButton>
-          </ModalContent>
-        </BatchesModal>
+            </table>
+            <button className="modal-close-button" onClick={() => setShowBatchesModal(false)}>Close</button>
+          </div>
+        </div>
       )}
-    </GroupsContainer>
+    </div>
   );
 };
 

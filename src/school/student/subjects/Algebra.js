@@ -1,182 +1,117 @@
-// Algebra.js
+import React, { useState } from 'react';
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import './Algebra.css';
 
-import React from 'react';
-import styled from 'styled-components';
+const Algebra = ({ onGroupsClick, onAttendanceClick, onDashboardLinkClick }) => {
+  const [showAllVideos, setShowAllVideos] = useState(false);
 
-const SubjectPageContainer = styled.div`
-  padding: 2rem;
-`;
-
-const SectionHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-`;
-
-const SectionTitle = styled.h3`
-  margin-bottom: 0.5rem;
-  text-align: center;
-`;
-
-const SectionContent = styled.div`
-  margin-left: 0;
-  text-align: left;
-  margin-bottom: 40px;
-`;
-
-const SubjectName = styled.h2`
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  text-align: center;
-`;
-
-const LinksLine = styled.div`
-  font-size: 0.9rem;
-  color: #555;
-  margin-bottom: 1rem;
-  text-align: center;
-`;
-
-const LiveLecturesSection = styled.div`
-  margin-top: 2rem;
-  text-align: left;
-`;
-
-const LiveLectureLink = styled.a`
-  display: block;
-  margin-bottom: 0.5rem;
-  text-align: left;
-`;
-
-const RecordedVideosCarousel = styled.div`
-  overflow-x: auto;
-  white-space: nowrap;
-  margin-top: 2rem;
-  text-align: left;
-`;
-
-const RecordedVideoCard = styled.div`
-  display: inline-block;
-  width: 200px;
-  height: 150px;
-  background-color: #f0f0f0;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  margin-right: 1rem;
-`;
-
-const CarouselButton = styled.button`
-  padding: 0.5rem 1rem;
-  margin-top: 0.5rem; /* Adjusted top margin */
-  width: 150px;
-`;
-
-const AttendanceGroupsSection = styled.div`
-  margin-top: 2rem;
-  text-align: left;
-`;
-
-const SmallButton = styled.button`
-  padding: 0.5rem 1rem;
-  margin-right: 1rem;
-  margin-top: 0.5rem; /* Adjusted top margin */
-  width: 120px;
-`;
-
-const CourseInformationSection = styled.div`
-  margin-top: 2rem;
-  text-align: left;
-`;
-
-const SyllabusDownload = styled.a`
-  display: block;
-  margin-top: 0.5rem;
-  text-align: left;
-`;
-
-const PracticalSection = styled.div`
-  margin-top: 2rem;
-  text-align: left;
-`;
-
-const Algebra = ({ onGroupsClick, onAttendanceClick }) => {
-  // Example functions
   const handleGroupsClick = () => {
     if (onGroupsClick) {
-      onGroupsClick(); // Call the callback function passed from parent component
+      onGroupsClick();
     }
   };
 
   const handleAttendanceClick = () => {
     if (onAttendanceClick) {
-      onAttendanceClick(); // Call the callback function passed from parent component
+      onAttendanceClick();
     }
   };
 
+  const handleSeeAllClick = () => {
+    setShowAllVideos(!showAllVideos);
+  };
+
+  const handleDashboardLinkClick = () => {
+    if (onDashboardLinkClick) {
+      onDashboardLinkClick();
+    }
+  };
+
+  const videoCards = [
+    'Video 1',
+    'Video 2',
+    'Video 3',
+    'Video 4',
+    'Video 5',
+    'Video 6',
+    'Video 7',
+    'Video 8',
+  ];
+
+  const displayedVideos = showAllVideos ? videoCards : videoCards.slice(0, 4);
+
   return (
-    <SubjectPageContainer>
-      <SubjectName>Algebra</SubjectName>
-      <LinksLine>Dashboard / Subjects / Academic Year Term / Standard Division / Subject Code</LinksLine>
+    <div className="subject-page-container">
+      <h2 className="subject-name">Algebra</h2>
+      <button className="dashboard-button" onClick={handleDashboardLinkClick}>Dashboard</button>
+      <div className="links-line">
+        <a href="#" className="breadcrumb-link" onClick={handleDashboardLinkClick}>Dashboard</a> /
+        <a href="#" className="breadcrumb-link">Subjects</a> / Academic Year Term / Standard Division / Subject Code
+      </div>
 
-      <SectionHeader>
-        <SectionTitle>Live Lectures</SectionTitle>
-        <SmallButton>Create</SmallButton>
-      </SectionHeader>
-      <SectionContent>
-        <LiveLecturesSection>
-          <LiveLectureLink href="#">Live Lecture Link 1</LiveLectureLink>
-          <LiveLectureLink href="#">Live Lecture Link 2</LiveLectureLink>
-          <LiveLectureLink href="#">Live Lecture Link 3</LiveLectureLink>
-        </LiveLecturesSection>
+      <div className="section-box">
+        <div className="section-header">
+          <h3 className="section-title">Live Lectures</h3>
+          <button className="small-button">Create</button>
+        </div>
+        <div className="section-content">
+          <div className="live-lectures-section">
+            <a href="#" className="live-lecture-link">Live Lecture Link 1</a>
+            <a href="#" className="live-lecture-link">Live Lecture Link 2</a>
+            <a href="#" className="live-lecture-link">Live Lecture Link 3</a>
+          </div>
+        </div>
+      </div>
 
-        <SectionHeader>
-          <SectionTitle>Recorded Videos</SectionTitle>
-        </SectionHeader>
-        <SectionContent>
-          <RecordedVideosCarousel>
-            <div style={{ display: 'flex' }}>
-              <RecordedVideoCard>Video 1</RecordedVideoCard>
-              <RecordedVideoCard>Video 2</RecordedVideoCard>
-              <RecordedVideoCard>Video 3</RecordedVideoCard>
-              <RecordedVideoCard>Video 4</RecordedVideoCard>
-              <RecordedVideoCard>Video 5</RecordedVideoCard>
-            </div>
-            <CarouselButton>See All</CarouselButton>
-          </RecordedVideosCarousel>
+      <div className="section-box">
+        <div className="section-header">
+          <h3 className="section-title">Recorded Videos</h3>
+        </div>
+        <div className="section-content">
+          <div className="recorded-videos-grid">
+            {displayedVideos.map((video, index) => (
+              <div key={index} className="recorded-video-card">{video}</div>
+            ))}
+          </div>
+          <button className="view-all-button" onClick={handleSeeAllClick}>
+            {showAllVideos ? <FaChevronUp /> : <FaChevronDown />}
+          </button>
+        </div>
+      </div>
 
-          <SectionHeader>
-            <SectionTitle>Attendance and Groups</SectionTitle>
-          </SectionHeader>
-          <SectionContent>
-            <AttendanceGroupsSection>
-              <SmallButton onClick={handleAttendanceClick}>Attendance</SmallButton>
-              <SmallButton onClick={handleGroupsClick}>Groups</SmallButton>
-            </AttendanceGroupsSection>
-          </SectionContent>
+      <div className="section-box">
+        <div className="section-content">
+          <div className="buttons-section">
+            <button className="small-button" onClick={handleAttendanceClick}>Attendance</button>
+            <button className="small-button" onClick={handleGroupsClick}>Groups</button>
+          </div>
+        </div>
+      </div>
 
-          <SectionHeader>
-            <SectionTitle>Course Information</SectionTitle>
-          </SectionHeader>
-          <SectionContent>
-            <CourseInformationSection>
-              <p>Course Name: Algebra</p>
-              <SyllabusDownload href="/path/to/syllabus.pdf">Download Syllabus (PDF)</SyllabusDownload>
-              <p>Syllabus Overview: Brief description here.</p>
-            </CourseInformationSection>
-          </SectionContent>
+      <div className="section-box">
+        <div className="section-header">
+          <h3 className="section-title">Course Information</h3>
+        </div>
+        <div className="section-content">
+          <div className="course-information-section">
+            <p>Course Name: Algebra</p>
+            <a href="/path/to/syllabus.pdf" className="syllabus-download">Download Syllabus (PDF)</a>
+            <p>Syllabus Overview: Brief description here.</p>
+          </div>
+        </div>
+      </div>
 
-          <SectionHeader>
-            <SectionTitle>Practical</SectionTitle>
-          </SectionHeader>
-          <SectionContent>
-            <PracticalSection>
-              <p>Details of the practical.</p>
-            </PracticalSection>
-          </SectionContent>
-        </SectionContent>
-      </SectionContent>
-    </SubjectPageContainer>
+      <div className="section-box">
+        <div className="section-header">
+          <h3 className="section-title">Practical</h3>
+        </div>
+        <div className="section-content">
+          <div className="practical-section">
+            <p>Details of the practical.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

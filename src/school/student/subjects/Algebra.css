@@ -1,0 +1,121 @@
+/* Styles for the main container */
+.subject-page-container {
+    padding: 2rem;
+}
+  
+/* Styles for section headers */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    margin-top: 4rem;
+}
+  
+/* Styles for section titles */
+.section-title {
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+  
+/* Styles for links line */
+.links-line {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+  
+/* Styles for buttons */
+.small-button {
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+    margin-top: 0.5rem; /* Adjusted top margin */
+    width: 120px;
+    background-color: #87CEEB;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.small-button:hover {
+    background-color: #00BFFF;
+}
+  
+/* Styles for live lectures section */
+.live-lectures-section {
+    margin-top: 1.5rem;
+    text-align: left;
+}
+  
+.live-lecture-link {
+    display: block;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+  
+/* Styles for recorded videos carousel */
+.recorded-videos-carousel {
+    overflow-x: auto;
+    white-space: nowrap;
+    margin-top: 1.5rem;
+    text-align: left;
+}
+  
+.recorded-video-card {
+    display: inline-block;
+    width: 200px;
+    height: 150px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-right: 1rem;
+    padding: 1rem;
+    margin-top: 1rem; /* Added top margin */
+}
+  
+.view-all-button {
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem; /* Adjusted top margin */
+    width: 150px;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.view-all-button:hover {
+    color: #00BFFF;
+}
+  
+/* Styles for course information section */
+.course-information-section {
+    margin-top: 1.5rem;
+    text-align: left;
+}
+  
+.syllabus-download {
+    display: block;
+    margin-top: 0.5rem;
+    text-align: left;
+}
+  
+/* Styles for practical section */
+.practical-section {
+    margin-top: 1.5rem;
+    text-align: left;
+}
+  
+/* Box styling for sections */
+.section-content {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.buttons-section {
+    display: flex;
+    justify-content: flex-start; /* Adjust as per your requirement */
+    align-items: center; /* Adjust as per your requirement */
+    margin-top: 1rem;
+}

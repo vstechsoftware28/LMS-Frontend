@@ -22,7 +22,6 @@ const RegistrationForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted with data:', formData);
-    // Add logic here to handle form submission (e.g., send data to server)
   };
 
   return (

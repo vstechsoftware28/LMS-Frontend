@@ -1,58 +1,24 @@
-// SubjectCard.js
 import React from 'react';
-import styled from 'styled-components';
-
-const Card = styled.div`
-  flex: 0 0 auto;
-  width: 200px;
-  height: 150px;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 1rem;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
-
-  &:hover {
-    transform: scale(1.05);
-  }
-`;
-
-const Image = styled.img`
-  width: 100%;
-  height: 80px;
-  object-fit: cover;
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 0.5rem;
-`;
-
-const Text = styled.div`
-  text-align: left;
-  width: 100%;
-`;
-
-const StandardDivision = styled.div`
-  font-size: 0.9rem;
-  font-weight: bold;
-`;
-
-const SubjectName = styled.div`
-  font-size: 1rem;
-  margin-top: 0.5rem;
-`;
+import './SubjectCard.css'; // Ensure your CSS file is correctly imported
 
 const SubjectCard = ({ subject, onClick }) => (
-  <Card onClick={() => onClick(subject.id)}>
-    <Image src={subject.image} alt={subject.name} />
-    <Text>
-      <StandardDivision>{subject.standard} {subject.division}</StandardDivision>
-      <SubjectName>{subject.name}</SubjectName>
-    </Text>
-  </Card>
+  <div className="subject-card" onClick={() => onClick(subject.id)}>
+    <img className="subject-image" src={subject.image} alt={subject.name} />
+    <div className="text-container">
+      <div className="standard-division">{subject.standard} {subject.division}</div>
+      <div className="subject-name">{subject.name}</div>
+    </div>
+  </div>
 );
 
+const subjectsData = [
+  { id: 'algebra', name: 'Algebra', standard: '10th', division: 'A', image: 'path/to/Algebra.jpg' },
+  { id: 'geometry', name: 'Geometry', standard: '10th', division: 'A', image: 'path/to/Geometry.jpg' },
+  { id: 'physics', name: 'Physics', standard: '10th', division: 'A', image: 'path/to/Physics.jpg' },
+  { id: 'chemistry', name: 'Chemistry', standard: '10th', division: 'A', image: 'path/to/Chemistry.jpg' },
+  { id: 'history', name: 'History', standard: '10th', division: 'A', image: 'path/to/history.jpg' },
+  { id: 'geography', name: 'Geography', standard: '10th', division: 'A', image: 'path/to/geography.jpg' }
+];
+
 export default SubjectCard;
+export { subjectsData };

@@ -1,0 +1,65 @@
+.calendar-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+    overflow: auto;
+    height: 1000px; /* Increased height */
+  }
+  
+  .calendar-header {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .date-picker-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .date-picker-container .react-datepicker-wrapper {
+    display: inline-block;
+  }
+  
+  .date-picker-container .react-datepicker-wrapper .react-datepicker__input-container {
+    display: inline-block;
+  }
+  
+  .search-icon {
+    color: #ccc;
+    margin-right: 10px;
+  }
+  
+  .rbc-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .rbc-toolbar .rbc-toolbar-label {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    flex-grow: 1;
+    color: white;
+    background-color: #3498db;
+    padding: 10px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  
+  /* Continue with other styles as defined in StyledBigCalendar */
+  
