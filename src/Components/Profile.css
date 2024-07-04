@@ -1,0 +1,97 @@
+.main-1{
+    width: 65%;
+    height: 650px;
+   background-color:  #f9f9f9;
+   margin-left: 20%;
+   margin-top: 15px;
+   padding: 20px;
+}
+
+.info-1{
+    background-color: white;
+    width: 95%;
+    margin-left: 20px;
+    height: 120px;
+}
+.name {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+span > p{
+    font-size: 25px;
+    color: black;
+}
+.icon-with-text {
+    display: flex;
+    align-items: center;
+}
+
+.icon-with-text svg {
+    margin-right: 10px;
+    background-color: #ddd;
+    color: white;
+    border-radius: 50%;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+.pointer{
+    cursor: pointer;
+    margin-right: 15px;
+}
+.url{
+    display: flex;
+    margin-left: 15px;
+}
+.btton{
+    display: flex;
+    margin-left: 400px;
+    cursor: pointer;
+}
+.btton > h6{
+    margin-left: 10px;
+    border: 2px solid #aaa;
+    padding: 3px;
+}
+.details{
+    background-color: white;
+    width: 95%;
+    margin-left: 20px;
+    height: 470px;
+    margin-top: 20px;
+    display: flex;
+}
+.user-details{
+    width: 48%;
+    margin: 10px;
+}
+.user, .course, .misc{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #aaa;
+    margin: 5px;
+    padding: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+
+}
+.user > a{
+    margin-left: 280px;
+   
+}
+.user-details-2{
+    width: 48%;
+    margin: 10px;
+}
+.report, .login{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #aaa;
+    margin: 5px;
+    padding: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+
+}
+ul{
+    list-style-type: none;
+    
+}
