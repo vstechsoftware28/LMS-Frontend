@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
+
 import  StudentDashboard from './student/StudentDashboard';
 import Login from './Login';
 import ForgotPassword from './ForgotPassword';
@@ -17,12 +18,22 @@ import Popup from './Components/Popup';
 import Profile from './Components/Profile';
 import Preferences from './Components/Preferences';
 import SetCal from './Components/SetCal';
+
+import Login from './Login';
+import ForgotPassword from './ForgotPassword';
+import ResetPassword from './ResetPassword';
+import StudentDashboard from './student/StudentDashboard';
+import Calendar from './student/Calendar';
+import RegistrationFormClgSchool from './Components/RegistrationFormClgSchool';
+import RegistrationForm from './Components/RegistrationForm';
+
 function App() {
   return (
     <div className="App">
       <Router>
         <Routes>
           <Route path='/login' element={<Login/>}/>
+
         <Route path="/" element={<TeacherDashboard/>} />
         <Route path="/calendar" element={<Calendar/>}/>
         <Route path="/registration-form" element={<RegistrationForm />} />
@@ -39,6 +50,15 @@ function App() {
           <Route path='/profile' element={<Profile />} />
           <Route path='/preferences' element={<Preferences />} />
           <Route path='/cal' element={<SetCal />} />
+
+        <Route path="/" element={<StudentDashboard />} />
+        <Route path="calendar" element={<Calendar/>}/>
+        {/* <Route path="/" element={<RegistrationFormClgSchool/>}/> */}
+          {/* <Route path="/" element={<StudentDashboard/>} /> */}
+          {/* <Route path="/" element={<Login />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} /> */}
+
         </Routes>
       </Router>
     </div>
