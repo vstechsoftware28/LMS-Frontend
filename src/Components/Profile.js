@@ -33,7 +33,7 @@ const Profile = () => {
                     <div className="user-details">
                         <div className="user">
                             <h5>User details</h5>
-                            <a href="/subject-form">Edit profile</a>
+                            <a href="/edit-profile">Edit profile</a>
                         </div>
                         <div className="course">
                             <h5>Course details</h5>

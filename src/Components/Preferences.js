@@ -26,7 +26,7 @@ const Preferences = () => {
                         <div className="useracc">
                             <h5>User Account</h5>
                             <ul>
-                                <li><a href="/subject-form">Edit profile</a></li>
+                                <li><a href="/edit-profile">Edit profile</a></li>
                                 <li><a href="/reset-password">Change password</a></li>
                                 <li><a href="">Prefered language</a></li>
                                 <li><a href="">Forum Preference</a></li>
