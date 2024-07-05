@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import './Subject-Form.css'
+import './Subject-Form.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaTimes } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
