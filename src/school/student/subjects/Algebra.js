@@ -45,8 +45,8 @@ const Algebra = ({ onGroupsClick, onAttendanceClick, onDashboardLinkClick }) => 
       <h2 className="subject-name">Algebra</h2>
       <button className="dashboard-button" onClick={handleDashboardLinkClick}>Dashboard</button>
       <div className="links-line">
-        <a href="#" className="breadcrumb-link" onClick={handleDashboardLinkClick}>Dashboard</a> /
-        <a href="#" className="breadcrumb-link">Subjects</a> / Academic Year Term / Standard Division / Subject Code
+        <span className="breadcrumb-link" onClick={handleDashboardLinkClick}>Dashboard</span> /
+        <span className="breadcrumb-link">Subjects</span> / Academic Year Term / Standard Division / Subject Code
       </div>
 
       <div className="section-box">
