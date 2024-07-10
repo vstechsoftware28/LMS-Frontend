@@ -1,126 +1,166 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import './TeacherDashboard.css';
 import Header from './Header';
 import Sidebar from './Sidebar';
-import Dashboard from './Dashboard';
 import Calendar from './Calendar';
-import Subjects from './Subjects';
 import Result from './Result';
-import Modal from '../Modal';
+import AddSubjectForm from './AddSubjectForm'; // Import AddSubjectForm component
+import Dashboard from './Dashboard';
+import Subjects from './Subjects';
+import Profile from '../Components/Profile';
+import Preferences from '../Components/Preferences';
+import EditProfile from '../Components/EditProfile';
 import SubjectDashboard from './SubjectDashboard';
-import AddSubjectForm from './AddSubjectForm';
-import styled from 'styled-components';
+import UploadVideoForm from '../Components/UploadVideoForm';
+import EditSubjectDetails from '../Components/EditSubjectDetails';
+import EditTopicDetails from '../Components/EditTopicDetails';
 
-const StudentDashboardContainer = styled.div`
-  display: grid;
-  grid-template-areas:
-    'header header'
-    'sidebar main';
-  grid-template-columns: ${({ sidebarOpen }) => (sidebarOpen ? '250px' : '60px')} 1fr;
-  grid-template-rows: 60px 1fr; /* Adjust based on header height */
-  height: 100vh;
-`;
-
-const ContentContainer = styled.div`
-  grid-area: main;
-  padding: 1rem;
-  overflow-y: auto;
-  background-color: #f9f9f9; /* Optional: Adding a background color */
-`;
-
+// Define subject data with id, title, and component
 const subjectsData = [
-  { name: 'Physics', standard: '10th', division: 'A', image: 'path/to/physics.jpg' },
-  { name: 'Chemistry', standard: '10th', division: 'A', image: 'path/to/chemistry.jpg' },
-  { name: 'Maths', standard: '10th', division: 'B', image: 'path/to/maths.jpg' },
-  { name: 'Biology', standard: '10th', division: 'B', image: 'path/to/biology.jpg' },
-  { name: 'History', standard: '9th', division: 'A', image: 'path/to/history.jpg' },
-  { name: 'Geography', standard: '9th', division: 'A', image: 'path/to/geography.jpg' },
-  { name: 'Literature', standard: '9th', division: 'B', image: 'path/to/literature.jpg' },
-  { name: 'Art', standard: '9th', division: 'B', image: 'path/to/art.jpg' },
-  { name: 'Music', standard: '8th', division: 'A', image: 'path/to/music.jpg' },
-  { name: 'Computer Science', standard: '8th', division: 'A', image: 'path/to/computer_science.jpg' },
-  { name: 'Economics', standard: '8th', division: 'B', image: 'path/to/economics.jpg' }
+  { id: 'algebra', title: 'Algebra' },
+  { id: 'geometry', title: 'Geometry' },
+  { id: 'physics', title: 'Physics' },
+  { id: 'chemistry', title: 'Chemistry' },
+  { id: 'history', title: 'History' },
+  { id: 'geography', title: 'Geography' },
 ];
 
-const StudentDashboard = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [selectedComponent, setSelectedComponent] = useState('Dashboard');
-  const [isModalOpen, setIsModalOpen] = useState(false);
+// Sample data for standards, divisions, and teachers
+const standardsData = ['Standard 1', 'Standard 2', 'Standard 3'];
+const divisionsData = ['A', 'B', 'C'];
+const teachersData = ['Teacher 1', 'Teacher 2', 'Teacher 3'];
 
+const TeacherDashboard = () => {
+  // State hooks
+  const [sidebarOpen, setSidebarOpen] = useState(true); // State for sidebar open/close
+  const [selectedComponent, setSelectedComponent] = useState('Dashboard'); // State for selected component
+  const [showAddSubjectForm, setShowAddSubjectForm] = useState(false); // State for Add Subject form visibility
+  const [showChangePasswordForm, setShowChangePasswordForm] = useState(false); // State for Change Password form visibility
+
+  // Toggle sidebar open/close
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
+  // Handle sidebar item click
   const handleSidebarItemClick = (component) => {
     setSelectedComponent(component);
+    setShowAddSubjectForm(false); // Close Add Subject form when switching sidebar items
   };
 
-  const handleAddSubjectClick = () => {
-    setIsModalOpen(true);
+  const handleSubjectCardClick = (subjectId) => {
+    setSelectedComponent(`Subject-${subjectId}`);
   };
 
-  const handleModalClose = () => {
-    setIsModalOpen(false);
+  const handleProfileClick = () => {
+    setSelectedComponent('Profile');
   };
 
-  const handleAddSubjectSubmit = (formData) => {
-    console.log('Form Data:', formData);
-    // Handle form submission logic here
-    setIsModalOpen(false);
+  const handleDashboardLinkClick = () => {
+    setSelectedComponent('Dashboard');
   };
 
-  const handleSubjectCardClick = (subjectName) => {
-    console.log('Navigating to subject:', subjectName);
-    setSelectedComponent(`Subject-${subjectName}`);
+  const handleSubjectLinkClick = () => {
+    setSelectedComponent('Subjects');
   };
 
+  const handleGroupsClick = () => {
+    setSelectedComponent('Groups');
+  };
+
+  const handlePreferenceClick = () => {
+    setSelectedComponent('Preferences');
+  };
+
+  const handleEditProfileClick = () => {
+    setSelectedComponent('EditProfile');
+  };
+
+  const handleSubjectClick = (subjectId) => {
+    setSelectedComponent(`Subject-${subjectId}`);
+  };
+  const handleVideoClick = () => {
+    setSelectedComponent('UploadVideoForm')
+  }
+
+  const handleTurnEditing = () => {
+    setSelectedComponent('EditSubjectDetails')
+  }
+
+  const handleEditTopic = () => {
+    setSelectedComponent('EditTopicDetails')
+  }
+  // Toggle Add Subject form visibility
+  const toggleAddSubjectForm = () => {
+    setShowAddSubjectForm(!showAddSubjectForm);
+  };
+
+  // Toggle Change Password form visibility
+  const toggleChangePasswordForm = () => {
+    setShowChangePasswordForm(!showChangePasswordForm);
+  };
+
+  // Render component based on selected component state
   const renderSelectedComponent = () => {
     switch (selectedComponent) {
       case 'Dashboard':
-        return <Dashboard subjects={subjectsData} onSubjectCardClick={handleSubjectCardClick} />;
-      case 'SubjectDashboard':
-        return <SubjectDashboard />
+        return <Dashboard subjects={subjectsData} onSubjectClick={handleSubjectCardClick} />;
       case 'Calendar':
         return <Calendar />;
       case 'Subjects':
         return <Subjects subjects={subjectsData} onSubjectCardClick={handleSubjectCardClick} />;
       case 'Result':
         return <Result />;
+      case 'Profile':
+        return <Profile onEditProfileClick={handleEditProfileClick} />;
+      case 'Preferences':
+        return <Preferences onEditProfileClick={handleEditProfileClick} />;
+      case 'EditProfile':
+        return <EditProfile />;
+
+      case `Subject-${selectedComponent.split('-')[1]}`:
+        return <SubjectDashboard name={selectedComponent.split('-')[1]} onVideoClick={handleVideoClick} onTurnEditing={handleTurnEditing} />;
+
+      case 'UploadVideoForm':
+        return <UploadVideoForm />
+
+      case 'EditSubjectDetails':
+        return <EditSubjectDetails onEditTopic={handleEditTopic}/>
+        case 'EditTopicDetails':
+          return <EditTopicDetails />
       default:
-        // Handle individual subject pages
-        if (selectedComponent.startsWith('Subject-')) {
-          const subjectName = selectedComponent.split('-')[1];
-          const subject = subjectsData.find((s) => s.name === subjectName);
-          return <div>{subjectName} Page: Details of {subject ? subject.name : 'Subject'}</div>;
-        }
-        return <Dashboard />;
+        return <Dashboard subjects={subjectsData} onSubjectClick={handleSubjectCardClick} />;
     }
   };
 
   return (
-    <StudentDashboardContainer sidebarOpen={sidebarOpen}>
-      <Header isSidebarOpen={sidebarOpen} onToggleSidebar={toggleSidebar} />
-      <Sidebar 
-        isOpen={sidebarOpen} 
-        onItemClick={handleSidebarItemClick} 
-        selectedComponent={selectedComponent}
-        onAddSubjectClick={handleAddSubjectClick} // Passing handleAddSubjectClick to Sidebar
-        subjects={subjectsData} // Passing subjects to Sidebar
+    <div className={`student-dashboard-container ${sidebarOpen ? 'sidebar-open' : ''}`}>
+      {/* Header component with toggle sidebar function */}
+      <Header
+        onToggleSidebar={toggleSidebar}
+        onChangePasswordClick={toggleChangePasswordForm} // Pass toggle function to open Change Password form
+        onProfileClick={handleProfileClick}
+        onPreferencesClick={handlePreferenceClick}
+        onEditProfileClick={handleEditProfileClick}
+        onVideoClick={handleVideoClick}
+        onTurnEditing={handleTurnEditing}
+        onEditTopic={handleEditTopic}
       />
-      <ContentContainer>
+
+      {/* Sidebar component with necessary props */}
+      <Sidebar
+        isOpen={sidebarOpen}
+        onItemClick={handleSidebarItemClick}
+        selectedComponent={selectedComponent}
+        onAddSubjectClick={toggleAddSubjectForm} // Pass toggle function to open Add Subject form
+      />
+
+      {/* Main content container with dynamically rendered component */}
+      <div className="content-container">
         {renderSelectedComponent()}
-      </ContentContainer>
-      <Modal isOpen={isModalOpen} onClose={handleModalClose}>
-        <AddSubjectForm 
-          subjects={subjectsData.map(subject => subject.name)} 
-          standards={['1', '2', '3']} // Example standards
-          divisions={['A', 'B', 'C']} // Example divisions
-          teachers={['Mr. A', 'Ms. B', 'Mrs. C']} // Example teachers
-          onSubmit={handleAddSubjectSubmit} 
-        />
-      </Modal>
-    </StudentDashboardContainer>
+      </div>
+    </div>
   );
 };
 
-export default StudentDashboard;
+export default TeacherDashboard;

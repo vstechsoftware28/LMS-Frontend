@@ -2,11 +2,17 @@ import React from "react";
 import Header from "../Teacher/Header";
 import './Preferences.css';
 import { FaUser } from 'react-icons/fa';
+import { hover } from "@testing-library/user-event/dist/hover";
 
-const Preferences = () => {
+const Preferences = ({onEditProfileClick}) => {
+
+    const handleEditProfileClick = () => {
+        if(onEditProfileClick){
+            onEditProfileClick();
+        }
+    }
     return (
         <>
-            <Header />
             <div className="main">
                 <div className="info">
                     <div className="name">
@@ -26,7 +32,7 @@ const Preferences = () => {
                         <div className="useracc">
                             <h5>User Account</h5>
                             <ul>
-                                <li><a href="/edit-profile">Edit profile</a></li>
+                                <li><a style={{color:'#007bff' }} onClick={handleEditProfileClick}>Edit profile</a></li>
                                 <li><a href="/reset-password">Change password</a></li>
                                 <li><a href="">Prefered language</a></li>
                                 <li><a href="">Forum Preference</a></li>

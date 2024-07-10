@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Header from "../Teacher/Header";
 import './EditProfile.css';
 import { FaUser, FaChevronDown, FaChevronRight } from 'react-icons/fa';
 import { FcDown } from "react-icons/fc";
@@ -51,7 +50,6 @@ const EditProfile = () => {
     };
     return (
         <>
-            <Header />
             <div className="edit-profile">
                 <div className="basic-info">
                     <div className="teacher-name">

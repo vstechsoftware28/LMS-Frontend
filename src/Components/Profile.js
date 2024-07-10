@@ -3,11 +3,14 @@ import Header from '../Teacher/Header';
 import './Profile.css';
 import { FaUser, FaCog } from 'react-icons/fa';
 
-const Profile = () => {
-
+const Profile = ({onEditProfileClick}) => {
+    const handleEditProfileClick = () => {
+        if(onEditProfileClick){
+            onEditProfileClick();
+        }
+    }
     return (
         <>
-        <Header />
             <div className="main-1">
                 <div className="info-1">
                     <div className="name">
@@ -33,7 +36,7 @@ const Profile = () => {
                     <div className="user-details">
                         <div className="user">
                             <h5>User details</h5>
-                            <a href="/edit-profile">Edit profile</a>
+                            <a style={{color:"#007bff"}} onClick={handleEditProfileClick}>Edit profile</a>
                         </div>
                         <div className="course">
                             <h5>Course details</h5>

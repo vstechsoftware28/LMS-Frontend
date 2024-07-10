@@ -1,78 +1,58 @@
-.edit-profile {
+.topic-detail{
     width: 75%;
-    height: auto;
-    background-color: #f9f9f9;
-    margin-left: 5%;
-    margin-top: 5px;
-    padding: 20px;
+    height: 650px;
+   background-color:  #f9f9f9;
+   margin-left: 5%;
+   margin-top: 5px;
+   padding: 20px;
+   position: relative;
 }
 
-.basic-info {
+.topic-info{
     background-color: white;
     width: 95%;
     margin-left: 20px;
-    height: 150px;
+    height: 120px;
+    position: relative;
 }
-
-.teacher-name {
+.topic-name {
     display: flex;
     justify-content: space-between;
     padding: 10px;
+    position: relative;
 }
-
-span > p {
+span > p{
     font-size: 25px;
     color: black;
 }
-
-.icon-text {
-    display: flex;
-    align-items: center;
-}
-
-.icon-text svg {
-    margin-right: 10px;
-    background-color: #ddd;
-    color: white;
-    border-radius: 50%;
-    padding: 10px;
-    padding-bottom: 0px;
-}
-
-.profile-url {
+.topic-url{
     display: flex;
     margin-left: 15px;
 }
+
 .general.collapsed .form,
-.user-picture.collapsed .form,
-.additional-name.collapsed .form,
-.interests.collapsed .form,
-.optional.collapsed .form,
-.academic.collapsed .form {
+.restrict.collapsed .form {
     display: none;
 }
-
-
-.edit-form {
+.topic-form {
     background-color: white;
     width: 95%;
     margin-left: 20px;
     margin-top: 15px;
     padding: 15px;
 }
-.edit-form > .expand{
-    margin-left: 705px;
+.topic-form > .expand{
+    margin-left: 710px;
     cursor: pointer;
     color: rgb(100, 209, 252);
 }
-.edit-form h5, .edit-form h6 {
+.topic-form h5, .topic-form h6 {
     margin-top: 0;
 }
 
-.general, .user-picture, .additional-name, .interests, .optional, .academic {
+.general,  .restrict {
     margin-bottom: 10px;
 }
-
 .form {
     display: grid;
     grid-template-columns: 250px 1fr;
@@ -86,18 +66,18 @@ span > p {
     width: 140px;
 }
 
-.form input, .form select, .form textarea {
+.form input, .form textarea {
     width: 300px;
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-
 .form textarea {
     resize: vertical;
     width: 550px;
 }
 .update{
+    margin-top: 15px;
     margin-left: 300px;
     padding: 5px;
     border: none;
@@ -107,6 +87,7 @@ span > p {
     cursor: pointer;
     width: 15%;
 }
+
 .cancle{
     padding: 5px;
     margin: 10px 5px;
@@ -128,38 +109,4 @@ hr{
     color: #ccc;
     margin-left: 20px;
     margin-right: 20px;
-}
-.file-input-container {
-    position: relative;
-    display: inline-block;
-}
-
-.file-instructions {
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: black;
-    margin-top: 40px;
-    margin-left: 20px;
-    font-size: 14px;
-    padding: 5px;
-    border: 2px dotted black;
-    padding-top: 20px;
-    padding-left: 120px;
-    padding-right: 110px;
-    display: flex;
-    flex-direction: column;
-}
-.file-icon{
-    margin-left: 100px;
-}
-.photo{
-    width: 550px;
-    margin-left: 260px;
-}
-.photo > p{
-    color: black;
-}
-.p-type{
-    font-size: 11px;
 }

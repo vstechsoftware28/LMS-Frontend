@@ -17,6 +17,9 @@ import Profile from './Components/Profile';
 import Preferences from './Components/Preferences';
 import SetCal from './Components/SetCal';
 import EditProfile from './Components/EditProfile';
+import SubjectDetails from './Components/SubjectDetails';
+import EditSubjectDetails from './Components/EditSubjectDetails';
+import EditTopicDetails from './Components/EditTopicDetails';
 function App() {
   return (
     <div className="App">
@@ -40,6 +43,9 @@ function App() {
           <Route path='/preferences' element={<Preferences />} />
           <Route path='/cal' element={<SetCal />} />
           <Route path='/edit-profile' element={<EditProfile />} />
+          <Route path='/subject-details' element={<SubjectDetails />} />
+          <Route path='/edit-subject-details' element={<EditSubjectDetails />} />
+          <Route path='/edit-topic-details' element={<EditTopicDetails />} />
         </Routes>
       </Router>
     </div>
