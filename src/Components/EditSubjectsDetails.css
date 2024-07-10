@@ -1,0 +1,220 @@
+.edit-subject-details {
+    width: 75%;
+    height: auto;
+    background-color: #f9f9f9;
+    margin-left: 5%;
+    margin-top: 5px;
+    padding: 20px;
+    position: relative;
+}
+
+.edit-basic-info {
+    background-color: white;
+    width: 95%;
+    margin-left: 20px;
+    height: 120px;
+    position: relative;
+}
+
+.edit-sub-name {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    position: relative;
+}
+
+span > p {
+    font-size: 25px;
+    color: black;
+}
+
+.edit-icon-text {
+    display: flex;
+    align-items: center;
+}
+
+.edit-icon-text svg {
+    margin-right: 10px;
+    background-color: #ddd;
+    color: white;
+    border-radius: 50%;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.edit-pointer {
+    cursor: pointer;
+    margin-right: 15px;
+    position: relative;
+}
+
+.edit-url {
+    display: flex;
+    margin-left: 15px;
+}
+
+.edit-subject-view {
+    background-color: white;
+    width: 95%;
+    margin-left: 20px;
+    height: auto;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.edit-annoucement {
+    padding-top: 20px;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+.edit-annoucement > h5{
+    color: skyblue;
+}
+.edit-annoucement > a{
+   margin-left: 720px;
+   cursor: pointer;
+}
+.edit-span{
+    display: flex;
+    align-items: center;
+}
+.edit-span > h5{
+    color: skyblue;
+}
+.edit-span > svg {
+    cursor: pointer;
+}
+.Fa-edit{
+    margin-left: 500px;
+    color: skyblue;
+    cursor: pointer;
+}
+.acti{
+    margin-left: 545px;
+    cursor: pointer;
+}
+.acti > a {
+    margin-left: 10px;
+}
+.edit-topic-1,
+.edit-topic-2,
+.edit-topic-3,
+.edit-topic-4,
+.edit-topic-5 {
+    padding-bottom: 10px;
+    padding-top: 5px;
+}
+
+.edit-dropdown {
+    background-color: white;
+    width: auto;
+    position: absolute;
+    right: 7%;
+    top: 10%;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.edit-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.edit-dropdown ul li {
+    padding: 7px 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+.edit-dropdown ul li > svg{
+    margin-right: 10px;
+}
+.dropdown ul li:last-child {
+    border-bottom: none;
+}
+
+.edit-dropdown ul li:hover {
+    background-color: #f0f0f0;
+    text-decoration: underline;
+}
+
+.txt {
+    display: flex;
+    flex-direction: column;
+}
+
+.topic-name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topic-name > h3 {
+    display: flex;
+    align-items: center;
+    color: skyblue;
+    margin-right: 10px;
+}
+
+.topic-name > h3 svg {
+    color: black;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.topic-name > a {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.activity {
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.activity > a {
+    margin-left: 10px;
+}
+
+input[type="text"] {
+    font-size: 1rem;
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.topic-dropdown {
+    background-color: white;
+    width: auto;
+    position: absolute;
+    right: 1%;
+    top: 65%;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.topic-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.topic-dropdown ul li {
+    padding: 7px 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+.topic-dropdown ul li > svg{
+    margin-right: 10px;
+}
+
+.topic-dropdown ul li:hover {
+    background-color: #f0f0f0;
+    text-decoration: underline;
+}

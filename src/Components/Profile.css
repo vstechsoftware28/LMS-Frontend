@@ -1,9 +1,9 @@
 .main-1{
-    width: 65%;
+    width: 75%;
     height: 650px;
    background-color:  #f9f9f9;
-   margin-left: 20%;
-   margin-top: 15px;
+   margin-left: 5%;
+   margin-top: 5px;
    padding: 20px;
 }
 
@@ -45,7 +45,7 @@ span > p{
 }
 .btton{
     display: flex;
-    margin-left: 400px;
+    margin-left: 330px;
     cursor: pointer;
 }
 .btton > h6{
@@ -76,6 +76,8 @@ span > p{
 }
 .user > a{
     margin-left: 280px;
+    cursor: pointer;
+    
    
 }
 .user-details-2{

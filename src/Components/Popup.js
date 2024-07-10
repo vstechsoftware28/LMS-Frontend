@@ -65,7 +65,7 @@ const Popup = () => {
                     </div>
                     <div className="form-group1">
                         <label>Student:</label>
-                        <div className="dropdown">
+                        <div className="dropdown-notice">
                             <select name="studentStd" value={formData.studentStd} onChange={handleChange}>
                                 <option value=''>Std</option>
                                 <option value='all'>All</option>

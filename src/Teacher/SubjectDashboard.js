@@ -1,96 +1,36 @@
-import React from 'react';
-import Header from './Header';
+import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import styled from 'styled-components';
+import './SubjectDashboard.css';
+import { FaCaretDown, FaCog, FaCogs, FaPen, FaFilter, FaRegFileArchive, FaLevelUpAlt, FaArrowLeft } from 'react-icons/fa';
+import { FcComments } from "react-icons/fc";
+import { useNavigate } from "react-router-dom";
+import '../Components/SubjectDetails.css';
 import img from './Community Engagement.jpg';
-const SubjectDashboardContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-`;
 
-const SubjectHeading = styled.h1`
-  font-size: 1rem;
-  margin-bottom:20px;
-  margin-right:450px;
-`;
-const Description = styled.h3`
-font-size: 1rem;
-
-margin-right:750px;
-
-`;
-const Material = styled.h3`
-font-size: 1rem;
-margin-bottom:10px;
-margin-right:710px;
-`
-const ButtonContainer = styled.div`
-  display: flex;
-  gap: 20px; // Space between buttons
-  margin-right:420px;
-  margin-bottom:20px;
-`;
-
-const UploadButton = styled(Link)`
-  padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  width:200px;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: #0056b3;
-  }
-`;
-const Para = styled.p`
-font-size:14px;
-margin-left:0px;
-`;
-const VideoContainer = styled.div`
-  width: 80%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
- margin-left:100px;
-`;
-
-const VideoBox = styled.div`
-  
-  width:300px;
-  height:150px;
-  border-radius:10px;
-  border:2px solid black;
-  margin: 10px;
-`;
-
-const Video = styled.img`
-  width: 250px; /* Adjust as per your video thumbnail size */
-  height: auto;
-`;
-const VideoTitle = styled.div`
-font-size:12px;
-margin-left:15px;
-`;
-const VideoCon = styled.div`
-cursor:pointer;
-// display:flex;
-// flex-direction:coloum;
-`
-
-const SubjectDashboard = () => {
+const SubjectDashboard = ({onVideoClick,onTurnEditing}) => {
   const { name } = useParams();
 
   const handleUploadLiveLecture = () => {
-
     alert('Upload Live Lecture clicked');
+
   };
+  const handleVideoClick = () => {
+    if (onVideoClick) {
+      onVideoClick();
+    }
+  }
+
+  const [isDropdownVisible, setDropdownVisible] = useState(false);
+  const navigate = useNavigate();
+
+  const toggleDropdown = () => {
+    setDropdownVisible(!isDropdownVisible);
+  };
+  const handleTurnEditing = () => {
+    if(onTurnEditing){
+      onTurnEditing();
+    }
+  }
 
 
   const uploadedVideos = [
@@ -100,41 +40,92 @@ const SubjectDashboard = () => {
     { id: 4, image: '../Teacher/assets/image/Live Classes and Webinars.jpg', title: 'Video Title 4' },
     { id: 5, image: '../Teacher/assets/image/Educational Resources.jpg', title: 'Video Title 5' },
     { id: 6, image: './Community Engagement.jpg', title: 'Video Title 6' },
-
   ];
+
   return (
     <>
-    <Header />
-      <SubjectDashboardContainer>
-        <SubjectHeading>dashboard/classname/year/division/subjectid/{name} </SubjectHeading>
-        <ButtonContainer>
-          <UploadButton onClick={handleUploadLiveLecture}>Create Live Lecture</UploadButton>
-          <UploadButton to='/video-form'>Upload Video Lecture</UploadButton>
-        </ButtonContainer>
-        <VideoContainer>
+    
+    <div className="subject-details">
+        <div className="basic-info">
+          <div className="sub-name">
+            <span className="icon-text">
+              <p>Mathematics</p>
+            </span>
+            <span className="pointer" onClick={toggleDropdown}>
+              <FaCog /><FaCaretDown />
+
+            </span>
+          </div>
+          <div className="url">
+            <a href="/">Dashboard</a> /
+            <a href="">Subjects</a> /
+            <a href="">Mathematics</a>
+          </div>
+        </div>
+        {isDropdownVisible && (
+          <div className="dropdown">
+            <ul>
+              <li><FaCogs />Edit settings</li>
+              <li onClick={handleTurnEditing}>< FaPen />Turn editing on</li>
+              <li><FaCogs />Course completion</li>
+              <li><FaFilter />Filters</li>
+              <li><FaCogs />Grandbook setup</li>
+              <li><FaRegFileArchive />Backup</li>
+              <li><FaLevelUpAlt />Restore</li>
+              <li><FaLevelUpAlt />Import</li>
+              <li><FaArrowLeft />Reset</li>
+              <li><FaCog />More...</li>
+            </ul>
+          </div>
+        )}
+        <div className="subject-view">
+          <div className="annoucement">
+            <h5><FcComments />Annoucements</h5>
+          </div><hr></hr>
+          <div className="topic-1">
+            <h3>Topic 1</h3>
+          </div><hr></hr>
+          <div className="topic-2">
+            <h3>Topic 2</h3>
+          </div><hr></hr>
+          <div className="topic-3">
+            <h3>Topic 3</h3>
+          </div><hr></hr>
+          <div className="topic-4">
+            <h3>Topic 4</h3>
+          </div><hr></hr>
+          <div className="topic-5">
+            <h3>Topic 5</h3>
+          </div>
+
+        </div>
+      </div>
+      <div className="subject-dashboard-container">
+        <h1 className="subject-heading">dashboard/classname/year/division/subjectid/{name}</h1>
+        <div className="button-container">
+          <Link className="upload-button" onClick={handleUploadLiveLecture}>Create Live Lecture</Link>
+          <div className="upload-button" onClick={handleVideoClick}>Upload Video Lecture</div>
+        </div>
+        <div className="video-container">
           {uploadedVideos.map((video) => (
-            <>
-              <VideoCon>
-              <VideoBox key={video.id}>
-                <Video src={video.image} alt={video.title} />
-
-              </VideoBox>
-              <VideoTitle>{video.title}</VideoTitle>
-              </VideoCon>
-            </>
+            <div key={video.id} className="video-con">
+              <div className="video-box">
+                <img className="video" src={video.image} alt={video.title} />
+              </div>
+              <div className="video-title">{video.title}</div>
+            </div>
           ))}
-          {/* <img  src={img} alt="Logo" /> */}
-        </VideoContainer>
-        <Description>Description:</Description>
-        <Para>In Maths, integration is a method of adding or summing up the parts tofind the whole.
-          It is a reverse process of differentiation,   where we <br></br>reduce the functions into parts.
-          This method is used to find the summation under a vast scale.In Mathematics, when we cannot
-          perform<br></br> general addition operations, we use integration to add values on a large scale.
-        </Para>
-
-        <Material>Teaching Material:</Material>
+        </div>
+        <h3 className="description">Description:</h3>
+        <p className="para">
+          In Maths, integration is a method of adding or summing up the parts to find the whole.
+          It is a reverse process of differentiation, where we <br /> reduce the functions into parts.
+          This method is used to find the summation under a vast scale. In Mathematics, when we cannot
+          perform <br /> general addition operations, we use integration to add values on a large scale.
+        </p>
+        <h3 className="material">Teaching Material:</h3>
         {/* Add more content related to the specific subject here */}
-      </SubjectDashboardContainer>
+      </div>
     </>
   );
 };

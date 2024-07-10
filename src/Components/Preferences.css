@@ -1,9 +1,9 @@
 .main{
-    width: 65%;
+    width: 75%;
     height: 620px;
    background-color:  #f9f9f9;
-   margin-left: 20%;
-   margin-top: 15px;
+   margin-left: 5%;
+   margin-top: 5px;
    padding: 20px;
 }
 
@@ -71,6 +71,7 @@ ul {
 
 a {
     text-decoration: none;
+    cursor: pointer;
 }
 
 a:hover {
