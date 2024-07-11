@@ -23,7 +23,7 @@
     position: relative;
 }
 
-span > p {
+span>p {
     font-size: 25px;
     color: black;
 }
@@ -68,36 +68,61 @@ span > p {
     padding-top: 20px;
     padding-left: 20px;
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
 }
-.edit-annoucement > h5{
+
+.edit-annoucement>h5 {
     color: skyblue;
 }
-.edit-annoucement > a{
-   margin-left: 720px;
-   cursor: pointer;
+
+.edit-annoucement>a {
+    margin-left: auto;
+    cursor: pointer;
 }
-.edit-span{
+
+.edit-span {
     display: flex;
     align-items: center;
 }
-.edit-span > h5{
+
+.edit-span>h5 {
     color: skyblue;
 }
-.edit-span > svg {
+
+.edit-span>svg {
     cursor: pointer;
 }
-.Fa-edit{
-    margin-left: 500px;
+
+.Fa-edit {
+    margin-left: auto;
     color: skyblue;
     cursor: pointer;
 }
-.acti{
-    margin-left: 545px;
+
+.fauser {
+    margin-right: 70px;
+cursor: pointer;
+}
+
+.acti {
+    margin-left: auto;
     cursor: pointer;
 }
-.acti > a {
+
+.acti>a {
     margin-left: 10px;
 }
+
+.activity {
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.activity>a {
+    margin-left: 10px;
+}
+
 .edit-topic-1,
 .edit-topic-2,
 .edit-topic-3,
@@ -129,9 +154,11 @@ span > p {
     border-bottom: 1px solid #ddd;
     cursor: pointer;
 }
-.edit-dropdown ul li > svg{
+
+.edit-dropdown ul li>svg {
     margin-right: 10px;
 }
+
 .dropdown ul li:last-child {
     border-bottom: none;
 }
@@ -152,14 +179,14 @@ span > p {
     justify-content: space-between;
 }
 
-.topic-name > h3 {
+.topic-name>h3 {
     display: flex;
     align-items: center;
     color: skyblue;
     margin-right: 10px;
 }
 
-.topic-name > h3 svg {
+.topic-name>h3 svg {
     color: black;
     margin-right: 10px;
     margin-left: 10px;
@@ -167,19 +194,11 @@ span > p {
     cursor: pointer;
 }
 
-.topic-name > a {
+.topic-name>a {
     margin-left: 10px;
     cursor: pointer;
 }
 
-.activity {
-    margin-left: auto;
-    cursor: pointer;
-}
-
-.activity > a {
-    margin-left: 10px;
-}
 
 input[type="text"] {
     font-size: 1rem;
@@ -188,6 +207,7 @@ input[type="text"] {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
 .topic-dropdown {
     background-color: white;
     width: auto;
@@ -210,7 +230,8 @@ input[type="text"] {
     border-bottom: 1px solid #ddd;
     cursor: pointer;
 }
-.topic-dropdown ul li > svg{
+
+.topic-dropdown ul li>svg {
     margin-right: 10px;
 }
 

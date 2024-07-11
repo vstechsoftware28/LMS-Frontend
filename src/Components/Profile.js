@@ -3,10 +3,16 @@ import Header from '../Teacher/Header';
 import './Profile.css';
 import { FaUser, FaCog } from 'react-icons/fa';
 
-const Profile = ({onEditProfileClick}) => {
+const Profile = ({onEditProfileClick,onDashboard}) => {
     const handleEditProfileClick = () => {
         if(onEditProfileClick){
             onEditProfileClick();
+        }
+    }
+
+    const handleDashboardClick = () => {
+        if(onDashboard){
+            onDashboard();
         }
     }
     return (
@@ -21,8 +27,8 @@ const Profile = ({onEditProfileClick}) => {
                         <FaCog className="pointer" />
                     </div>
                     <div className="url">
-                        <a href="/">Dashboard</a> /
-                        <a href="">Profile</a>
+                        <a onClick={handleDashboardClick}>Dashboard</a> /
+                        <a >Profile</a>
                         <div className="btton">
 
                             <h6>Reset Page to default</h6>

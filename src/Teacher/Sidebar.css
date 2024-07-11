@@ -72,19 +72,7 @@
     margin-left: auto;
   }
   
-  .plus-button {
-    display: flex;
-    align-items: center;
-    padding: 0.5rem 0.5rem;
-    cursor: pointer;
-    color: black;
-    background-color: transparent;
-    border: 1px solid #ccc;
-  }
-  
-  .plus-button:hover {
-    background-color: #f5f5f5;
-  }
+ 
   
   .sidebar-add-subject {
     width: auto;
@@ -95,14 +83,11 @@
     align-items: center;
     cursor: pointer;
     color: black;
-    background-color: transparent;
+    background-color: skyblue;
     border: 1px solid #ccc;
   }
   
-  .sidebar-add-subject:hover {
-    background-color: #87ceeb;
-    border-left: 3px solid #87ceeb;
-  }
+  
   .sidebar-add-notice {
     width: auto;
     margin-left: 12px;
@@ -112,14 +97,10 @@
     align-items: center;
     cursor: pointer;
     color: black;
-    background-color: transparent;
+    background-color: skyblue;
     border: 1px solid #ccc;
   }
   
-  .sidebar-add-notice:hover {
-    background-color: #87ceeb;
-    border-left: 3px solid #87ceeb;
-  }
   .subcategory {
     margin-left: 10px; 
   }

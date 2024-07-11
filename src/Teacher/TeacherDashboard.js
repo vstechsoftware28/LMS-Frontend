@@ -4,7 +4,6 @@ import Header from './Header';
 import Sidebar from './Sidebar';
 import Calendar from './Calendar';
 import Result from './Result';
-import AddSubjectForm from './AddSubjectForm'; // Import AddSubjectForm component
 import Dashboard from './Dashboard';
 import Subjects from './Subjects';
 import Profile from '../Components/Profile';
@@ -14,8 +13,9 @@ import SubjectDashboard from './SubjectDashboard';
 import UploadVideoForm from '../Components/UploadVideoForm';
 import EditSubjectDetails from '../Components/EditSubjectDetails';
 import EditTopicDetails from '../Components/EditTopicDetails';
+import SubjectTable from '../Components/SubjectTable';
 
-// Define subject data with id, title, and component
+
 const subjectsData = [
   { id: 'algebra', title: 'Algebra' },
   { id: 'geometry', title: 'Geometry' },
@@ -80,16 +80,30 @@ const TeacherDashboard = () => {
     setSelectedComponent(`Subject-${subjectId}`);
   };
   const handleVideoClick = () => {
-    setSelectedComponent('UploadVideoForm')
-  }
+    setSelectedComponent('UploadVideoForm');
+  };
 
   const handleTurnEditing = () => {
-    setSelectedComponent('EditSubjectDetails')
-  }
+    setSelectedComponent('EditSubjectDetails');
+  };
 
   const handleEditTopic = () => {
-    setSelectedComponent('EditTopicDetails')
+    setSelectedComponent('EditTopicDetails');
+  };
+
+  const handleDashboardClick = () => {
+    setSelectedComponent('Dashboard');
+  };
+  const handleSubTableClick = () => {
+    setSelectedComponent('SubjectTable')
   }
+
+
+
+
+
+
+
   // Toggle Add Subject form visibility
   const toggleAddSubjectForm = () => {
     setShowAddSubjectForm(!showAddSubjectForm);
@@ -112,22 +126,25 @@ const TeacherDashboard = () => {
       case 'Result':
         return <Result />;
       case 'Profile':
-        return <Profile onEditProfileClick={handleEditProfileClick} />;
+        return <Profile onEditProfileClick={handleEditProfileClick} onDashboard={handleDashboardClick} />;
       case 'Preferences':
-        return <Preferences onEditProfileClick={handleEditProfileClick} />;
+        return <Preferences onEditProfileClick={handleEditProfileClick} onDashboard={handleDashboardClick}/>;
       case 'EditProfile':
-        return <EditProfile />;
+        return <EditProfile  onDashboard={handleDashboardClick} />;
 
       case `Subject-${selectedComponent.split('-')[1]}`:
-        return <SubjectDashboard name={selectedComponent.split('-')[1]} onVideoClick={handleVideoClick} onTurnEditing={handleTurnEditing} />;
+        return <SubjectDashboard name={selectedComponent.split('-')[1]} onVideoClick={handleVideoClick} onTurnEditing={handleTurnEditing} onDashboard={handleDashboardClick} onSubTable={handleSubTableClick} />;
 
       case 'UploadVideoForm':
         return <UploadVideoForm />
 
       case 'EditSubjectDetails':
-        return <EditSubjectDetails onEditTopic={handleEditTopic}/>
-        case 'EditTopicDetails':
-          return <EditTopicDetails />
+        return <EditSubjectDetails onEditTopic={handleEditTopic} onDashboard={handleDashboardClick}/>
+      case 'EditTopicDetails':
+        return <EditTopicDetails onDashboard={handleDashboardClick}/>
+        case 'SubjectTable':
+          return <SubjectTable />
+
       default:
         return <Dashboard subjects={subjectsData} onSubjectClick={handleSubjectCardClick} />;
     }
@@ -145,6 +162,8 @@ const TeacherDashboard = () => {
         onVideoClick={handleVideoClick}
         onTurnEditing={handleTurnEditing}
         onEditTopic={handleEditTopic}
+        onDashboard={handleDashboardClick}
+        onSubTable={handleSubTableClick}
       />
 
       {/* Sidebar component with necessary props */}

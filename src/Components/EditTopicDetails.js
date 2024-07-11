@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import './EditTopicDetails.css';
+import axios from "axios";
 import { FaUser, FaChevronDown, FaChevronRight } from 'react-icons/fa';
 
-const EditTopicDetails = () => {
+const EditTopicDetails = ({onDashboard}) => {
     const [expandAll, setExpandAll] = useState(false);
     const [generalExpanded, setGeneralExpanded] = useState(true);
     const [restrictExpanded, setRestrictExpanded] = useState(false);
@@ -13,23 +14,34 @@ const EditTopicDetails = () => {
         setRestrictExpanded(!expandAll);
     };
 
-    
+
     const toggleGeneral = () => {
         setGeneralExpanded(!generalExpanded);
     };
-    
+
     const toggleInterests = () => {
         setRestrictExpanded(!restrictExpanded);
     }
-    
-    const onSubmit = (data) => {
-       
-        console.log(data);
-       
-        alert('Form submitted successfully');
-        
-        // reset();
-    };
+    const handleDashboardClick = () => {
+        if(onDashboard){
+            onDashboard();
+        }
+    }
+
+    // const onSubmit = (data) => {
+    //     console.log(data);
+    //     alert('Form submitted successfully');
+    //     // reset();
+    // };
+
+const onSubmit = async (data) => {
+    try {
+        const response = await axios.post('http://localhost//8080/', data);
+        console.log(response.data)
+    } catch (error) {
+        console.log(error)
+    }
+}
     return (
         <>
             <div className="topic-detail">
@@ -40,10 +52,10 @@ const EditTopicDetails = () => {
                         </span>
                     </div>
                     <div className="topic-url">
-                        <a href="/">Dashboard</a> /
-                        <a href="">Subjects</a> /
-                        <a href="">Mathematics</a> /
-                        <a href="">Edit Basic Mathematics</a>
+                        <a onClick={handleDashboardClick}>Dashboard</a> /
+                        <a >Subjects</a> /
+                        <a >Mathematics</a> /
+                        <a >Edit Basic Mathematics</a>
                     </div>
                 </div>
                 <form onSubmit={onSubmit}>
@@ -74,8 +86,11 @@ const EditTopicDetails = () => {
                                 <input type="text" placeholder="Enter tags..." />
                             </div>
                         </div><hr />
-                        <button className="update" type="submit">Update topic</button>
-                        <button className="cancle" >Cancel</button>
+                        <div className="topic-btn">
+                            <button className="update" type="submit">Update topic</button>
+                            <button className="cancle-2" >Cancel</button>
+                        </div>
+
 
                     </div>
                 </form>
