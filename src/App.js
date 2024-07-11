@@ -9,7 +9,7 @@ import Calendar from './Teacher/Calendar';
 import RegistrationFormClgSchool from './Components/RegistrationFormClgSchool';
 import RegistrationForm from './Components/RegistrationForm';
 import SubjectForm from './Components/Subject-Form';
-import SubjectTable from './Components/Subject-Table';
+import SubjectTable from './Components/SubjectTable';
 import UploadVideoForm from './Components/UploadVideoForm';
 import SubjectDashboard from './Teacher/SubjectDashboard';
 import Popup from './Components/Popup';

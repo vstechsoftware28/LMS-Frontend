@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Subject-Table.css'
+import './SubjectTable.css'
 const SubjectTable = () => {
     //   const [subjects, setSubjects] = useState([
     //     { code: '', name: '', description: '', credit: '' }
@@ -25,14 +25,18 @@ const SubjectTable = () => {
     return (
         <>
         <h2 className='h2'>Subject Table</h2>
-            <table className='table table-bordered'>
+            <table className='table-1 table-bordered'>
                 <thead className='thead-light'>
                     <tr>
                         <th scope="col">Sr.No</th>
                         <th scope="col">Subject Code</th>
                         <th scope="col">Subject Name</th>
+                        <th scope="col">Teacher Name</th>
+                        <th scope="col">Class Name</th>
+                        <th scope="col">Division</th>
                         <th scope="col">Description</th>
                         <th scope="col">Credit</th>
+                        <th scope="col">File</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -43,10 +47,14 @@ const SubjectTable = () => {
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                         <td>
                             <div className='action-button'>
-                                <Link to="/subject-form" className='btn btn-success'>Add</Link>
-                                <button className='btn btn-danger'>Delete</button>
+                                <button className='add-btn'>Add</button>
+                                <button className='delete-btn'>Delete</button>
                             </div>
                         </td>
                     </tr>
@@ -56,10 +64,14 @@ const SubjectTable = () => {
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                         <td>
                             <div className='action-button'>
-                            <Link to="/subject-form" className='btn btn-success'>Add</Link>
-                                <button className='btn btn-danger'>Delete</button>
+                            <button className='add-btn'>Add</button>
+                                <button className='delete-btn'>Delete</button>
                             </div>
                         </td>
                     </tr>
@@ -69,10 +81,31 @@ const SubjectTable = () => {
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                         <td>
                             <div className='action-button'>
-                            <Link to="/subject-form" className='btn btn-success'>Add</Link>
-                                <button className='btn btn-danger'>Delete</button>
+                            <button  className='add-btn'>Add</button>
+                                <button className='delete-btn'>Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div className='action-button'>
+                            <button  className='add-btn'>Add</button>
+                                <button className='delete-btn'>Delete</button>
                             </div>
                         </td>
                     </tr>

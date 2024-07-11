@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import './EditProfile.css';
 import { FaUser, FaChevronDown, FaChevronRight } from 'react-icons/fa';
 import { FcDown } from "react-icons/fc";
+import axios from "axios";
 
 
-const EditProfile = () => {
+const EditProfile = ({onDashboard}) => {
     const [expandAll, setExpandAll] = useState(false);
     const [generalExpanded, setGeneralExpanded] = useState(true);
     const [userPictureExpanded, setUserPictureExpanded] = useState(false);
@@ -40,14 +41,25 @@ const EditProfile = () => {
     const toggleAcademic = () => {
         setAcademicExpanded(!academicExpanded);
     }
-    const onSubmit = (data) => {
-       
-        console.log(data);
-       
-        alert('Form submitted successfully');
-        
-        // reset();
-    };
+    // const onSubmit = (data) => {
+    //     console.log(data);
+    //     alert('Form submitted successfully');
+    //      // reset();
+    // };
+
+    const handleDashboardClick = () => {
+        if(onDashboard){
+            onDashboard();
+        }
+    }
+    const onSubmit = async (data) => {
+        try {
+            const response = await axios.put('http://localhost:8080/profile', data);
+            console.log(response.data)
+        } catch (error) {
+            console.error(error);
+        }
+    }
     return (
         <>
             <div className="edit-profile">
@@ -59,9 +71,9 @@ const EditProfile = () => {
                         </span>
                     </div>
                     <div className="profile-url">
-                        <a href="/">Dashboard</a> /
-                        <a href="">Preferences</a> /
-                        <a href="">Edit Profile</a>
+                        <a onClick={handleDashboardClick}>Dashboard</a> /
+                        <a >Profile</a> /
+                        <a >Edit Profile</a>
                     </div>
                 </div>
                 <form onSubmit={onSubmit}>
@@ -252,8 +264,11 @@ const EditProfile = () => {
                                 {/* <input type="text" /> */}
                             </div>
                         </div><hr />
+                        <div className="buttons">
                         <button className="update" type="submit">Update profile</button>
-                        <button className="cancle" >Cancel</button>
+                        <button className="cancle-1" >Cancel</button>
+                        </div>
+                      
 
                     </div>
                 </form>

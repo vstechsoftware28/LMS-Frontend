@@ -3,11 +3,12 @@ import { useForm } from 'react-hook-form';
 import './UploadVideoForm.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaTimes } from 'react-icons/fa';
+import axios from 'axios';
 
 const VideoForm = () => {
     const [file, setFile] = useState(null);
-    const [showForm, setShowForm] = useState(true); // State to manage form visibility
-
+    const [showForm, setShowForm] = useState(true);
+    const [loading, setLoading] = useState(false);
     const {
         register,
         handleSubmit,
@@ -20,21 +21,52 @@ const VideoForm = () => {
     const onSubmit = (data) => {
         console.log(data);
         console.log(file);
+
+        if (file) {
+            const videoURL = URL.createObjectURL(file);
+            console.log('Uploaded Video URL:', videoURL);
+        }
         alert('Form submitted successfully');
         // reset();
     };
+    // const onSubmit = async (data) => {
+    //     setLoading(true);
+    //     const formData = new FormData();
+    //     formData.append('topic', data.topic);
+    //     formData.append('sub', data.sub);
+    //     formData.append('description', data.description);
+    //     if (file) {
+    //         formData.append('file', file);
+    //     }
+
+    //     try {
+    //         const response = await axios.post('http://localhost:8080/api/', formData, {
+    //             headers: {
+    //                 'Content-Type': 'multipart/form-data',
+    //             },
+    //         });
+
+    //         console.log(response.data);
+    //         alert('Form submitted successfully');
+    //     } catch (error) {
+    //         console.error('There was a problem with the axios request:', error);
+    //         alert('Form submission failed');
+    //     } finally {
+    //         setLoading(false);
+    //     }
+    // };
 
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
     };
 
     const toggleFormVisibility = () => {
-        setShowForm(!showForm); // Toggle form visibility
+        setShowForm(!showForm);
     };
 
     return (
         <>
-            {showForm && ( // Conditional rendering of form based on showForm state
+            {showForm && (
                 <div className='video-form'>
                     <div className='icon' onClick={toggleFormVisibility}>
                         <FaTimes />
@@ -80,7 +112,7 @@ const VideoForm = () => {
                         </div>
                         <div className='form-group'>
                             <label htmlFor='file'>Upload Video:</label>
-                            <input id='file' type='file' onChange={handleFileChange} />
+                            <input id='file' type='file' accept="video/*" onChange={handleFileChange} />
                         </div>
                         <div className='form-group'>
                             <label htmlFor='file1'>Notes:</label>

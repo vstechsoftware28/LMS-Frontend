@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 import './RegistrationFormClgSchool.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -16,11 +17,33 @@ const RegistrationFormClgSchool = () => {
         mode: 'onBlur',
     });
 
-    const onSubmit = (data) => {
-        console.log(data);
-        alert('Form submitted successfully');
-        // reset();
-    };
+    // const onSubmit = (data) => {
+    //     console.log(data);
+    //     alert('Form submitted successfully');
+    //     // reset();
+    // };
+
+    const onSubmit = async (data) => {
+        let endpoint = '';
+        if (userType === 'College') {
+            endpoint = 'http://localhost:8081/College/addCollegeRegistration';
+        } else if (userType === 'School') {
+            endpoint = 'http://localhost:8080/School/addSchoolRegistration';
+        }
+
+        if (endpoint) {
+            try {
+                const response = await axios.post(endpoint, data)
+                console.log(response.data)
+                alert('Form submitted successfully!!')
+            } catch (error) {
+                console.error(error)
+                alert('Failed to submit form!!')
+            }
+        } else {
+            alert('Please select a usertype..')
+        }
+    }
 
     const handleUserTypeChange = (event) => {
         setUserType(event.target.value);

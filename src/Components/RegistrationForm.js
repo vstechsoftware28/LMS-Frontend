@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 import './RegistrationForm.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -147,11 +148,64 @@ const RegistrationForm = () => {
     return selectedDate <= maxDate || 'Date must be before 2015';
   };
 
-  const onSubmit = (data) => {
+  // const onSubmit = (data) => {
+  //   console.log(data);
+  //   alert('Form submitted successfully');
+  //   // reset();
+  // };
+
+  
+
+const onSubmit = async (data) => {
+  try {
     console.log(data);
-    alert('Form submitted successfully');
+    let apiUrl = 'http://localhost:8080';
+    console.log(data.user);
+    console.log(data.schoolOrCollege);
+    console.log(data.schoolOrCollege === 'school' && data.user === 'Student');
+
+    // Modify apiUrl based on selected school
+    if (data.schoolOrCollege === 'school' && data.user === 'Student') {
+      console.log(apiUrl);
+      apiUrl += '/student';
+      console.log(apiUrl);
+    } else if (data.schoolOrCollege === 'school' && data.user === 'Teacher') {
+     
+
+      if (data.teacherType === 'principal') {
+        apiUrl += '/principal';
+      } else if (data.teacherType === 'classTeacher') {
+        apiUrl += '/classTeacher';
+      } else if (data.teacherType === 'subjectTeacher') {
+        apiUrl += '/subjectTeacher';
+      }
+    } else if (data.schoolOrCollege === 'school' && data.user === 'Parent') {
+      apiUrl += '/parent';
+    } else if (data.schoolOrCollege === 'college' && data.user === 'Student') {
+      apiUrl += '/college/student';
+    } else if (data.schoolOrCollege === 'college' && data.user === 'Teacher') {
+      apiUrl += '/college/teacher';
+    } else if (data.schoolOrCollege === 'college' && data.user === 'Parent') {
+      apiUrl += '/college/parent';
+    }
+
+    console.log(apiUrl);
+    
+    const response = await axios.post(apiUrl, data, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    console.log('Registration successful:', response.data);
+    alert('Registration successful!');
     // reset();
-  };
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Registration failed. Please try again.');
+  }
+};
+
   const userType = watch('user');
   return (
     <div className='registration-form'>

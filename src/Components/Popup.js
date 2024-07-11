@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import './Popup.css';
+import axios from "axios";
 
 const Popup = () => {
     const [formData, setFormData] = useState({
@@ -16,16 +17,10 @@ const Popup = () => {
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
-        setFormData({
-            ...formData,
-            [name]: type === 'checkbox' ? checked : value
-        });
-        // Clear the error message when the user starts typing
+        setFormData({ ...formData, [name]: type === 'checkbox' ? checked : value  });
+        
         if (errors[name]) {
-            setErrors({
-                ...errors,
-                [name]: ''
-            });
+            setErrors({  ...errors, [name]: '' });
         }
     };
 
@@ -42,11 +37,23 @@ const Popup = () => {
         return isValid;
     };
 
-    const onSubmit = (e) => {
+    // const onSubmit = (e) => {
+    //     e.preventDefault();
+    //     if (validate()) {
+    //         console.log(formData);
+    //         alert('Form Submitted successfully!!');
+    //     }
+    // };
+
+    const onSubmit = async (e) => {
         e.preventDefault();
-        if (validate()) {
-            console.log(formData);
-            alert('Form Submitted successfully!!');
+        if (validate ()) {
+            try {
+                const response = await axios.post('http://localhost:8080', formData);
+                console.log(response.data)
+            } catch (error) {
+                console.error(error)
+            }
         }
     };
 

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import './EditSubjectsDetails.css';
-import {FaCaretDown, FaCog, FaCogs, FaPen, FaUser, FaFilter, FaGenderless, FaRegFileArchive, FaLevelUpAlt,
-    FaArrowLeft, FaArrowsAlt, FaPlus, FaEye, FaTrashAlt} from 'react-icons/fa';
+import {
+    FaCaretDown, FaCog, FaCogs, FaPen, FaUser, FaFilter, FaGenderless, FaRegFileArchive, FaLevelUpAlt,
+    FaArrowLeft, FaArrowsAlt, FaPlus, FaEye, FaTrashAlt
+} from 'react-icons/fa';
 import { FcComments } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
 
-const EditSubjectDetails = ({onEditTopic}) => {
+const EditSubjectDetails = ({ onEditTopic,onDashboard }) => {
     const [isDropdownVisible, setDropdownVisible] = useState(false);
     const [editMode, setEditMode] = useState(null);
     const [visibleDropdownTopic, setVisibleDropdownTopic] = useState(null);
@@ -49,11 +51,16 @@ const EditSubjectDetails = ({onEditTopic}) => {
     const toggleTopicDropdown = (topicNumber) => {
         setVisibleDropdownTopic(visibleDropdownTopic === topicNumber ? null : topicNumber);
     };
-const handleEditTopic = () => {
-    if(onEditTopic){
-        onEditTopic();
+    const handleEditTopic = () => {
+        if (onEditTopic) {
+            onEditTopic();
+        }
     }
-}
+    const handleDashboardClick = () => {
+        if(onDashboard){
+            onDashboard();
+        }
+    }
     return (
         <>
             <div className="edit-subject-details">
@@ -67,9 +74,9 @@ const handleEditTopic = () => {
                         </span>
                     </div>
                     <div className="edit-url">
-                        <a href="/">Dashboard</a> /
-                        <a href="">Subjects</a> /
-                        <a href="">Mathematics</a>
+                        <a onClick={handleDashboardClick}>Dashboard</a> /
+                        <a >Subjects</a> /
+                        <a >Mathematics</a>
                     </div>
                 </div>
                 {isDropdownVisible && (
@@ -93,7 +100,7 @@ const handleEditTopic = () => {
                         <a style={{ color: 'skyblue' }}>Edit<FaCaretDown /></a>
                         <span className="edit-span">
                             <FaArrowsAlt /><FcComments /><h5>Annoucements</h5>< FaPen />
-                            <span className="Fa-edit">Edit<FaCaretDown /></span><FaUser />
+                            <span className="Fa-edit">Edit<FaCaretDown /></span><span className="fauser"><FaUser /></span>
                         </span>
                         <span className="acti">
                             <FaPlus />

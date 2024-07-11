@@ -4,11 +4,16 @@ import './Preferences.css';
 import { FaUser } from 'react-icons/fa';
 import { hover } from "@testing-library/user-event/dist/hover";
 
-const Preferences = ({onEditProfileClick}) => {
+const Preferences = ({onEditProfileClick,onDashboard}) => {
 
     const handleEditProfileClick = () => {
         if(onEditProfileClick){
             onEditProfileClick();
+        }
+    }
+    const handleDashboardClick = () => {
+        if(onDashboard){
+            onDashboard();
         }
     }
     return (
@@ -22,8 +27,8 @@ const Preferences = ({onEditProfileClick}) => {
                         </span>
                     </div>
                     <div className="url">
-                        <a href="/">Dashboard</a> /
-                        <a href="">Preferences</a>
+                        <a onClick={handleDashboardClick}>Dashboard</a> /
+                        <a >Preferences</a>
                     </div>
                 </div>
                 <div className="preference">
