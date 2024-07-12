@@ -20,6 +20,7 @@ import EditProfile from './Components/EditProfile';
 import SubjectDetails from './Components/SubjectDetails';
 import EditSubjectDetails from './Components/EditSubjectDetails';
 import EditTopicDetails from './Components/EditTopicDetails';
+import ConfirmModal from './Teacher/ConfirmModal';
 function App() {
   return (
     <div className="App">
@@ -46,6 +47,7 @@ function App() {
           <Route path='/subject-details' element={<SubjectDetails />} />
           <Route path='/edit-subject-details' element={<EditSubjectDetails />} />
           <Route path='/edit-topic-details' element={<EditTopicDetails />} />
+          <Route path='/confirm-modal' element={<ConfirmModal />} />
         </Routes>
       </Router>
     </div>

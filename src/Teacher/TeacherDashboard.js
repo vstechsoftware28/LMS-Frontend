@@ -96,8 +96,10 @@ const TeacherDashboard = () => {
   };
   const handleSubTableClick = () => {
     setSelectedComponent('SubjectTable')
-  }
-
+  };
+  const handleCalenderClick = () => {
+    setSelectedComponent('Calendar')
+  };
 
 
 
@@ -128,22 +130,22 @@ const TeacherDashboard = () => {
       case 'Profile':
         return <Profile onEditProfileClick={handleEditProfileClick} onDashboard={handleDashboardClick} />;
       case 'Preferences':
-        return <Preferences onEditProfileClick={handleEditProfileClick} onDashboard={handleDashboardClick}/>;
+        return <Preferences onEditProfileClick={handleEditProfileClick} onDashboard={handleDashboardClick} />;
       case 'EditProfile':
-        return <EditProfile  onDashboard={handleDashboardClick} />;
+        return <EditProfile onDashboard={handleDashboardClick} />;
 
       case `Subject-${selectedComponent.split('-')[1]}`:
-        return <SubjectDashboard name={selectedComponent.split('-')[1]} onVideoClick={handleVideoClick} onTurnEditing={handleTurnEditing} onDashboard={handleDashboardClick} onSubTable={handleSubTableClick} />;
+        return <SubjectDashboard name={selectedComponent.split('-')[1]} onVideoClick={handleVideoClick} onTurnEditing={handleTurnEditing} onDashboard={handleDashboardClick} onSubTable={handleSubTableClick}  onCalender={handleCalenderClick}/>;
 
       case 'UploadVideoForm':
         return <UploadVideoForm />
 
       case 'EditSubjectDetails':
-        return <EditSubjectDetails onEditTopic={handleEditTopic} onDashboard={handleDashboardClick}/>
+        return <EditSubjectDetails onEditTopic={handleEditTopic} onDashboard={handleDashboardClick} />
       case 'EditTopicDetails':
-        return <EditTopicDetails onDashboard={handleDashboardClick}/>
-        case 'SubjectTable':
-          return <SubjectTable />
+        return <EditTopicDetails onDashboard={handleDashboardClick} />
+      case 'SubjectTable':
+        return <SubjectTable />
 
       default:
         return <Dashboard subjects={subjectsData} onSubjectClick={handleSubjectCardClick} />;
@@ -164,6 +166,7 @@ const TeacherDashboard = () => {
         onEditTopic={handleEditTopic}
         onDashboard={handleDashboardClick}
         onSubTable={handleSubTableClick}
+        onCalender={handleCalenderClick}
       />
 
       {/* Sidebar component with necessary props */}
