@@ -28,6 +28,7 @@
     color: #aaa;
     font-size: 20px;
   }
+
   .dropdown-graphs {
     background-color: white;
     width: auto;
@@ -63,14 +64,42 @@
     background-color: #f0f0f0;
     text-decoration: underline;
   }
+
   .graphs-icons {
     margin-left: auto;
     cursor: pointer;
+    position: relative;
   }
 
   .graphs-arrow,
   .graphs-setting {
     margin-right: 10px;
+    position: relative;
+  }
+
+  .tooltip {
+    visibility: hidden;
+    border: 2px solid black;
+    color: black;
+    text-align: center;
+    padding: 1px;
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .graphs-setting:hover .tooltip,
+  .timeline-setting:hover .tooltip,
+  .private-setting:hover .tooltip,
+  .online-setting:hover .tooltip,
+  .badges-setting:hover .tooltip,
+  .calender-setting:hover .tooltip,
+  .events-setting:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
   }
 
   /* Timeline css */
@@ -100,11 +129,13 @@
   .timeline-heanding>.timeline-icons {
     margin-left: auto;
     cursor: pointer;
+    position: relative;
   }
 
   .timeline-arrow,
   .timeline-setting {
     margin-right: 10px;
+    position: relative;
   }
 
   .timeline-dates {
@@ -118,14 +149,25 @@
   .timeline-date>svg {
     color: grey;
   }
-
+  .timeline-days svg,
+  .timeline-date svg{
+    margin-right: 8px; 
+  }
   .timeline-date,
   .timeline-days {
     border: 2px solid#ccc;
-    padding: 7px 15px 7px 15px;
+    padding: 7px 5px 7px 10px;
     cursor: pointer;
   }
-
+  .timeline-date:hover,
+  .timeline-days:hover {
+    background-color: grey;
+  }
+  
+  .timeline-date:hover svg,
+  .timeline-days:hover svg {
+    color: white;
+  }
   .hr {
     width: 97%;
     margin-left: 0;
@@ -218,6 +260,7 @@
     background-color: #f0f0f0;
     text-decoration: underline;
   }
+
   /* date dropdown */
   .dropdown-date-timeline {
     background-color: white;
@@ -255,7 +298,8 @@
     text-decoration: underline;
   }
 
-
+  
+  
   /* Private files */
   .private-file {
     display: flex;
@@ -287,11 +331,13 @@
   .private-heanding>.private-icons {
     margin-left: auto;
     cursor: pointer;
+    position: relative;
   }
 
   .private-arrow,
   .private-setting {
     margin-right: 10px;
+    position: relative;
   }
 
   .manage-file {
@@ -305,6 +351,7 @@
   .manage-file:hover {
     text-decoration: underline;
   }
+
   .dropdown-private-file {
     background-color: white;
     width: auto;
@@ -340,488 +387,617 @@
     background-color: #f0f0f0;
     text-decoration: underline;
   }
-/* Online users */
-.online-user {
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
-  padding-top: 15px;
-  position: relative;
-  padding-left: 20px;
-  background-color: white;
-  height: auto;
-  margin-top: 20px;
-  border: 2px solid #ccc;
-}
-
-.online-heanding {
-  display: flex;
-}
-
-.online-heanding>p {
-  color: #aaa;
-  font-size: 20px;
-}
-
-.online-heanding>.online-icons {
-  margin-left: auto;
-  cursor: pointer;
-}
-
-.online-arrow,
-.online-setting {
-  margin-right: 10px;
-}
-
-.user-list>p {
-  color: black;
-  text-align: center;
-  margin-bottom: 0;
-  font-size: 18px;
-}
-
-.user-list ul {
-  list-style: none;
-  padding: 0;
-}
-
-.user-list li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 3px 0;
-  margin-right: 10px;
-  color: #007BFF;
-  cursor: pointer;
-}
-.user-list li span:hover{
-  text-decoration: underline;
-}
-.list-user {
-  background-color: #ddd;
-  color: white;
-  border-radius: 50%;
-  font-size: 20px;
-  padding-top: 5px;
-  margin-right: 10px;
-}
-
-.msg {
-  color: #0056b3;
-  margin-left: auto;
-}
-.dropdown-online-user {
-  background-color: white;
-  width: auto;
-  position: absolute;
-  right: 5%;
-  top: 12%;
-  border: 1px solid #ddd;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-}
-
-.dropdown-online-user ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.dropdown-online-user ul li {
-  padding: 10px 20px;
-  border-bottom: 1px solid #ddd;
-  cursor: pointer;
-}
-
-.dropdown-online-user ul li>svg {
-  margin-right: 10px;
-}
-
-.dropdown-online-user ul li:last-child {
-  border-bottom: none;
-}
-
-.dropdown-online-user ul li:hover {
-  background-color: #f0f0f0;
-  text-decoration: underline;
-}
-/* latest badges */
-
-.latest-badges {
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
-  padding-top: 15px;
-  padding-left: 20px;
-  background-color: white;
-  height: auto;
-  margin-top: 20px;
-  border: 2px solid #ccc;
-}
-
-.badges-heanding {
-  display: flex;
-}
-
-.badges-heanding>p {
-  color: #aaa;
-  font-size: 20px;
-}
-
-.badges-heanding>.badges-icons {
-  margin-left: auto;
-  cursor: pointer;
-}
-
-.badges-arrow,
-.badges-setting {
-  margin-right: 10px;
-}
-
-/* Calender */
-.calender {
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
-  padding-top: 15px;
-  padding-left: 20px;
-  background-color: white;
-  height: auto;
-  margin-top: 20px;
-  border: 2px solid #ccc;
-}
-
-.calender-heanding {
-  display: flex;
-}
-
-.calender-heanding>p {
-  color: #aaa;
-  font-size: 20px;
-}
-
-.calender-heanding>.calender-icons {
-  margin-left: auto;
-  cursor: pointer;
-}
-
-.calender-arrow,
-.calender-setting {
-  margin-right: 10px;
-}
-.calendar-component {
-  width: 100%;
-  border: none;
-}
-.react-calendar__navigation__label {
-  color: blue;
-}
-
-.react-calendar__tile {
-  color: black;
-}
-
-.react-calendar__navigation button {
-  color: blue;
-}
-
-.react-calendar__navigation button:nth-child(1),
-.react-calendar__navigation button:nth-child(5) {
-  display: none; 
-}
-
-.react-calendar__tile--now {
-  background: #ffffcc;
-}
-/* Upcoming events */
-.up-events {
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
-  padding-top: 15px;
-  padding-left: 20px;
-  background-color: white;
-  height: auto;
-  margin-top: 20px;
-  border: 2px solid #ccc;
-}
-
-.events-heanding {
-  display: flex;
-}
-
-.events-heanding>p {
-  color: #aaa;
-  font-size: 20px;
-}
-
-.events-heanding>.events-icons {
-  margin-left: auto;
-  cursor: pointer;
-}
-
-.events-arrow,
-.events-setting {
-  margin-right: 10px;
-}
-.cal-event{
-  color: #007BFF;
-  cursor: pointer;
-}
-.cal-event:hover{
-  text-decoration: underline;
-}
-
-.subject-dashboard-container {
-  width: 91%;
-  height: auto;
-  background-color: #f9f9f9;
-  margin-left: 4.5%;
-  position: relative;
-}
-
-.subject-heading {
-  background-color: white;
-  width: 100%;
-  height: 70px;
-  padding: 15px;
-  padding-top: 30px;
-  font-size: 1rem;
-  border: 2px solid #ccc;
-  border-bottom: none;
-}
-
-.subject-heading>a:hover {
-  color: #007BFF;
-  text-decoration: underline;
-}
-
-.description {
-  background-color: white;
-  width: 100%;
-  height: auto;
-  margin-top: 15px;
-  padding: 15px;
-  border: 2px solid #ccc;
-}
-
-.description>h3 {
-  font-size: 18px;
-
-}
-
-.description>.para {
-  font-size: 16px;
-  color: black;
-  margin-left: 10px;
-}
-
-
-.material {
-  font-size: 18px;
-  margin-bottom: 10px;
-  background-color: white;
-  width: 100%;
-  height: 75px;
-  padding: 15px;
-  margin-top: 15px;
-  border: 2px solid #ccc;
-}
-
-.button-container {
-  display: flex;
-  width: 100%;
-  height: 75px;
-  padding: 15px;
-  background-color: white;
-  gap: 20px;
-  margin-bottom: 20px;
-  justify-content: left;
-  border: 2px solid #ccc;
-  border-top: none;
-
-}
-
-.upload-button {
-  padding: 10px;
-  font-size: 1rem;
-  cursor: pointer;
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  width: auto;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-  text-decoration: underline;
-  text-align: center;
-}
-
-.upload-button:hover {
-  background-color: #0056b3;
-}
-
-
-.video-container {
-  background-color: white;
-  width: 100%;
-  height: auto;
-  padding: 15px;
-  display: flex;
-  flex-wrap: wrap;
-  border: 2px solid #ccc;
-}
-
-.video-box {
-  width: 300px;
-  height: 150px;
-  border-radius: 10px;
-  border: 2px solid black;
-  margin: 10px;
-  margin-left: 25px;
-}
-
-.video {
-  width: 250px;
-  height: auto;
-}
-
-.video-title {
-  font-size: 12px;
-  margin-left: 15px;
-}
-
-.video-con {
-  cursor: pointer;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-.subject-details {
-  width: 100%;
-  height: 650px;
-  background-color: #f9f9f9;
-  margin-left: 0%;
-  margin-top: 5px;
-  padding: 20px;
-  position: relative;
-}
-
-.basic-info {
-  background-color: white;
-  width: 95%;
-  margin-left: 20px;
-  height: 120px;
-  position: relative;
-  border: 2px solid #ccc;
-}
-
-.sub-name {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  position: relative;
-}
-
-span>p {
-  font-size: 25px;
-  color: black;
-}
-
-.icon-text {
-  display: flex;
-  align-items: center;
-}
-
-.icon-text svg {
-  margin-right: 10px;
-  background-color: #ddd;
-  color: white;
-  border-radius: 50%;
-  padding: 10px;
-  padding-bottom: 0px;
-}
-
-.pointer {
-  cursor: pointer;
-  margin-right: 15px;
-  position: relative;
-}
-
-.url {
-  display: flex;
-  margin-left: 15px;
-}
-
-.subject-view {
-  background-color: white;
-  width: 95%;
-  margin-left: 20px;
-  height: 470px;
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  border: 2px solid #ccc;
-}
-
-.annoucement {
-  padding-top: 20px;
-  padding-left: 20px;
-  margin-bottom: 10px;
-  color: skyblue;
-}
-
-.topic-1,
-.topic-2,
-.topic-3,
-.topic-4,
-.topic-5 {
-  padding-bottom: 10px;
-  padding-top: 5px;
-  color: skyblue;
-}
-
-.dropdown {
-  background-color: white;
-  width: auto;
-  position: absolute;
-  right: 7%;
-  top: 10%;
-  border: 1px solid #ddd;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-}
-
-.dropdown ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.dropdown ul li {
-  padding: 10px 20px;
-  border-bottom: 1px solid #ddd;
-  cursor: pointer;
-}
-
-.dropdown ul li>svg {
-  margin-right: 10px;
-}
-
-.dropdown ul li:last-child {
-  border-bottom: none;
-}
-
-.dropdown ul li:hover {
-  background-color: #f0f0f0;
-  text-decoration: underline;
-}
+
+  /* Online users */
+  .online-user {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    padding-top: 15px;
+    position: relative;
+    padding-left: 20px;
+    background-color: white;
+    height: auto;
+    margin-top: 20px;
+    border: 2px solid #ccc;
+  }
+
+  .online-heanding {
+    display: flex;
+  }
+
+  .online-heanding>p {
+    color: #aaa;
+    font-size: 20px;
+  }
+
+  .online-heanding>.online-icons {
+    margin-left: auto;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .online-arrow,
+  .online-setting {
+    margin-right: 10px;
+    position: relative;
+  }
+
+  .user-list>p {
+    color: black;
+    text-align: center;
+    margin-bottom: 0;
+    font-size: 18px;
+  }
+
+  .user-list ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .user-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px 0;
+    margin-right: 10px;
+    color: #007BFF;
+    cursor: pointer;
+  }
+
+  .user-list li span:hover {
+    text-decoration: underline;
+  }
+
+  .list-user {
+    background-color: #ddd;
+    color: white;
+    border-radius: 50%;
+    font-size: 20px;
+    padding-top: 5px;
+    margin-right: 10px;
+  }
+
+  .msg {
+    color: #0056b3;
+    margin-left: auto;
+  }
+
+  .dropdown-online-user {
+    background-color: white;
+    width: auto;
+    position: absolute;
+    right: 5%;
+    top: 12%;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+
+  .dropdown-online-user ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .dropdown-online-user ul li {
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+  }
+
+  .dropdown-online-user ul li>svg {
+    margin-right: 10px;
+  }
+
+  .dropdown-online-user ul li:last-child {
+    border-bottom: none;
+  }
+
+  .dropdown-online-user ul li:hover {
+    background-color: #f0f0f0;
+    text-decoration: underline;
+  }
+
+  /* latest badges */
+
+  .latest-badges {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    padding-top: 15px;
+    position: relative;
+    padding-left: 20px;
+    background-color: white;
+    height: auto;
+    margin-top: 20px;
+    border: 2px solid #ccc;
+  }
+
+  .badges-heanding {
+    display: flex;
+  }
+
+  .badges-heanding>p {
+    color: #aaa;
+    font-size: 20px;
+  }
+
+  .badges-heanding>.badges-icons {
+    margin-left: auto;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .badges-arrow,
+  .badges-setting {
+    margin-right: 10px;
+    position: relative;
+  }
+
+  .dropdown-badges {
+    background-color: white;
+    width: auto;
+    position: absolute;
+    right: 5%;
+    top: 41%;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+
+  .dropdown-badges ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .dropdown-badges ul li {
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+  }
+
+  .dropdown-badges ul li>svg {
+    margin-right: 10px;
+  }
+
+  .dropdown-badgesr ul li:last-child {
+    border-bottom: none;
+  }
+
+  .dropdown-badges ul li:hover {
+    background-color: #f0f0f0;
+    text-decoration: underline;
+  }
+
+  /* Calender */
+  .calender {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    padding-top: 15px;
+    position: relative;
+    padding-left: 20px;
+    background-color: white;
+    height: auto;
+    margin-top: 20px;
+    border: 2px solid #ccc;
+  }
+
+  .calender-heanding {
+    display: flex;
+  }
+
+  .calender-heanding>p {
+    color: #aaa;
+    font-size: 20px;
+  }
+
+  .calender-heanding>.calender-icons {
+    margin-left: auto;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .calender-arrow,
+  .calender-setting {
+    margin-right: 10px;
+    position: relative;
+  }
+
+  .calendar-component {
+    width: 100%;
+    border: none;
+  }
+
+  .react-calendar__navigation__label {
+    color: blue;
+  }
+
+  .react-calendar__tile {
+    color: black;
+  }
+
+  .react-calendar__navigation button {
+    color: blue;
+  }
+
+  .react-calendar__navigation button:nth-child(1),
+  .react-calendar__navigation button:nth-child(5) {
+    display: none;
+  }
+
+  .react-calendar__tile--now {
+    background: #ffffcc;
+  }
+
+  .dropdown-calender {
+    background-color: white;
+    width: auto;
+    position: absolute;
+    right: 5%;
+    top: 11%;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+
+  .dropdown-calender ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .dropdown-calender ul li {
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+  }
+
+  .dropdown-calender ul li>svg {
+    margin-right: 10px;
+  }
+
+  .dropdown-calender ul li:last-child {
+    border-bottom: none;
+  }
+
+  .dropdown-calender ul li:hover {
+    background-color: #f0f0f0;
+    text-decoration: underline;
+  }
+
+  /* Upcoming events */
+  .up-events {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    padding-top: 15px;
+    position: relative;
+    padding-left: 20px;
+    background-color: white;
+    height: auto;
+    margin-top: 20px;
+    border: 2px solid #ccc;
+  }
+
+  .events-heanding {
+    display: flex;
+  }
+
+  .events-heanding>p {
+    color: #aaa;
+    font-size: 20px;
+  }
+
+  .events-heanding>.events-icons {
+    margin-left: auto;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .events-arrow,
+  .events-setting {
+    margin-right: 10px;
+    position: relative;
+  }
+
+  .cal-event {
+    color: #007BFF;
+    cursor: pointer;
+  }
+
+  .cal-event:hover {
+    text-decoration: underline;
+  }
+
+  .dropdown-events {
+    background-color: white;
+    width: auto;
+    position: absolute;
+    right: 5%;
+    top: 33%;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+
+  .dropdown-events ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .dropdown-events ul li {
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+  }
+
+  .dropdown-events ul li>svg {
+    margin-right: 10px;
+  }
+
+  .dropdown-events ul li:last-child {
+    border-bottom: none;
+  }
+
+  .dropdown-events ul li:hover {
+    background-color: #f0f0f0;
+    text-decoration: underline;
+  }
+
+  .subject-dashboard-container {
+    width: 91%;
+    height: auto;
+    background-color: #f9f9f9;
+    margin-left: 4.5%;
+    position: relative;
+  }
+
+  .subject-heading {
+    background-color: white;
+    width: 100%;
+    height: 70px;
+    padding: 15px;
+    padding-top: 30px;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-bottom: none;
+  }
+
+  .subject-heading>a:hover {
+    color: #007BFF;
+    text-decoration: underline;
+  }
+
+  .description {
+    background-color: white;
+    width: 100%;
+    height: auto;
+    margin-top: 15px;
+    padding: 15px;
+    border: 2px solid #ccc;
+  }
+
+  .description>h3 {
+    font-size: 18px;
+
+  }
+
+  .description>.para {
+    font-size: 16px;
+    color: black;
+    margin-left: 10px;
+  }
+
+
+  .material {
+    font-size: 18px;
+    margin-bottom: 10px;
+    background-color: white;
+    width: 100%;
+    height: 75px;
+    padding: 15px;
+    margin-top: 15px;
+    border: 2px solid #ccc;
+  }
+
+  .button-container {
+    display: flex;
+    width: 100%;
+    height: 75px;
+    padding: 15px;
+    background-color: white;
+    gap: 20px;
+    margin-bottom: 20px;
+    justify-content: left;
+    border: 2px solid #ccc;
+    border-top: none;
+
+  }
+
+  .upload-button {
+    padding: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    width: auto;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    text-decoration: underline;
+    text-align: center;
+  }
+
+  .upload-button:hover {
+    background-color: #0056b3;
+  }
+
+
+  .video-container {
+    background-color: white;
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid #ccc;
+  }
+
+  .video-box {
+    width: 300px;
+    height: 150px;
+    border-radius: 10px;
+    border: 2px solid black;
+    margin: 10px;
+    margin-left: 25px;
+  }
+
+  .video {
+    width: 250px;
+    height: auto;
+  }
+
+  .video-title {
+    font-size: 12px;
+    margin-left: 15px;
+  }
+
+  .video-con {
+    cursor: pointer;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  .subject-details {
+    width: 100%;
+    height: 650px;
+    background-color: #f9f9f9;
+    margin-left: 0%;
+    margin-top: 5px;
+    padding: 20px;
+    position: relative;
+  }
+
+  .basic-info {
+    background-color: white;
+    width: 95%;
+    margin-left: 20px;
+    height: 120px;
+    position: relative;
+    border: 2px solid #ccc;
+  }
+
+  .sub-name {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    position: relative;
+  }
+
+  span>p {
+    font-size: 25px;
+    color: black;
+  }
+
+  .icon-text {
+    display: flex;
+    align-items: center;
+  }
+
+  .icon-text svg {
+    margin-right: 10px;
+    background-color: #ddd;
+    color: white;
+    border-radius: 50%;
+    padding: 10px;
+    padding-bottom: 0px;
+  }
+
+  .pointer {
+    cursor: pointer;
+    margin-right: 15px;
+    position: relative;
+  }
+
+  .url {
+    display: flex;
+    margin-left: 15px;
+  }
+
+  .subject-view {
+    background-color: white;
+    width: 95%;
+    margin-left: 20px;
+    height: 470px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 2px solid #ccc;
+  }
+
+  .annoucement {
+    padding-top: 20px;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    color: skyblue;
+  }
+
+  .topic-1,
+  .topic-2,
+  .topic-3,
+  .topic-4,
+  .topic-5 {
+    padding-bottom: 10px;
+    padding-top: 5px;
+    color: skyblue;
+  }
+
+  .dropdown {
+    background-color: white;
+    width: auto;
+    position: absolute;
+    right: 7%;
+    top: 10%;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+
+  .dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .dropdown ul li {
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+  }
+
+  .dropdown ul li>svg {
+    margin-right: 10px;
+  }
+
+  .dropdown ul li:last-child {
+    border-bottom: none;
+  }
+
+  .dropdown ul li:hover {
+    background-color: #f0f0f0;
+    text-decoration: underline;
+  }
