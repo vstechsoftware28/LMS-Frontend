@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { FaBars, FaMapMarkerAlt, FaBell, FaEnvelope, FaUser, FaAngleRight } from 'react-icons/fa';
+import { FaBars, FaMapMarkerAlt, FaBell, FaEnvelope, FaUser, FaAngleRight, FaUserCircle, FaLock, FaComment, FaSignOutAlt } from 'react-icons/fa';
 import './Header.css';
+import logo from './assets/logos/Logo.png';
 
 const Header = ({ onToggleSidebar, sidebarOpen, onChangePasswordClick }) => {
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
@@ -13,11 +14,11 @@ const Header = ({ onToggleSidebar, sidebarOpen, onChangePasswordClick }) => {
     <header className="header">
       <div className="left-section">
         {sidebarOpen ? (
-          <FaBars className="toggle-icon" onClick={onToggleSidebar} />
-        ) : (
           <FaAngleRight className="toggle-icon" onClick={onToggleSidebar} />
+        ) : (
+          <FaBars className="toggle-icon" onClick={onToggleSidebar} />
         )}
-        <img src="./assets/logos/vsTechLogoSq.jpeg" alt="Logo" className="logo" />
+        <img src={logo} alt="Logo" className="logo" style={{width:'40px'}} />
         <div className="location-container">
           <FaMapMarkerAlt className="location-icon" />
           <span>Kesnand, Wagholi</span>
@@ -34,11 +35,26 @@ const Header = ({ onToggleSidebar, sidebarOpen, onChangePasswordClick }) => {
         <div className="profile-icon" onClick={toggleProfileMenu}>
           <FaUser />
           <div className={`dropdown-menu ${isProfileMenuOpen ? 'open' : ''}`}>
-            <div className="dropdown-item">Profile</div>
-            <div className="dropdown-item" onClick={onChangePasswordClick}>Change Password</div>
-            <div className="dropdown-item">Message</div>
-            <div className="dropdown-item">Password</div>
-            <div className="dropdown-item">Logout</div>
+            <div className="dropdown-item">
+              <FaUserCircle className="dropdown-icon" />
+              Profile
+            </div>
+            <div className="dropdown-item" onClick={onChangePasswordClick}>
+              <FaLock className="dropdown-icon" />
+              Change Password
+            </div>
+            <div className="dropdown-item">
+              <FaComment className="dropdown-icon" />
+              Message
+            </div>
+            <div className="dropdown-item">
+              <FaLock className="dropdown-icon" />
+              Password
+            </div>
+            <div className="dropdown-item">
+              <FaSignOutAlt className="dropdown-icon" />
+              Logout
+            </div>
           </div>
         </div>
       </div>

@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import './StudentDashboard.css'; // Import your CSS file
+import './StudentDashboard.css';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import Calendar from './Calendar';
 import Result from './Result';
-import Modal from '../../Modal';
-import AddSubjectForm from './AddSubjectForm';
-import ChangePasswordForm from './ChangePasswordForm';
+import AddSubjectForm from './AddSubjectForm'; // Import AddSubjectForm component
+import ChangePasswordForm from './ChangePasswordForm'; // Import ChangePasswordForm component
 import Dashboard from './Dashboard';
 import Subjects from './Subjects';
 import Algebra from './subjects/Algebra';
@@ -27,12 +26,17 @@ const subjectsData = [
   { id: 'geography', title: 'Geography', component: <Geography /> },
 ];
 
+// Sample data for standards, divisions, and teachers
+const standardsData = ['Standard 1', 'Standard 2', 'Standard 3'];
+const divisionsData = ['A', 'B', 'C'];
+const teachersData = ['Teacher 1', 'Teacher 2', 'Teacher 3'];
+
 const StudentDashboard = () => {
   // State hooks
   const [sidebarOpen, setSidebarOpen] = useState(true); // State for sidebar open/close
   const [selectedComponent, setSelectedComponent] = useState('Dashboard'); // State for selected component
-  const [isAddSubjectModalOpen, setIsAddSubjectModalOpen] = useState(false); // State for add subject modal open/close
-  const [isChangePasswordModalOpen, setIsChangePasswordModalOpen] = useState(false); // State for change password modal open/close
+  const [showAddSubjectForm, setShowAddSubjectForm] = useState(false); // State for Add Subject form visibility
+  const [showChangePasswordForm, setShowChangePasswordForm] = useState(false); // State for Change Password form visibility
 
   // Toggle sidebar open/close
   const toggleSidebar = () => {
@@ -42,54 +46,37 @@ const StudentDashboard = () => {
   // Handle sidebar item click
   const handleSidebarItemClick = (component) => {
     setSelectedComponent(component);
+    setShowAddSubjectForm(false); // Close Add Subject form when switching sidebar items
   };
 
-  // Open modal for adding subject
-  const handleAddSubjectClick = () => {
-    setIsAddSubjectModalOpen(true);
-  };
-
-  // Close modal for adding subject
-  const handleAddSubjectModalClose = () => {
-    setIsAddSubjectModalOpen(false);
-  };
-
-  // Handle form submission for adding subject
-  const handleAddSubjectSubmit = (formData) => {
-    console.log('Form Data:', formData);
-    // Handle form submission logic here
-    setIsAddSubjectModalOpen(false); // Close modal after submission
-  };
-
-  // Open modal for changing password
-  const handleChangePasswordClick = () => {
-    setIsChangePasswordModalOpen(true);
-  };
-
-  // Close modal for changing password
-  const handleChangePasswordModalClose = () => {
-    setIsChangePasswordModalOpen(false);
-  };
-
-  // Handle form submission for changing password
-  const handleChangePasswordSubmit = (formData) => {
-    console.log('Password Change Data:', formData);
-    // Handle password change logic here
-    setIsChangePasswordModalOpen(false); // Close modal after submission
-  };
-
-  // Handle click on subject card
   const handleSubjectCardClick = (subjectId) => {
     setSelectedComponent(`Subject-${subjectId}`);
   };
 
-  // Handle click on groups
+  const handleDashboardLinkClick = () => {
+    setSelectedComponent('Dashboard');
+  };
+
+  const handleCalendarLinkClick = () => {
+    setSelectedComponent('Calendar');
+  };
+
+  const handleSubjectLinkClick = () => {
+    setSelectedComponent('Subjects');
+  };
+
   const handleGroupsClick = () => {
     setSelectedComponent('Groups');
   };
 
-  const handleDashboardLinkClick = () => {
-    setSelectedComponent('Dashboard');
+  // Toggle Add Subject form visibility
+  const toggleAddSubjectForm = () => {
+    setShowAddSubjectForm(!showAddSubjectForm);
+  };
+
+  // Toggle Change Password form visibility
+  const toggleChangePasswordForm = () => {
+    setShowChangePasswordForm(!showChangePasswordForm);
   };
 
   // Render component based on selected component state
@@ -104,7 +91,7 @@ const StudentDashboard = () => {
       case 'Result':
         return <Result />;
       case 'Subject-algebra':
-        return <Algebra onGroupsClick={handleGroupsClick} />;
+        return <Algebra onGroupsClick={handleGroupsClick} onDashboardLinkClick={handleDashboardLinkClick} onSubjectLinkClick={handleSubjectLinkClick}  />;
       case 'Groups':
         return <Groups />;
       case 'Subject-geometry':
@@ -127,7 +114,8 @@ const StudentDashboard = () => {
       {/* Header component with toggle sidebar function */}
       <Header 
         onToggleSidebar={toggleSidebar}
-        onChangePasswordClick={handleChangePasswordClick}
+        onChangePasswordClick={toggleChangePasswordForm} // Pass toggle function to open Change Password form
+        onCalendarLinkClick={handleCalendarLinkClick}
       />
 
       {/* Sidebar component with necessary props */}
@@ -135,24 +123,33 @@ const StudentDashboard = () => {
         isOpen={sidebarOpen}
         onItemClick={handleSidebarItemClick}
         selectedComponent={selectedComponent}
-        onAddSubjectClick={handleAddSubjectClick}
-        subjects={subjectsData}
+        onAddSubjectClick={toggleAddSubjectForm} // Pass toggle function to open Add Subject form
       />
+
       {/* Main content container with dynamically rendered component */}
       <div className="content-container">
         {renderSelectedComponent()}
       </div>
-      {/* Modal for adding subjects */}
-      {isAddSubjectModalOpen && (
-        <Modal onClose={handleAddSubjectModalClose}>
-          <AddSubjectForm onSubmit={handleAddSubjectSubmit} />
-        </Modal>
+
+      {/* Add Subject Form */}
+      {showAddSubjectForm && (
+        <div className="centered-form-container">
+          <AddSubjectForm 
+            onClose={() => setShowAddSubjectForm(false)} // Close form on form submission or cancel
+            standards={standardsData} 
+            divisions={divisionsData} 
+            teachers={teachersData} 
+          />
+        </div>
       )}
-      {/* Modal for changing password */}
-      {isChangePasswordModalOpen && (
-        <Modal onClose={handleChangePasswordModalClose}>
-          <ChangePasswordForm onSubmit={handleChangePasswordSubmit} />
-        </Modal>
+
+      {/* Change Password Form */}
+      {showChangePasswordForm && (
+        <div className="centered-form-container">
+          <ChangePasswordForm 
+            onClose={() => setShowChangePasswordForm(false)} // Close form on form submission or cancel
+          />
+        </div>
       )}
     </div>
   );

@@ -87,8 +87,11 @@
   background-color: #f0f0f0;
 }
 
-/* Toggle Icon Styles */
 .toggle-icon {
   cursor: pointer;
   margin-right: 1rem;
+}
+
+.dropdown-icon {
+  margin-right: 0.5rem;
 }

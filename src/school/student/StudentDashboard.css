@@ -1,21 +1,37 @@
 .student-dashboard-container {
-    display: grid;
-    grid-template-areas:
-      'header header'
-      'sidebar main';
-    grid-template-columns: 60px 1fr;
-    grid-template-rows: 60px 1fr;
-    height: 100vh;
-  }
-  
-  .student-dashboard-container.sidebar-open {
-    grid-template-columns: 250px 1fr;
-  }
-  
-  .content-container {
-    grid-area: main;
-    padding: 1rem;
-    overflow-y: auto;
-    background-color: #f9f9f9;
-  }
-  
+  display: grid;
+  grid-template-areas:
+    'header header'
+    'sidebar main';
+  grid-template-columns: 60px 1fr;
+  grid-template-rows: 60px 1fr;
+  height: 100vh;
+}
+
+.student-dashboard-container.sidebar-open {
+  grid-template-columns: 250px 1fr;
+}
+
+.content-container {
+  grid-area: main;
+  padding: 1rem;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+}
+
+/* Centered form container */
+.centered-form-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 1000;
+  max-height: 80vh; /* Maximum height of the form */
+  overflow-y: auto; /* Enable vertical scrolling */
+  width: 50vw; /* Width of the form */
+}
+

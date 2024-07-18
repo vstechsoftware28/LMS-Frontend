@@ -1,39 +1,76 @@
-/* Styles for the main container */
-.dashboard-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.section-header {
+.dashboard-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Two columns layout */
+  gap: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.dashboard-section {
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-section .section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-top: 0px;
 }
 
-.section-heading {
-  margin-top: 30px;
-  font-size: 1.5rem;
-  padding: 2rem;
+.big-icons {
+  color: grey;
 }
 
-.scroll-container {
+.icons {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  font-size: 15px;
+  padding: 10px;
+}
+
+.icon {
+  cursor: pointer;
+  color: lightslategrey;
+}
+
+.notices-section {
+  grid-column: 1 / span 2; /* Span across both columns */
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%); /* Adjust based on the total height of notices */
+  }
+}
+
+.notices-scroll-container {
   height: 100px; /* Adjust height as needed */
-  overflow: hidden;
   background-color: #f9f9f9;
   border: 1px solid #ddd;
-}
-
-.notices-container {
-  height: 100%;
   overflow: hidden; /* Hide scrollbar */
+  position: relative; /* Position for absolute child elements */
 }
 
 .notices {
   display: flex;
   flex-direction: column;
-  animation: scroll 20s linear infinite; /* Extended animation duration */
+  animation: scroll 10s linear infinite; /* Adjust duration for speed */
+  will-change: transform; /* Optimize for performance */
 }
 
 .notice {
@@ -41,30 +78,460 @@
   border-bottom: 1px solid #ddd;
 }
 
-.recently-accessed-container {
+
+
+.left-column {
   display: flex;
-  overflow-x: auto;
-  gap: 1rem;
-  padding: 1rem;
-  border-bottom: 1px solid #ddd;
+  flex-direction: column;
+  flex: 1;
+  transition: flex 0.3s; 
 }
 
-.subjects-container {
+.right-column {
+  display: flex;
+  flex: 0 0 300px;
+  flex-direction: column;
+  transition: width 0.3s; 
+
+}
+
+.left-column .dashboard-section,
+.right-column .dashboard-section {
+  margin-bottom: 20px; /* Ensure consistent spacing between sections */
+}
+
+.customize-page-button {
+  background-color: #00BFFF;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dashboard-section h3 {
+  font-size: 18px;
+  margin: 0 0 10px 0; /* Ensure the header has no top margin and some bottom margin */
+}
+
+.dashboard-section .content {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.dashboard-section .navigation-buttons {
+  display: flex;
+  flex-direction: row;
+  border: none;
+  background-color: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #ccc; /* Grey color for icons */
+  margin: 0 5px; /* Adjust margin as needed */
+}
+
+.recently-accessed-content {
+  display: flex;
+  gap: 20px; /* Adjust gap between cards */
+}
+
+
+/* Container for the dropdowns */
+.dropdown-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+/* Each dropdown styling */
+.dropdown {
+  position: relative;
+  width: 30%;
+}
+
+select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 14px;
+}
+
+/* Dropdowns.css */
+.dropdown-container {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.dropdown {
+  width: auto;
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown select {
+  padding: 10px;
+  padding-left: 40px; /* Add space for the icon */
+  font-size: 16px;
+}
+
+.dropdown .icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* Make sure the icon doesn't block the dropdown interaction */
+}
+
+
+/* Styling for options to show them as blocks */
+option {
+  padding: 8px 12px;
+  border-bottom: 1px solid #ccc;
+  white-space: pre-line;
+}
+
+option:last-child {
+  border-bottom: none;
+}
+
+/* Specific styling for complex options with commas */
+option[value="all"],
+option[value="starred"],
+option[value="removed"] {
+  border: 1px solid #ccc;
+  margin-bottom: 4px;
+  padding: 8px 12px;
+  white-space: pre-line;
+}
+
+.subjects-overview-content {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  padding: 1rem;
+  gap: 20px; /* Adjust gap between cards */
 }
 
-.toggle-button {
-  margin-top: 1rem;
-  cursor: pointer;
+.private-files-content a {
+  color: #00BFFF;
+  text-decoration: none;
+}
+
+.private-files-content a:hover {
+  text-decoration: underline;
+}
+
+/* Styles for Analytics Graphs */
+.analytics-graphs {
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.analytics-graphs .section-header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
-@keyframes scroll {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(calc(-100% + 100px)); } /* Ensures smooth scrolling */
+.analytics-graphs .icons {
+  display: flex;
+  gap: 10px;
 }
+
+.analytics-graphs .icon {
+  cursor: pointer;
+  color: lightslategray;
+}
+
+.analytics-graphs .analytics-content {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Styles for Timeline */
+.timeline {
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.timeline .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.timeline .icons {
+  display: flex;
+  gap: 10px;
+}
+
+.timeline .icon {
+  cursor: pointer;
+  color: lightslategray;
+}
+
+.timeline .timeline-content {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Styles for Private Files */
+.private-files {
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.private-files .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.private-files .icons {
+  display: flex;
+  gap: 10px;
+}
+
+.private-files .icon {
+  cursor: pointer;
+  color: lightslategray;
+}
+
+.private-files .private-files-content {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Styles for Online Users */
+.online-users {
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.online-users .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.online-users .icons {
+  display: flex;
+  gap: 10px;
+}
+
+.online-users .icon {
+  cursor: pointer;
+  color: lightslategray;
+}
+
+.online-users .online-users-content {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.user-profiles {
+  margin-top: 10px; /* Space between user profiles */
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Ensure space between user info and chat icon */
+  margin-bottom: 10px; /* Adjust space between user entries */
+}
+
+.user-details {
+  display: flex;
+  align-items: center;
+}
+
+.user-info p {
+  margin-left: 10px; /* Adjust spacing between icon and username */
+}
+
+.chat-icon {
+  margin-left: auto; /* Push chat icon to the end */
+  color: rgb(57, 57, 176);
+}
+
+/* Styles for Latest Badges */
+.latest-badges {
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.latest-badges .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.latest-badges .icons {
+  display: flex;
+  gap: 10px;
+}
+
+.latest-badges .icon {
+  cursor: pointer;
+  color: lightslategray;
+}
+
+.latest-badges .latest-badges-content {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Styles for Calendar */
+.calendar {
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.calendar .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px; /* Adjust margin as needed */
+}
+
+.calendar .icons {
+  display: flex;
+  gap: 10px;
+}
+
+.calendar .icon {
+  cursor: pointer;
+  color: lightslategray;
+}
+
+.calendar .calendar-content {
+  display: flex;
+  align-items: center; /* Center items vertically */
+  justify-content: space-between; /* Spread items horizontally */
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.react-calendar {
+  width: 100%; /* Ensure calendar takes full width */
+  max-width: 400px; /* Adjust max-width as needed */
+  background: white; /* Ensure background matches section */
+  border: 1px solid #ddd; /* Add border for clarity */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.react-calendar__navigation {
+  display: flex;
+  justify-content: space-between; /* Align navigation buttons horizontally */
+  align-items: center; /* Center navigation items vertically */
+  margin-bottom: 10px; /* Adjust margin as needed */
+}
+
+.react-calendar__navigation button {
+  background: none; /* Remove button background */
+  border: none; /* Remove button border */
+  cursor: pointer; /* Change cursor on hover */
+  font-size: 16px; /* Adjust font size */
+  color: #333; /* Set button color */
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  outline: none; /* Remove outline on focus */
+}
+
+.react-calendar__navigation button[disabled] {
+  cursor: not-allowed; /* Disable cursor on disabled buttons */
+  color: #ccc; /* Dim color for disabled buttons */
+}
+
+.react-calendar__month-view {
+  max-width: 100%; /* Ensure calendar month view takes full width */
+}
+
+/* Styles for Upcoming Courses */
+.upcoming-courses {
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.upcoming-courses .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.upcoming-courses .icons {
+  display: flex;
+  gap: 10px;
+}
+
+.upcoming-courses .icon {
+  cursor: pointer;
+  color: lightslategray;
+}
+
+.upcoming-courses .upcoming-courses-content {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+
+.subjects-overview-content .subject-card {
+  flex: 0 0 auto;
+  width: 200px;
+  height: 150px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.subjects-overview-content .subject-card:hover {
+  transform: scale(1.05);
+}
+
+.subjects-overview-content .subject-image {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 0.5rem;
+}
+
+.subjects-overview-content .text-container {
+  text-align: left;
+  width: 100%;
+}
+
+.subjects-overview-content .standard-division {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.subjects-overview-content .subject-name {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
