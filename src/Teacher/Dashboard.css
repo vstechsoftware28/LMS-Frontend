@@ -8,7 +8,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.5rem;
+    /* margin-bottom: 0.5rem; */
+    background-color: white;
+    border: 1px solid #ccc;
+    border-bottom: none;
   }
   
   .SectionHeading {
@@ -33,7 +36,7 @@
   .ScrollContainer {
     height: 50px;
     overflow: hidden;
-    background-color: #f9f9f9;
+    background-color: white;
     border: 1px solid #ddd;
   }
   
@@ -54,38 +57,50 @@
     gap: 1rem;
     padding: 1rem;
     border-bottom: 1px solid #ddd;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-top: none;
   }
   
   .RecentlyAccessedCard {
     flex: 0 0 auto;
     width: 200px;
     height: 150px;
-    background-color: #e0f7fa;
+    background-color: #f0f0f0;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    border: 1px solid #ccc;
+    /* border-radius: 8px; */
     cursor: pointer;
   }
   
   .SubjectsContainer {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     gap: 1rem;
     padding: 1rem;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-top: none;
   }
-  
+  .sub-card{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    background-color: white;
+  }
   .SubjectCard {
     flex: 0 0 auto;
     width: 200px;
     height: 150px;
-    background-color: #e0f7fa;
+    background-color: #f0f0f0;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    border: 1px solid #ccc;
+    /* border-radius: 8px; */
     cursor: pointer;
   }
   
@@ -99,11 +114,11 @@
     color: white;
     border-radius: 4px;
     cursor: pointer;
-    margin-left: 20px;
+    /* margin-left: 20px; */
   }
   
   .ViewAllButton:hover {
-    background-color: #00BFFF;
+    background-color: navy;
   }
   
   .SubjectCardLarge {

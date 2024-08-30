@@ -3,9 +3,13 @@ import {
   FaHome, FaCalendar, FaBook, FaPoll, FaPlus, FaAngleRight, FaAngleDown, FaChalkboardTeacher, FaFlask,
   FaHistory, FaGlobe, FaFileAlt, FaTimesCircle
 } from 'react-icons/fa';
+import { FcLeave } from "react-icons/fc";
 import './Sidebar.css';
 import SubjectForm from '../Components/Subject-Form';
 import Popup from '../Components/Popup';
+
+
+
 const Sidebar = ({ isOpen, onItemClick, selectedComponent }) => {
   const [expandedCategories, setExpandedCategories] = useState([]);
   const [expandedSubcategories, setExpandedSubcategories] = useState([]);
@@ -36,6 +40,7 @@ const Sidebar = ({ isOpen, onItemClick, selectedComponent }) => {
         { name: 'Final', icon: <FaFileAlt />, subsubcategories: [{ name: 'Final Result' }] },
       ],
     },
+    { name: 'Leave', icon: <FcLeave />, labelIndentation: 10 },
   ];
 
   const handleSidebarItemClick = (itemName) => {

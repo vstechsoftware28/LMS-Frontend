@@ -41,23 +41,19 @@ const RegistrationForm = () => {
     Mumbai: [],
     Nashik: ['Dindori', 'Yewla', 'NashikCity'],
     Satara: ['Karad', 'Jawali', 'Wai'],
-    // Add more districts as necessary
   };
   const villagesData = {
     Newasa: ['Devgad', 'Shinganapur', 'Kharwandi', 'Madaki', 'Pimpri'],
     Rahuri: ['Umbare', 'Bramhani', 'Valan', 'Manjari'],
-    // Add more tehsils and villages as needed
   };
   const schoolsData = {
     Devgad: ['Gurudatta Vidyalay', 'Z.P. School', 'Modern School'],
     Shinganapur: ['Shani School', 'MPS School', 'Sujata School'],
-    // Add more schools as needed
   };
 
   const collegesData = {
     Devgad: ['ACS College', 'Devgad College'],
     Shinganapur: ['Shinganapur College', 'Gadakh College'],
-    // Add more colleges as needed
   };
 
   const standardsData = ['5', '6', '7', '8', '9', '10'];
@@ -122,12 +118,12 @@ const RegistrationForm = () => {
     setSelectedSchool('');
     setSelectedCollege('');
 
-    // Reset form state based on selected option
-    reset({ user: '', year: '', division: '' });
+ 
+    reset({ userType: '', year: '', division: '' });
 
-    setShowSpecificSchoolDropdown(selectedOption === 'school');
+    setShowSpecificSchoolDropdown(selectedOption === 'schoolName');
     setShowSpecificCollegeDropdown(selectedOption === 'college');
-    setShowUserTypeDropdown(selectedOption === 'school' || selectedOption === 'college');
+    setShowUserTypeDropdown(selectedOption === 'schoolName' || selectedOption === 'college');
   }
 
 
@@ -148,108 +144,125 @@ const RegistrationForm = () => {
     return selectedDate <= maxDate || 'Date must be before 2015';
   };
 
-  // const onSubmit = (data) => {
-  //   console.log(data);
-  //   alert('Form submitted successfully');
-  //   // reset();
+  const onSubmit = (data) => {
+    console.log(data);
+    alert('Form submitted successfully');
+    // reset();
+  };
+
+
+
+  // const onSubmit = async (data) => {
+  //   try {
+  //     console.log(data);
+  //     let apiUrl = 'http://localhost:8080';
+  //     console.log(data.user);
+  //     console.log(data.schoolOrCollege);
+  //     console.log(data.schoolOrCollege === 'schoolName' && data.user === 'Student');
+
+  //     // Modify apiUrl based on selected school
+  //     if (data.schoolOrCollege === 'schoolName' && data.user === 'Student') {
+  //       console.log(apiUrl);
+  //       apiUrl += '/student';
+  //       console.log(apiUrl);
+  //     } else if (data.schoolOrCollege === 'schoolName' && data.user === 'Teacher') {
+
+
+  //       if (data.teacherType === 'principal') {
+  //         apiUrl += '/principal';
+  //       } else if (data.teacherType === 'classTeacher') {
+  //         apiUrl += '/classTeacher';
+  //       } else if (data.teacherType === 'subjectTeacher') {
+  //         apiUrl += '/subjectTeacher';
+  //       }
+  //     } else if (data.schoolOrCollege === 'schoolName' && data.user === 'Parent') {
+  //       apiUrl += '/parent';
+  //     } else if (data.schoolOrCollege === 'college' && data.user === 'Student') {
+  //       apiUrl += '/college/student';
+  //     } else if (data.schoolOrCollege === 'college' && data.user === 'Teacher') {
+  //       apiUrl += '/college/teacher';
+  //     } else if (data.schoolOrCollege === 'college' && data.user === 'Parent') {
+  //       apiUrl += '/college/parent';
+  //     }
+
+  //     console.log(apiUrl);
+
+  //     const response = await axios.post(apiUrl, data, {
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //     });
+
+  //     console.log('Registration successful:', response.data);
+  //     alert('Registration successful!');
+  //     // reset();
+  //   } catch (error) {
+  //     console.error('Error:', error);
+  //     alert('Registration failed. Please try again.');
+  //   }
   // };
 
-  
-
-const onSubmit = async (data) => {
-  try {
-    console.log(data);
-    let apiUrl = 'http://localhost:8080';
-    console.log(data.user);
-    console.log(data.schoolOrCollege);
-    console.log(data.schoolOrCollege === 'school' && data.user === 'Student');
-
-    // Modify apiUrl based on selected school
-    if (data.schoolOrCollege === 'school' && data.user === 'Student') {
-      console.log(apiUrl);
-      apiUrl += '/student';
-      console.log(apiUrl);
-    } else if (data.schoolOrCollege === 'school' && data.user === 'Teacher') {
-     
-
-      if (data.teacherType === 'principal') {
-        apiUrl += '/principal';
-      } else if (data.teacherType === 'classTeacher') {
-        apiUrl += '/classTeacher';
-      } else if (data.teacherType === 'subjectTeacher') {
-        apiUrl += '/subjectTeacher';
-      }
-    } else if (data.schoolOrCollege === 'school' && data.user === 'Parent') {
-      apiUrl += '/parent';
-    } else if (data.schoolOrCollege === 'college' && data.user === 'Student') {
-      apiUrl += '/college/student';
-    } else if (data.schoolOrCollege === 'college' && data.user === 'Teacher') {
-      apiUrl += '/college/teacher';
-    } else if (data.schoolOrCollege === 'college' && data.user === 'Parent') {
-      apiUrl += '/college/parent';
-    }
-
-    console.log(apiUrl);
-    
-    const response = await axios.post(apiUrl, data, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
-    console.log('Registration successful:', response.data);
-    alert('Registration successful!');
-    // reset();
-  } catch (error) {
-    console.error('Error:', error);
-    alert('Registration failed. Please try again.');
-  }
-};
-
-  const userType = watch('user');
+  const userType = watch('userType');
   return (
     <div className='registration-form'>
       <h2>Registration Form</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className='form-group'>
-          <label htmlFor='firstname'>First Name:</label>
-          <input id='firstname' type='text' {...register('firstname', {
+        <div className='registration-form-group'>
+          <label htmlFor='firstName'>First Name:</label>
+          <input id='firstName' type='text' {...register('firstName', {
             required: 'First name is required',
             pattern: { value: /^[a-zA-Z\s]*$/, message: 'First name can only contain letters and spaces' }
-          })} onBlur={() => trigger('firstname')} />
-          {errors.firstname && <p className="error">{errors.firstname.message}</p>}
+          })} onBlur={() => trigger('firstName')} />
+          {errors.firstName && <p className="error">{errors.firstName.message}</p>}
         </div>
-        <div className='form-group'>
-          <label htmlFor='mname'>Middle Name:</label>
-          <input id='mname' type='text' {...register('mname', {
+        <div className='registration-form-group'>
+          <label htmlFor='middleName'>Middle Name:</label>
+          <input id='middleName' type='text' {...register('middleName', {
             required: 'Middle name is required',
             pattern: { value: /^[a-zA-Z\s]*$/, message: 'Middle name can only contain letters and spaces' }
-          })} onBlur={() => trigger('mname')} />
-          {errors.mname && <p className="error">{errors.mname.message}</p>}
+          })} onBlur={() => trigger('middleName')} />
+          {errors.middleName && <p className="error">{errors.middleName.message}</p>}
         </div>
-        <div className='form-group'>
-          <label htmlFor='lname'>Last Name:</label>
-          <input id='lname' type='text' {...register('lname', {
+        <div className='registration-form-group'>
+          <label htmlFor='lastName'>Last Name:</label>
+          <input id='lastName' type='text' {...register('lastName', {
             required: 'Last name is required',
             pattern: {
               value: /^[a-zA-Z\s]*$/,
               message: 'Last name can only contain letters and spaces'
             }
-          })} onBlur={() => trigger('lname')} />
-          {errors.lname && <p className="error">{errors.lname.message}</p>}
+          })} onBlur={() => trigger('lastName')} />
+          {errors.lastName && <p className="error">{errors.lastName.message}</p>}
         </div>
-        <div className='form-group'>
-          <label htmlFor='mob'>Mobile Number:</label>
-          <input id='mob' type='text' {...register('mob', {
+        <div className='registration-form-group'>
+
+        </div>
+        <div className='registration-form-group' >
+        <label htmlFor='mobileNumber'>Mobile Number:</label>
+          <div className='country'>
+            
+            <div>
+              {/* <label htmlFor='countryCode'>Country Code:</label> */}
+              <select id='countryCode' {...register('countryCode', { required: 'Country code is required' })}>
+                <option value='+91'>India +91</option>
+                <option value='+91'>USA +1</option>
+              </select>
+              {errors.countryCode && <p className="error">{errors.countryCode.message}</p>}
+            </div>
+            
+          <input id='mobileNumber' type='text' {...register('mobileNumber', {
             required: 'Mobile Number is required',
             pattern: {
               value: /^[0-9]{10}$/,
               message: 'Mobile number must be exactly 10 digits'
             }
-          })} onBlur={() => trigger('mob')} />
-          {errors.mob && <p className="error">{errors.mob.message}</p>}
+          })} onBlur={() => trigger('mobileNumber')} />
+         
+          </div>
+          {errors.mobileNumber && <p className="error">{errors.mobileNumber.message}</p>}
+          
         </div>
-        <div className='form-group'>
+        <div className='registration-form-group'>
           <label htmlFor='email'>Email:</label>
           <input id='email' type='email' {...register('email', {
             required: 'Email is required',
@@ -260,27 +273,27 @@ const onSubmit = async (data) => {
           })} onBlur={() => trigger('email')} />
           {errors.email && <p className="error">{errors.email.message}</p>}
         </div>
-        <div className='form-group'>
-          <label htmlFor='pass'>Password:</label>
-          <input id='pass' type='password' {...register('pass', {
+        <div className='registration-form-group'>
+          <label htmlFor='password'>Password:</label>
+          <input id='password' type='password' {...register('password', {
             required: 'Password is required',
             minLength: {
               value: 8,
               message: 'Password must be at least 8 characters long'
             }
-          })} onBlur={() => trigger('pass')} />
-          {errors.pass && <p className="error">{errors.pass.message}</p>}
+          })} onBlur={() => trigger('password')} />
+          {errors.password && <p className="error">{errors.password.message}</p>}
         </div>
-        <div className='form-group'>
-          <label htmlFor='confirm'>Confirm Password:</label>
-          <input id='confirm' type='password' {...register('confirm', {
+        <div className='registration-form-group'>
+          <label htmlFor='confirmPassword'>Confirm Password:</label>
+          <input id='confirmPassword' type='password' {...register('confirmPassword', {
             required: 'Confirm Password is required',
-            validate: value => value === getValues('pass') || 'Password must match'
-          })} onBlur={() => trigger('confirm')} />
-          {errors.confirm && <p className="error">{errors.confirm.message}</p>}
+            validate: value => value === getValues('password') || 'Password must match'
+          })} onBlur={() => trigger('confirmPassword')} />
+          {errors.confirmPassword && <p className="error">{errors.confirmPassword.message}</p>}
         </div>
-        <div className='form-group radio-group'>
-          <label>Gender:</label>
+        <div className='registration-form-group radio-group'>
+          <label htmlFor='gender'>Gender:</label>
           <div className='gen'>
             <label htmlFor='male'>Male</label>
             <input type='radio' id='male' value='male' {...register('gender', { required: 'Gender selection is required' })} onBlur={() => trigger('gender')} />
@@ -292,12 +305,12 @@ const onSubmit = async (data) => {
           </div>
           {errors.gender && <p className="error">{errors.gender.message}</p>}
         </div>
-        <div className='form-group'>
+        <div className='registration-form-group'>
           <label htmlFor='dob'>DOB:</label>
-          <input id='dob' type='date' {...register('dob', { required: 'DOB is required',   validate: validateDOB })} onBlur={() => trigger('dob')} />
+          <input id='dob' type='date' {...register('dob', { required: 'DOB is required', validate: validateDOB })} onBlur={() => trigger('dob')} />
           {errors.dob && <p className="error">{errors.dob.message}</p>}
         </div>
-        <div className='form-group'>
+        <div className='registration-form-group'>
           <label htmlFor='state'>State:</label>
           <select id='state' {...register('state', { required: 'State is required' })} onChange={handleStateChange}>
             <option value=''>Select State</option>
@@ -309,23 +322,23 @@ const onSubmit = async (data) => {
 
         {/* District dropdown */}
         {showDistDropdown && (
-          <div className='form-group'>
-            <label htmlFor='dist'>District:</label>
-            <select id='dist' {...register('dist', { required: 'District is required' })} onChange={handleDistrictChange}>
+          <div className='registration-form-group'>
+            <label htmlFor='district'>District:</label>
+            <select id='district' {...register('district', { required: 'District is required' })} onChange={handleDistrictChange}>
               <option value=''>Select District</option>
-              {Object.keys(districtsData).map((dist) => (
-                <option key={dist} value={dist}>{dist}</option>
+              {Object.keys(districtsData).map((district) => (
+                <option key={district} value={district}>{district}</option>
               ))}
             </select>
-            {errors.dist && <p className='error'>{errors.dist.message}</p>}
+            {errors.district && <p className='error'>{errors.district.message}</p>}
           </div>
         )}
 
         {/* Tehsil dropdown */}
         {showTehsilDropdown && (
-          <div className='form-group'>
-            <label htmlFor='tehsil'>Taluka:</label>
-            <select id='tehsil' {...register('tehsil', { required: 'Taluka is required' })} onChange={handleTehsilChange}>
+          <div className='registration-form-group'>
+            <label htmlFor='subDistrict'>Taluka:</label>
+            <select id='subDistrict' {...register('subDistrict', { required: 'Taluka is required' })} onChange={handleTehsilChange}>
               <option value=''>Select Taluka</option>
               {districtsData[district].map((tehsilOption) => (
                 <option key={tehsilOption} value={tehsilOption}>
@@ -333,54 +346,54 @@ const onSubmit = async (data) => {
                 </option>
               ))}
             </select>
-            {errors.tehsil && <p className='error'>{errors.tehsil.message}</p>}
+            {errors.subDistrict && <p className='error'>{errors.subDistrict.message}</p>}
           </div>
         )}
 
         {/* Village dropdown */}
         {showVillageDropdown && (
-          <div className='form-group'>
-            <label htmlFor='village'>Village:</label>
-            <select id='village' {...register('village', { required: 'Village is required' })} onChange={handleVillageChange}>
-              <option value=''>Select Village</option>
+          <div className='registration-form-group'>
+            <label htmlFor='city'>City:</label>
+            <select id='city' {...register('city', { required: 'city is required' })} onChange={handleVillageChange}>
+              <option value=''>Select city</option>
               {villagesData[tehsil].map((villageOption) => (
                 <option key={villageOption} value={villageOption}>
                   {villageOption}
                 </option>
               ))}
             </select>
-            {errors.village && <p className='error'>{errors.village.message}</p>}
+            {errors.city && <p className='error'>{errors.city.message}</p>}
           </div>
         )}
 
 
         {showSchoolOrCollegeDropdown && (
-          <div className='form-group'>
-            <label htmlFor='schoolOrCollege'>School or College:</label>
-            <select id='schoolOrCollege' {...register('schoolOrCollege', { required: 'This field is required' })} onChange={handleSchoolOrCollegeChange} >
+          <div className='registration-form-group'>
+            <label htmlFor='institutionType'>Institution Type:</label>
+            <select id='institutionType' {...register('institutionType', { required: 'This field is required' })} onChange={handleSchoolOrCollegeChange} >
               <option value=''>Select</option>
-              <option value='school'>School</option>
+              <option value='schoolName'>School</option>
               <option value='college'>College</option>
             </select>
-            {errors.schoolOrCollege && <p className="error">{errors.schoolOrCollege.message}</p>}
+            {errors.institutionType && <p className="error">{errors.institutionType.message}</p>}
           </div>
         )}
 
         {showSpecificSchoolDropdown && (
-          <div className='form-group'>
-            <label htmlFor='school'>School Name:</label>
-            <select id='school' {...register('school', { required: 'School is required' })} >
+          <div className='registration-form-group'>
+            <label htmlFor='schoolName'>School Name:</label>
+            <select id='schoolName' {...register('schoolName', { required: 'School is required' })} >
               <option value=''>Select School</option>
-              {village && schoolsData[village].map((school) => (
-                <option key={school} value={school}>{school}</option>
+              {village && schoolsData[village].map((schoolName) => (
+                <option key={schoolName} value={schoolName}>{schoolName}</option>
               ))}
             </select>
-            {errors.school && <p className="error">{errors.school.message}</p>}
+            {errors.schoolName && <p className="error">{errors.schoolName.message}</p>}
           </div>
         )}
 
         {showSpecificCollegeDropdown && (
-          <div className='form-group'>
+          <div className='registration-form-group'>
             <label htmlFor='college'>College Name:</label>
             <select id='college' {...register('college', { required: 'College is required' })} >
               <option value=''>Select College</option>
@@ -396,11 +409,11 @@ const onSubmit = async (data) => {
         {/* User Type dropdown */}
 
         {showUserTypeDropdown && (
-          <div className='form-group'>
-            <label htmlFor='user'>User Type:</label>
-            <select id='user' {...register('user', { required: 'User type is required' })}>
+          <div className='registration-form-group'>
+            <label htmlFor='userType'>User Type:</label>
+            <select id='userType' {...register('userType', { required: 'User type is required' })}>
               <option value=''>Select Type</option>
-              {schoolOrCollege === 'school' && (
+              {schoolOrCollege === 'schoolName' && (
                 <>
                   <option value='Student'>Student</option>
                   <option value='Teacher'>Teacher</option>
@@ -415,13 +428,13 @@ const onSubmit = async (data) => {
                 </>
               )}
             </select>
-            {errors.user && <p className='error'>{errors.user.message}</p>}
+            {errors.userType && <p className='error'>{errors.userType.message}</p>}
           </div>
         )}
 
         {userType === 'Student' && schoolOrCollege === 'college' && (
           <>
-            <div className='form-group'>
+            <div className='registration-form-group'>
               <label htmlFor='year'>Select Year:</label>
               <select id='year' {...register('year', { required: 'Year is required' })}>
                 <option value=''>Select Year</option>
@@ -433,7 +446,7 @@ const onSubmit = async (data) => {
               </select>
               {errors.year && <p className='error'>{errors.year.message}</p>}
             </div>
-            <div className='form-group'>
+            <div className='registration-form-group'>
               <label htmlFor='division'>Select Division:</label>
               <select id='division' {...register('division', { required: 'Division is required' })}>
                 <option value=''>Select Division</option>
@@ -449,7 +462,7 @@ const onSubmit = async (data) => {
         )}
 
         {userType === 'Teacher' && schoolOrCollege === 'college' && (
-          <div className='form-group'>
+          <div className='registration-form-group'>
             <label htmlFor='teacherType'>Teacher Type:</label>
             <select id='teacherType' {...register('teacherType', { required: 'Teacher type is required' })} onChange={handleTeacherTypeChange}>
               <option value=''>Select teacher type</option>
@@ -464,7 +477,7 @@ const onSubmit = async (data) => {
 
         {userType === 'Teacher' && schoolOrCollege === 'college' && selectedTeacherType === 'HOD' && (
           <>
-            <div className='form-group'>
+            <div className='registration-form-group'>
               <label htmlFor='year'>Select Year:</label>
               <select id='year' {...register('year', { required: 'Year is required' })}>
                 <option value=''>Select Year</option>
@@ -476,7 +489,7 @@ const onSubmit = async (data) => {
               </select>
               {errors.year && <p className='error'>{errors.year.message}</p>}
             </div>
-            <div className='form-group'>
+            <div className='registration-form-group'>
               <label htmlFor='division'>Select Division:</label>
               <select id='division' {...register('division', { required: 'Division is required' })}>
                 <option value=''>Select Division</option>
@@ -493,7 +506,7 @@ const onSubmit = async (data) => {
 
         {userType === 'Parent' && schoolOrCollege === 'college' && (
           <>
-            <div className='form-group'>
+            <div className='registration-form-group'>
               <label htmlFor='id'>Student Id:</label>
               <input id='id' type='text' {...register('id', {
                 required: 'Student Id is required',
@@ -509,9 +522,9 @@ const onSubmit = async (data) => {
             </div>
           </>
         )}
-         {userType === 'Parent' && schoolOrCollege === 'college' &&  (
+        {userType === 'Parent' && schoolOrCollege === 'college' && (
           <>
-            <div className='form-group'>
+            <div className='registration-form-group'>
               <label htmlFor='year'>Select Year:</label>
               <select id='year' {...register('year', { required: 'Year is required' })}>
                 <option value=''>Select Year</option>
@@ -523,7 +536,7 @@ const onSubmit = async (data) => {
               </select>
               {errors.year && <p className='error'>{errors.year.message}</p>}
             </div>
-            <div className='form-group'>
+            <div className='registration-form-group'>
               <label htmlFor='division'>Select Division:</label>
               <select id='division' {...register('division', { required: 'Division is required' })}>
                 <option value=''>Select Division</option>
@@ -538,9 +551,9 @@ const onSubmit = async (data) => {
           </>
         )}
         {/* Standard and Division dropdowns for Students */}
-        {userType === 'Student' && schoolOrCollege === 'school' && (
+        {userType === 'Student' && schoolOrCollege === 'schoolName' && (
           <>
-            <div className='form-group'>
+            <div className='registration-form-group'>
               <label htmlFor='standard'>Standard:</label>
               <select id='standard' {...register('standard', { required: 'Standard is required' })} onChange={handleStandardChange}>
                 <option value=''>Select Standard</option>
@@ -554,7 +567,7 @@ const onSubmit = async (data) => {
             </div>
 
             {selectedStandard && (
-              <div className='form-group'>
+              <div className='registration-form-group'>
                 <label htmlFor='division'>Division:</label>
                 <select id='division' {...register('division', { required: 'Division is required' })}>
                   <option value=''>Select Division</option>
@@ -571,9 +584,9 @@ const onSubmit = async (data) => {
         )}
 
         {/* Standard and Division dropdowns for Teachers (Class Teacher) */}
-        {userType === 'Teacher' && schoolOrCollege === 'school' && (
+        {userType === 'Teacher' && schoolOrCollege === 'schoolName' && (
           <>
-            <div className='form-group'>
+            <div className='registration-form-group'>
               <label htmlFor='teacherType'>Teacher Type:</label>
               <select id='teacherType' {...register('teacherType', { required: 'Teacher type is required' })} onChange={handleTeacherTypeChange}>
                 <option value=''>Select teacher type</option>
@@ -587,7 +600,7 @@ const onSubmit = async (data) => {
             {/* Show Standard and Division dropdowns when Class Teacher is selected */}
             {selectedTeacherType === 'classTeacher' && (
               <>
-                <div className='form-group'>
+                <div className='registration-form-group'>
                   <label htmlFor='standard'>Standard:</label>
                   <select id='standard' {...register('standard', { required: 'Standard is required' })} onChange={handleStandardChange}>
                     <option value=''>Select Standard</option>
@@ -601,7 +614,7 @@ const onSubmit = async (data) => {
                 </div>
 
                 {selectedStandard && (
-                  <div className='form-group'>
+                  <div className='registration-form-group'>
                     <label htmlFor='division'>Division:</label>
                     <select id='division' {...register('division', { required: 'Division is required' })}>
                       <option value=''>Select Division</option>
@@ -620,24 +633,24 @@ const onSubmit = async (data) => {
         )}
 
         {/* Standard and Division dropdowns for parents */}
-        {userType === 'Parent' && schoolOrCollege === 'school' && (
+        {userType === 'Parent' && schoolOrCollege === 'schoolName' && (
           <>
-            <div className='form-group'>
-              <label htmlFor='id'>Student Id:</label>
-              <input id='id' type='text' {...register('id', {
+            <div className='registration-form-group'>
+              <label htmlFor='childId'>Student Id:</label>
+              <input id='childId' type='text' {...register('childId', {
                 required: 'Student Id is required',
                 pattern: { value: /^[a-zA-Z0-9\s]*$/, message: 'Student Id can only contain letters and spaces' }
-              })} onBlur={() => trigger('id')} />
-              {errors.id && <p className="error">{errors.id.message}</p>}
-              <label htmlFor='studname'>Student Name:</label>
-              <input id='studname' type='text' {...register('studname', {
+              })} onBlur={() => trigger('childId')} />
+              {errors.childId && <p className="error">{errors.childId.message}</p>}
+              <label htmlFor='childName'>Student Name:</label>
+              <input id='childName' type='text' {...register('childName', {
                 required: 'Student name is required',
                 pattern: { value: /^[a-zA-Z\s]*$/, message: 'Student name can only contain letters and spaces' }
-              })} onBlur={() => trigger('studname')} />
-              {errors.studname && <p className="error">{errors.studname.message}</p>}
+              })} onBlur={() => trigger('childName')} />
+              {errors.childName && <p className="error">{errors.childName.message}</p>}
 
-              <label htmlFor='standard'>Standard:</label>
-              <select id='standard' {...register('standard', { required: 'Standard is required' })} onChange={handleStandardChange}>
+              <label htmlFor='childStandard'>Standard:</label>
+              <select id='childStandard' {...register('childStandard', { required: 'Standard is required' })} onChange={handleStandardChange}>
                 <option value=''>Select Standard</option>
                 {standardsData.map((standard) => (
                   <option key={standard} value={standard}>
@@ -645,13 +658,13 @@ const onSubmit = async (data) => {
                   </option>
                 ))}
               </select>
-              {errors.standard && <p className='error'>{errors.standard.message}</p>}
+              {errors.childStandard && <p className='error'>{errors.childStandard.message}</p>}
             </div>
 
             {selectedStandard && (
-              <div className='form-group'>
-                <label htmlFor='division'>Division:</label>
-                <select id='division' {...register('division', { required: 'Division is required' })}>
+              <div className='registration-form-group'>
+                <label htmlFor='childDivision'>Division:</label>
+                <select id='childDivision' {...register('childDivision', { required: 'Division is required' })}>
                   <option value=''>Select Division</option>
                   {divisionsData[selectedStandard].map((division) => (
                     <option key={division} value={division}>
@@ -659,12 +672,12 @@ const onSubmit = async (data) => {
                     </option>
                   ))}
                 </select>
-                {errors.division && <p className='error'>{errors.division.message}</p>}
+                {errors.childDivision && <p className='error'>{errors.childDivision.message}</p>}
               </div>
             )}
           </>
         )}
-        <button type='submit' className='btn btn-primary' disabled={!isValid}>Register</button>
+        <button type='submit' className='btn-register btn-primary' disabled={!isValid}>Register</button>
       </form>
     </div>
   );

@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import './UploadVideoForm.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState } from "react";
+import './UpdateVideoForm.css';
 import { FaTimes } from 'react-icons/fa';
-import axios from 'axios';
+import { useForm } from 'react-hook-form';
 
-const VideoForm = () => {
+const UpdateVideoForm = () => {
+
     const [file, setFile] = useState(null);
     const [showForm, setShowForm] = useState(true);
     const [loading, setLoading] = useState(false);
@@ -29,32 +28,6 @@ const VideoForm = () => {
         alert('Form submitted successfully');
         // reset();
     };
-    // const onSubmit = async (data) => {
-    //     setLoading(true);
-    //     const formData = new FormData();
-    //     formData.append('topic', data.topic);
-    //     formData.append('sub', data.sub);
-    //     formData.append('description', data.description);
-    //     if (file) {
-    //         formData.append('file', file);
-    //     }
-
-    //     try {
-    //         const response = await axios.post('http://localhost:8080/api/', formData, {
-    //             headers: {
-    //                 'Content-Type': 'multipart/form-data',
-    //             },
-    //         });
-
-    //         console.log(response.data);
-    //         alert('Form submitted successfully');
-    //     } catch (error) {
-    //         console.error('There was a problem with the axios request:', error);
-    //         alert('Form submission failed');
-    //     } finally {
-    //         setLoading(false);
-    //     }
-    // };
 
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
@@ -64,16 +37,16 @@ const VideoForm = () => {
         setShowForm(!showForm);
     };
 
-    return (
+    return(
         <>
             {showForm && (
-                <div className='video-form'>
+                <div className='update-video-form'>
                     <div className='icon' onClick={toggleFormVisibility}>
                         <FaTimes />
                     </div>
                     <h2>Video Form</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <div className='video-form-group'>
+                        <div className='update-video-form-group'>
                             <label htmlFor='topic'>Topic:</label>
                             <select id='topic' {...register('topic', { required: 'Topic Name is required' })}>
                                 <option value=''>Select Topic</option>
@@ -84,7 +57,7 @@ const VideoForm = () => {
                             </select>
                             {errors.topic && <p className='error'>{errors.topic.message}</p>}
                         </div>
-                        <div className='video-form-group'>
+                        <div className='update-video-form-group'>
                             <label htmlFor='sub'>Sub Topic:</label>
                             <input
                                 id='sub'
@@ -97,7 +70,7 @@ const VideoForm = () => {
                             />
                             {errors.sub && <p className='error'>{errors.sub.message}</p>}
                         </div>
-                        <div className='video-form-group'>
+                        <div className='update-video-form-group'>
                             <label htmlFor='description'>Description:</label>
                             <input
                                 id='description'
@@ -110,22 +83,22 @@ const VideoForm = () => {
                             />
                             {errors.description && <p className='error'>{errors.description.message}</p>}
                         </div>
-                        <div className='video-form-group'>
+                        <div className='update-video-form-group'>
                             <label htmlFor='file'>Upload Video:</label>
                             <input id='file' type='file' accept="video/*" onChange={handleFileChange} />
                         </div>
-                        <div className='video-form-group'>
+                        <div className='update-video-form-group'>
                             <label htmlFor='file1'>Notes:</label>
                             <input id='file1' type='file' onChange={handleFileChange} />
                         </div>
                         <button type='submit' className='btn-video btn-primary' disabled={!isValid}>
-                            Add
+                            Update
                         </button>
                     </form>
                 </div>
             )}
         </>
-    );
-};
+    )
+}
 
-export default VideoForm;
+export default UpdateVideoForm;

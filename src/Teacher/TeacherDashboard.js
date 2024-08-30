@@ -14,6 +14,8 @@ import UploadVideoForm from '../Components/UploadVideoForm';
 import EditSubjectDetails from '../Components/EditSubjectDetails';
 import EditTopicDetails from '../Components/EditTopicDetails';
 import SubjectTable from '../Components/SubjectTable';
+import Leave from '../Components/Leave';
+import UpdateVideoForm from '../Components/UpdateVideoForm';
 
 
 const subjectsData = [
@@ -32,10 +34,10 @@ const teachersData = ['Teacher 1', 'Teacher 2', 'Teacher 3'];
 
 const TeacherDashboard = () => {
   // State hooks
-  const [sidebarOpen, setSidebarOpen] = useState(true); // State for sidebar open/close
-  const [selectedComponent, setSelectedComponent] = useState('Dashboard'); // State for selected component
-  const [showAddSubjectForm, setShowAddSubjectForm] = useState(false); // State for Add Subject form visibility
-  const [showChangePasswordForm, setShowChangePasswordForm] = useState(false); // State for Change Password form visibility
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [selectedComponent, setSelectedComponent] = useState('Dashboard');
+  const [showAddSubjectForm, setShowAddSubjectForm] = useState(false);
+  const [showChangePasswordForm, setShowChangePasswordForm] = useState(false);
 
   // Toggle sidebar open/close
   const toggleSidebar = () => {
@@ -45,7 +47,7 @@ const TeacherDashboard = () => {
   // Handle sidebar item click
   const handleSidebarItemClick = (component) => {
     setSelectedComponent(component);
-    setShowAddSubjectForm(false); // Close Add Subject form when switching sidebar items
+    setShowAddSubjectForm(false);
   };
 
   const handleSubjectCardClick = (subjectId) => {
@@ -82,7 +84,9 @@ const TeacherDashboard = () => {
   const handleVideoClick = () => {
     setSelectedComponent('UploadVideoForm');
   };
-
+  const handleUpdateClick = () => {
+    setSelectedComponent('UpdateVideoForm');
+  };
   const handleTurnEditing = () => {
     setSelectedComponent('EditSubjectDetails');
   };
@@ -101,7 +105,9 @@ const TeacherDashboard = () => {
     setSelectedComponent('Calendar')
   };
 
-
+  const handleLeaveClick = () => {
+    setSelectedComponent('Leave')
+  };
 
 
 
@@ -123,6 +129,8 @@ const TeacherDashboard = () => {
         return <Dashboard subjects={subjectsData} onSubjectClick={handleSubjectCardClick} />;
       case 'Calendar':
         return <Calendar />;
+      case 'Leave':
+        return <Leave />;
       case 'Subjects':
         return <Subjects subjects={subjectsData} onSubjectCardClick={handleSubjectCardClick} />;
       case 'Result':
@@ -135,10 +143,12 @@ const TeacherDashboard = () => {
         return <EditProfile onDashboard={handleDashboardClick} />;
 
       case `Subject-${selectedComponent.split('-')[1]}`:
-        return <SubjectDashboard name={selectedComponent.split('-')[1]} onVideoClick={handleVideoClick} onTurnEditing={handleTurnEditing} onDashboard={handleDashboardClick} onSubTable={handleSubTableClick}  onCalender={handleCalenderClick}/>;
+        return <SubjectDashboard name={selectedComponent.split('-')[1]} onVideoClick={handleVideoClick} onUpdateClick={handleUpdateClick} onTurnEditing={handleTurnEditing} onDashboard={handleDashboardClick} onSubTable={handleSubTableClick} onCalender={handleCalenderClick} />;
 
       case 'UploadVideoForm':
         return <UploadVideoForm />
+      case 'UpdateVideoForm':
+        return <UpdateVideoForm />
 
       case 'EditSubjectDetails':
         return <EditSubjectDetails onEditTopic={handleEditTopic} onDashboard={handleDashboardClick} />
@@ -157,16 +167,11 @@ const TeacherDashboard = () => {
       {/* Header component with toggle sidebar function */}
       <Header
         onToggleSidebar={toggleSidebar}
-        onChangePasswordClick={toggleChangePasswordForm} // Pass toggle function to open Change Password form
+        onChangePasswordClick={toggleChangePasswordForm}
         onProfileClick={handleProfileClick}
         onPreferencesClick={handlePreferenceClick}
         onEditProfileClick={handleEditProfileClick}
-        onVideoClick={handleVideoClick}
-        onTurnEditing={handleTurnEditing}
-        onEditTopic={handleEditTopic}
         onDashboard={handleDashboardClick}
-        onSubTable={handleSubTableClick}
-        onCalender={handleCalenderClick}
       />
 
       {/* Sidebar component with necessary props */}

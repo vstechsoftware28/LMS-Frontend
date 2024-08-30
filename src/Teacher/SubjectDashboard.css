@@ -21,7 +21,7 @@
     padding-left: 20px;
     background-color: white;
     height: 80px;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
   }
 
   .graphs>p {
@@ -114,7 +114,7 @@
     background-color: white;
     height: auto;
     margin-top: 20px;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
   }
 
   .timeline-heanding {
@@ -155,7 +155,7 @@
   }
   .timeline-date,
   .timeline-days {
-    border: 2px solid#ccc;
+    border: 1px solid#ccc;
     padding: 7px 5px 7px 10px;
     cursor: pointer;
   }
@@ -311,7 +311,7 @@
     background-color: white;
     height: auto;
     margin-top: 20px;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
   }
 
   .private-heanding {
@@ -319,9 +319,9 @@
     margin-bottom: 15px;
   }
 
-  .private-file>div {
-    /* font-size: 18px; */
-  }
+  /* .private-file>div {
+    font-size: 18px;
+  } */
 
   .private-heanding>p {
     color: #aaa;
@@ -399,7 +399,7 @@
     background-color: white;
     height: auto;
     margin-top: 20px;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
   }
 
   .online-heanding {
@@ -511,7 +511,7 @@
     background-color: white;
     height: auto;
     margin-top: 20px;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
   }
 
   .badges-heanding {
@@ -582,7 +582,7 @@
     background-color: white;
     height: auto;
     margin-top: 20px;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
   }
 
   .calender-heanding {
@@ -679,7 +679,7 @@
     background-color: white;
     height: auto;
     margin-top: 20px;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
   }
 
   .events-heanding {
@@ -763,7 +763,7 @@
     padding: 15px;
     padding-top: 30px;
     font-size: 1rem;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
     border-bottom: none;
   }
 
@@ -778,7 +778,7 @@
     height: auto;
     margin-top: 15px;
     padding: 15px;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
   }
 
   .description>h3 {
@@ -801,7 +801,7 @@
     height: 75px;
     padding: 15px;
     margin-top: 15px;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
   }
 
   .button-container {
@@ -813,7 +813,7 @@
     gap: 20px;
     margin-bottom: 20px;
     justify-content: left;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
     border-top: none;
 
   }
@@ -844,31 +844,60 @@
     padding: 15px;
     display: flex;
     flex-wrap: wrap;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
   }
-
+  
   .video-box {
-    width: 300px;
+    width: 280px;
     height: 150px;
     border-radius: 10px;
-    border: 2px solid black;
+    border: 1px solid #ccc;
     margin: 10px;
     margin-left: 25px;
   }
-
+  
   .video {
     width: 250px;
     height: auto;
   }
-
+  
+  .video-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 30px;
+    width: 270px;
+  }
+  
   .video-title {
     font-size: 12px;
-    margin-left: 15px;
   }
-
-  .video-con {
+  
+  .video-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .edit-btn,
+  .delete-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 2px 5px;
     cursor: pointer;
+    font-size: 12px;
   }
+  
+  .delete-btn {
+    background-color: #dc3545;
+  }
+  
+  /* .edit-btn:hover,
+  .delete-btn:hover {
+    opacity: 0.8;
+  } */
+  
 
 
 
@@ -897,7 +926,7 @@
     margin-left: 20px;
     height: 120px;
     position: relative;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
   }
 
   .sub-name {
@@ -946,7 +975,7 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
   }
 
   .annoucement {

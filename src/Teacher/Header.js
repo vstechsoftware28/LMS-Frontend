@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaBars, FaMapMarkerAlt, FaBell, FaEnvelope, FaUser, FaAngleRight, FaComment, FaWrench, FaSignOutAlt, FaLock } from 'react-icons/fa';
+import { FaBars, FaMapMarkerAlt, FaBell, FaEnvelope, FaUser, FaAngleRight, FaComment,FaUserCircle , FaWrench, FaSignOutAlt, FaLock } from 'react-icons/fa';
 import './Header.css';
 import { useNavigate } from 'react-router-dom';
 import logo from '../Teacher/assets/image/Logo-01.png';
@@ -48,7 +48,7 @@ const Header = ({ onToggleSidebar, sidebarOpen, onChangePasswordClick, onProfile
           </div>
           <span className="profile-text">Teacher</span>
           <div className="profile-icon" onClick={toggleProfileMenu}>
-            <FaUser />
+            <FaUserCircle  />
             <div className={`dropdown-menu ${isProfileMenuOpen ? 'open' : ''}`}>
               <div className="dropdown-item" onClick={handleProfileClick}>
                 <FaUser /> Profile

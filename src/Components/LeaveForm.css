@@ -1,57 +1,62 @@
-.forgot-form{
-    max-width: 350px;
+.leave-application-form {
+    max-width: 450px;
     margin: 20px auto;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    /* background-color: #770e0e; */
+    background-color: #e6f2ff;
+    /* background-color: #f88282; */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-.forgot-form > h2{
+  }
+  
+  .leave-application-form h2 {
     text-align: center;
-    font-size: 25px;
+    margin-bottom: 20px;
+    font-size: 34px;
     font-weight: bold;
+    font-family: cursive;
     color: #007bff;
-}
-.forgot-form-group {
+  }
+  
+  .leave-form-group {
     margin-bottom: 10px;
   }
   
-  .forgot-form-group label {
+  .leave-form-group label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
     color: #555;
   }
   
-  .forgot-form-group input {
+  .leave-form-group input {
     width: 100%;
     padding: 7px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    background-color: #fff;
+    /* background-color: #fff; */
     font-size: 14px;
     color: #333;
   }
   
-  .forgot-form-group input:focus {
+  .leave-form-group input:focus {
     border-color: #007bff;
     outline: none;
   }
   
-  .forgot-form-group .error {
+  .leave-form-group .error {
     color: #d9534f;
     font-size: 12px;
     margin-top: 2px;
-    margin-bottom: 0px;
   }
   
   
   
-  .btn-forget[type="submit"] {
+  .btn-leave[type="submit"] {
     display: inline-block;
+    margin-left: 25%;
     margin-top: 20px;
-    width: 100%;
+    width: 50%;
     padding: 10px;
     font-size: 16px;
     background-color: #007bff;
@@ -61,35 +66,32 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-
-/* For tablets (768px to 1024px) */
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
-    .forgot-form {
+  
+  
+  /* For tablets (768px to 1024px) */
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .leave-application-form {
       max-width: 70%;
     }
   }
   
   /* For mobile devices (up to 767px) */
   @media only screen and (max-width: 767px) {
-    .forgot-form {
+    .leave-application-form {
       padding: 10px;
       margin: 10px;
     }
   
-    .forgot-form-group input {
+    .leave-form-group input{
       font-size: 14px;
     }
   
   
-    .btn-forget[type="submit"] {
+    .btn-leave[type="submit"] {
       margin-top: 15px;
-      width: 100%;
+      width: 60%;
+      margin-left: 20%;
     }
   
-    .forgot-form-group option {
-      width: calc(10% - 56px);
-      max-width: 50%;
-      box-sizing: border-box;
-  
-    }
-  }  
+   
+  }

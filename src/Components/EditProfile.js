@@ -86,27 +86,27 @@ const EditProfile = ({onDashboard}) => {
                             <h6 className="h6" onClick={toggleGeneral}>
                                 {generalExpanded ? <FaChevronDown className="dropdown-icon" /> : <FaChevronRight className="dropdown-icon" />}
                                 General</h6>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>First Name</lable>
                                 <input type="text" />
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>Surname</lable>
                                 <input type="text" />
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>Email address</lable>
                                 <input type="email" />
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>Email display</lable>
                                 <input type="email" />
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>City/town</lable>
                                 <input type="text" />
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>Select a country</lable>
                                 <select  >
                                     <option value=''>Select a country...</option>
@@ -114,11 +114,11 @@ const EditProfile = ({onDashboard}) => {
                                     <option value='2'>America</option>
                                 </select>
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>TimeZone</lable>
                                 <input type="text" />
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>Description</lable>
                                 <textarea rows={8} type="text" />
                             </div>
@@ -127,14 +127,14 @@ const EditProfile = ({onDashboard}) => {
                             <h6 className="h6" onClick={toggleUserPicture}>
                                 {userPictureExpanded ? <FaChevronDown className="dropdown-icon" /> : <FaChevronRight className="dropdown-icon" />}
                                 User Picture</h6>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>Current Picture</lable>
                                 {/* <input type="text" /> */}
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable >New picture</lable>
                                 <div className="file-input-container">
-                                    <input id="fileUpload" style={{ width: '550px', height: '150px' }} type="file" />
+                                    <input id="fileUpload" style={{ width: '420px', height: '150px' }} type="file" />
 
                                     <span className="file-instructions">
                                         <span ><FcDown className="file-icon" size={50} /></span>
@@ -147,7 +147,7 @@ const EditProfile = ({onDashboard}) => {
                                 </div>
                             </div>
 
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>Picture description</lable>
                                 <input type="text" />
                             </div>
@@ -156,19 +156,19 @@ const EditProfile = ({onDashboard}) => {
                             <h6 className="h6" onClick={toggleAdditionalName}>
                                 {additionalNameExpanded ? <FaChevronDown className="dropdown-icon" /> : <FaChevronRight className="dropdown-icon" />}
                                 Additional names</h6>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>First name</lable>
                                 <input type="text" />
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>Surname</lable>
                                 <input type="text" />
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>Middle name</lable>
                                 <input type="text" />
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>Alternative name</lable>
                                 <input type="text" />
                             </div>
@@ -177,7 +177,7 @@ const EditProfile = ({onDashboard}) => {
                             <h6 className="h6" onClick={toggleInterests}>
                                 {interestsExpanded ? <FaChevronDown className="dropdown-icon" /> : <FaChevronRight className="dropdown-icon" />}
                                 Interests</h6>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>List of interests</lable>
                                 <input type="text" placeholder="Enter tags..." />
                             </div>
@@ -186,51 +186,51 @@ const EditProfile = ({onDashboard}) => {
                             <h6 className="h6" onClick={toggleOptional}>
                                 {optionalExpanded ? <FaChevronDown className="dropdown-icon" /> : <FaChevronRight className="dropdown-icon" />}
                                 Optional</h6>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>Web page</lable>
                                 <input type="text" />
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>ICQ number</lable>
                                 <input type="text" />
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>Skype ID</lable>
                                 <input type="text" />
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>AIM ID</lable>
                                 <input type="text" />
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>Yahoo ID</lable>
                                 <input type="text" />
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>MSN ID</lable>
                                 <input type="text" />
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>ID number</lable>
                                 <input type="text" />
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>Institution</lable>
                                 <input type="text" />
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>Department</lable>
                                 <input type="text" />
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>Phone</lable>
                                 <input type="text" />
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>Mobile phone</lable>
                                 <input type="text" />
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>Address</lable>
                                 <input type="text" />
                             </div>
@@ -239,33 +239,33 @@ const EditProfile = ({onDashboard}) => {
                             <h6 className="h6" onClick={toggleAcademic}>
                                 {academicExpanded ? <FaChevronDown className="dropdown-icon" /> : <FaChevronRight className="dropdown-icon" />}
                                 Academic</h6>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>Admission Year</lable>2024
                                 {/* <input type="text" /> */}
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>School</lable>
                                 <input type="text" />
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>Department</lable>Science
                                 {/* <input type="text" /> */}
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>PRN</lable>
                                 <input type="text" />
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>Roll No</lable>
                                 <input type="text" />
                             </div>
-                            <div className="form">
+                            <div className="form-edit">
                                 <lable>User Type</lable>Teacher
                                 {/* <input type="text" /> */}
                             </div>
                         </div><hr />
                         <div className="buttons">
-                        <button className="update" type="submit">Update profile</button>
+                        <button className="update-1" type="submit">Update profile</button>
                         <button className="cancle-1" >Cancel</button>
                         </div>
                       

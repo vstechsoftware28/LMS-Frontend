@@ -43,12 +43,12 @@ span > p {
     display: flex;
     margin-left: 15px;
 }
-.general.collapsed .form,
-.user-picture.collapsed .form,
-.additional-name.collapsed .form,
-.interests.collapsed .form,
-.optional.collapsed .form,
-.academic.collapsed .form {
+.general.collapsed .form-edit,
+.user-picture.collapsed .form-edit,
+.additional-name.collapsed .form-edit,
+.interests.collapsed .form-edit,
+.optional.collapsed .form-edit,
+.academic.collapsed .form-edit {
     display: none;
 }
 
@@ -61,6 +61,7 @@ span > p {
     padding: 15px;
     display: flex;
     flex-direction: column;
+    border: 1px solid #ccc;
 }
 .edit-form > .expand{
     margin-left: auto;
@@ -75,7 +76,7 @@ span > p {
     margin-bottom: 10px;
 }
 
-.form {
+.form-edit {
     display: grid;
     grid-template-columns: 250px 1fr;
     grid-gap: 10px;
@@ -83,44 +84,44 @@ span > p {
     margin-bottom: 10px;
 }
 
-.form lable {
+.form-edit lable {
     margin-left: 20px;
     width: 140px;
 }
 
-.form input, .form select, .form textarea {
+.form-edit input, .form-edit select, .form-edit textarea {
     width: 300px;
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-.form textarea {
+.form-edit textarea {
     resize: vertical;
-    width: 550px;
+    width: 420px;
 }
 .buttons{
     display: flex;
+    margin-top: 10px;
 }
-.update{
-    margin-left: 300px;
-    padding: 5px;
+.update-1{
+    margin-left: 200px;
+    padding: 7px;
     border: none;
-    border-radius: 4px;
     background-color: #007BFF;
     color: white;
     cursor: pointer;
-    width: 15%;
+    width: auto;
+    
 }
 .cancle-1{
-    margin-top: 15px;
-    padding: 5px;
+    /* margin-top: 15px; */
+    padding: 7px;
     border: none;
-    border-radius: 4px;
     background-color: gray;
     color: white;
     cursor: pointer;
-    width: 15%;
+    width:auto;
     margin-left: 10px;
 }
 .h6{
@@ -146,21 +147,22 @@ hr{
     left: 0;
     color: black;
     margin-top: 40px;
-    margin-left: 20px;
+    margin-left: 10px;
+    margin-right: 20px;
     font-size: 14px;
     padding: 5px;
     border: 2px dotted black;
-    padding-top: 20px;
-    padding-left: 120px;
-    padding-right: 110px;
+    padding-top: 0px;
+    padding-left: 100px;
+    padding-right: 100px;
     display: flex;
     flex-direction: column;
 }
 .file-icon{
-    margin-left: 100px;
+    margin-left: 75px;
 }
 .photo{
-    width: 550px;
+    width: 400px;
     margin-left: 260px;
 }
 .photo > p{

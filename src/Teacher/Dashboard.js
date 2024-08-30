@@ -49,13 +49,19 @@ const Dashboard = ({ subjects, onSubjectClick }) => {
         <div className="SectionHeader">
           <div className="SectionHeading">Subjects Overview</div>
         </div>
-        <button className="ViewAllButton" onClick={handleViewAllSubjects}>
-          {allSubjectsOpen ? 'Show Less' : 'View All'}
-        </button>
+
         <div className="SubjectsContainer">
-          {subjects.slice(0, allSubjectsOpen ? subjects.length : 4).map((subject, index) => (
-            <div key={index} className="SubjectCard" onClick={() => handleSubjectClick(subject.id)}>{subject.title}</div>
-          ))}
+          <div>
+            <button className="ViewAllButton" onClick={handleViewAllSubjects}>
+              {allSubjectsOpen ? 'Show Less' : 'View All'}
+            </button>
+          </div>
+          <div className='sub-card'>
+            {subjects.slice(0, allSubjectsOpen ? subjects.length : 4).map((subject, index) => (
+              <div key={index} className="SubjectCard" onClick={() => handleSubjectClick(subject.id)}>{subject.title}</div>
+            ))}
+          </div>
+
         </div>
       </div>
     </div>

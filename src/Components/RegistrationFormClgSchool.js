@@ -50,10 +50,10 @@ const RegistrationFormClgSchool = () => {
     };
 
     return (
-        <div className='registration-form'>
+        <div className='registration-form-school'>
             <h2>Registration Form</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className='form-group'>
+                <div className='regis-school-form-group'>
                     <label htmlFor='user'>User Type:</label>
                     <select id='user' {...register('user', { required: 'User type is required' })}
                         onChange={handleUserTypeChange} >
@@ -63,7 +63,7 @@ const RegistrationFormClgSchool = () => {
                     </select>
                     {errors.user && <p className='error'>{errors.user.message}</p>}
                 </div>
-                <div className='form-group'>
+                <div className='regis-school-form-group'>
                     <label htmlFor='clgname'>
                         {userType === 'School' ? 'School Name:' : 'College Name:'}
                     </label>
@@ -76,7 +76,7 @@ const RegistrationFormClgSchool = () => {
                     })} onBlur={() => trigger('clgname')} />
                     {errors.clgname && <p className='error'>{errors.clgname.message}</p>}
                 </div>
-                <div className='form-group'>
+                <div className='regis-school-form-group'>
                     <label htmlFor='id'>Id:</label>
                     <input id='id' type='text' {...register('id', {
                         required: 'Id is required',
@@ -84,7 +84,7 @@ const RegistrationFormClgSchool = () => {
                     })} onBlur={() => trigger('id')} />
                     {errors.id && <p className='error'>{errors.id.message}</p>}
                 </div>
-                <div className='form-group'>
+                <div className='regis-school-form-group'>
                     <label htmlFor='principle'>Principal Name:</label>
                     <input id='principle' type='text' {...register('principle', {
                         required: 'Principal name is required',
@@ -92,7 +92,7 @@ const RegistrationFormClgSchool = () => {
                     })} onBlur={() => trigger('principle')} />
                     {errors.principle && <p className='error'>{errors.principle.message}</p>}
                 </div>
-                <div className='form-group'>
+                <div className='regis-school-form-group'>
                     <label htmlFor='email'>Email:</label>
                     <input id='email' type='email' {...register('email', {
                         required: 'Email is required',
@@ -100,7 +100,7 @@ const RegistrationFormClgSchool = () => {
                     })} onBlur={() => trigger('email')} />
                     {errors.email && <p className='error'>{errors.email.message}</p>}
                 </div>
-                <div className='form-group'>
+                <div className='regis-school-form-group'>
                     <label htmlFor='telephone'>Telephone Number:</label>
                     <input id='telephone' type='text' {...register('telephone', {
                         required: 'Telephone Number is required',
@@ -108,7 +108,7 @@ const RegistrationFormClgSchool = () => {
                     })} onBlur={() => trigger('telephone')} />
                     {errors.telephone && <p className="error">{errors.telephone.message}</p>}
                 </div>
-                <div className='form-group'>
+                <div className='regis-school-form-group'>
                     <label htmlFor='state'>State:</label>
                     <input id='state' type='text' {...register('state', {
                         required: 'State is required',
@@ -116,7 +116,7 @@ const RegistrationFormClgSchool = () => {
                     })} onBlur={() => trigger('state')} />
                     {errors.state && <p className='error'>{errors.state.message}</p>}
                 </div>
-                <div className='form-group'>
+                <div className='regis-school-form-group'>
                     <label htmlFor='dist'>District:</label>
                     <input id='dist' type='text' {...register('dist', {
                         required: 'District is required',
@@ -124,7 +124,7 @@ const RegistrationFormClgSchool = () => {
                     })} onBlur={() => trigger('dist')} />
                     {errors.dist && <p className='error'>{errors.dist.message}</p>}
                 </div>
-                <div className='form-group'>
+                <div className='regis-school-form-group'>
                     <label htmlFor='tel'>Taluka:</label>
                     <input id='tel' type='text' {...register('tel', {
                         required: 'Tel is required',
@@ -132,7 +132,7 @@ const RegistrationFormClgSchool = () => {
                     })} onBlur={() => trigger('tel')} />
                     {errors.tel && <p className='error'>{errors.tel.message}</p>}
                 </div>
-                <div className='form-group'>
+                <div className='regis-school-form-group'>
                     <label htmlFor='city'>City:</label>
                     <input id='city' type='text' {...register('city', {
                         required: 'City is required',
@@ -140,7 +140,7 @@ const RegistrationFormClgSchool = () => {
                     })} onBlur={() => trigger('city')} />
                     {errors.city && <p className='error'>{errors.city.message}</p>}
                 </div>
-                <div className='form-group'>
+                <div className='regis-school-form-group'>
                     <label htmlFor='pincode'>Pincode:</label>
                     <input id='pincode' type='text' {...register('pincode', {
                         required: 'Pincode is required',
@@ -148,14 +148,14 @@ const RegistrationFormClgSchool = () => {
                     })} onBlur={() => trigger('pincode')} />
                     {errors.pincode && <p className="error">{errors.pincode.message}</p>}
                 </div>
-                <div className='form-group'>
+                <div className='regis-school-form-group'>
                     <label htmlFor='dob'>Registration Date:</label>
                     <input id='dob' type='date' {...register('dob', { required: 'DOB is required' })}
                         onBlur={() => trigger('dob')} />
                     {errors.dob && <p className='error'>{errors.dob.message}</p>}
                 </div>
 
-                <button type='submit' className='btn btn-primary' disabled={!isValid}>
+                <button type='submit' className='btn-school btn-primary' disabled={!isValid}>
                     Register
                 </button>
             </form>

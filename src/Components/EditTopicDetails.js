@@ -68,11 +68,11 @@ const onSubmit = async (data) => {
                             <h6 className="h6" onClick={toggleGeneral}>
                                 {generalExpanded ? <FaChevronDown className="dropdown-icon" /> : <FaChevronRight className="dropdown-icon" />}
                                 General</h6>
-                            <div className="form">
+                            <div className="form-topic">
                                 <lable>Section Name</lable>
                                 <input type="text" />
                             </div>
-                            <div className="form">
+                            <div className="form-topic">
                                 <lable>Summary</lable>
                                 <textarea rows={12} type="text" />
                             </div>
@@ -81,7 +81,7 @@ const onSubmit = async (data) => {
                             <h6 className="h6" onClick={toggleInterests}>
                                 {restrictExpanded ? <FaChevronDown className="dropdown-icon" /> : <FaChevronRight className="dropdown-icon" />}
                                 Restrics Access</h6>
-                            <div className="form">
+                            <div className="form-topic">
                                 <lable>List of restrict</lable>
                                 <input type="text" placeholder="Enter tags..." />
                             </div>

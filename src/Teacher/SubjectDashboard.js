@@ -8,7 +8,7 @@ import { BiTime } from "react-icons/bi";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
-const SubjectDashboard = ({ onVideoClick, onTurnEditing, onDashboard, onSubTable, onCalender,onConfirm }) => {
+const SubjectDashboard = ({ onVideoClick, onTurnEditing, onDashboard, onSubTable, onCalender, onConfirm, onUpdateClick}) => {
   const { name } = useParams();
   const [date, setDate] = useState(new Date());
   const [isDropdownVisible, setDropdownVisible] = useState(false);
@@ -44,6 +44,11 @@ const SubjectDashboard = ({ onVideoClick, onTurnEditing, onDashboard, onSubTable
       onVideoClick();
     }
   }
+  const handleUpdateClick = () => {
+    if (onUpdateClick) {
+      onUpdateClick();
+    }
+  }
   const handleTurnEditing = () => {
     if (onTurnEditing) {
       onTurnEditing();
@@ -66,9 +71,10 @@ const SubjectDashboard = ({ onVideoClick, onTurnEditing, onDashboard, onSubTable
     }
   }
   const handleConfirmClick = () => {
-    if(onConfirm){
+    if (onConfirm) {
       onConfirm();
     }
+    
   }
 
   const toggleDropdown = () => setDropdownVisible(!isDropdownVisible);
@@ -113,14 +119,20 @@ const SubjectDashboard = ({ onVideoClick, onTurnEditing, onDashboard, onSubTable
   };
 
 
-  const uploadedVideos = [
+    
+  const [videos, setVideos] = useState([
     { id: 1, image: '../Teacher/assets/image/Corporate Training and Professional Development.jpg', title: 'Video Title 1' },
     { id: 2, image: '../Teacher/assets/image/Diversity and Inclusion Initiatives.jpg', title: 'Video Title 2' },
     { id: 3, image: '../Teacher/assets/image/FAQs and Support Documentation.jpg', title: 'Video Title 3' },
     { id: 4, image: '../Teacher/assets/image/Live Classes and Webinars.jpg', title: 'Video Title 4' },
     { id: 5, image: '../Teacher/assets/image/Educational Resources.jpg', title: 'Video Title 5' },
     { id: 6, image: './Community Engagement.jpg', title: 'Video Title 6' },
-  ];
+  ]);
+
+  const handleDeleteClick = (id) => {
+    const updatedVideos = videos.filter(video => video.id !== id);
+    setVideos(updatedVideos);
+  };
 
   return (
     <>
@@ -141,15 +153,22 @@ const SubjectDashboard = ({ onVideoClick, onTurnEditing, onDashboard, onSubTable
               <div className="upload-button" onClick={handleVideoClick}>Upload Video Lecture</div>
             </div>
             <div className="video-container">
-              {uploadedVideos.map((video) => (
+              {videos.map((video) => (
                 <div key={video.id} className="video-con">
                   <div className="video-box">
                     <img className="video" src={video.image} alt={video.title} />
                   </div>
-                  <div className="video-title">{video.title}</div>
+                  <div className="video-info">
+                    <div className="video-title">{video.title}</div>
+                    <div className="video-buttons">
+                      <button className="edit-btn" onClick={handleUpdateClick}>Edit</button>
+                      <button className="delete-btn" onClick={() => handleDeleteClick(video.id)}>Delete</button>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
+
             <div className="description">
               <h3 >Description:</h3>
               <p className="para">

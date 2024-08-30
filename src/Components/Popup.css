@@ -17,13 +17,13 @@
     /* color: blue; */
     
   }
-.form-group1 {
+.notice-form-group {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
 }
 
-.form-group1 input {
+.notice-form-group input {
     width: 100%;
     padding: 2px;
     border: 1px solid #ddd;
@@ -32,23 +32,23 @@
     font-size: 14px;
     color: #333;
   }
-  .form-group1 input:focus {
+  .notice-form-group input:focus {
     border-color: #007bff;
     outline: none;
   }
   
-.form-group1 label {
+.notice-form-group label {
     width: 150px; 
     font-weight: bold;
     color: #555;
     
 }
 
-.form-group1 textarea {
+.notice-form-group textarea {
     flex-grow: 1;
     width: 100%;
 }
-.form-group1 select{
+.notice-form-group select{
     width: 50px;
     margin-left: 5px;
 }
@@ -60,9 +60,10 @@
     margin-left: 10px;
 }
 
-.btn {
+.btn-notice {
     display: block;
-    width: 100%;
+    margin-left: 25%;
+    width: 50%;
     padding: 10px;
     background-color: #007bff;
     color: white;
@@ -71,7 +72,7 @@
     cursor: pointer;
 }
 
-.btn:hover {
+.btn-notice:hover {
     background-color: #0056b3;
 }
 .error {

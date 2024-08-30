@@ -1,56 +1,104 @@
-/* Login.css */
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f8ff;
+.login-form {
+  max-width: 350px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  /* background-color: #770e0e; */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.form-container {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    max-width: 400px;
-    width: 100%;
+.login-form>h2 {
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  color: #007bff;
 }
 
-h2 {
-    margin-bottom: 1.5rem;
-    color: #1e90ff;
+.login-form-group {
+  margin-bottom: 10px;
 }
 
-input {
-    width: 95%;
-    padding: 0.75rem;
-    margin: 0.5rem 0;
-    border: 1px solid #1e90ff;
-    border-radius: 4px;
+.login-form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
 }
 
-button {
-    justify-content: center;
-    width: 100%;
-    padding: 0.75rem;
-    margin: 1rem 0;
-    border: none;
-    background-color: #1e90ff;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
+.login-form-group input {
+  width: 100%;
+  padding: 7px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 14px;
+  color: #333;
 }
 
-button:hover {
-    background-color: #1c86ee;
+.login-form-group input:focus {
+  border-color: #007bff;
+  outline: none;
 }
 
-.error {
-    color: red;
-    margin-bottom: 1rem;
+.login-form-group .error {
+  color: #d9534f;
+  font-size: 12px;
+  margin-top: 2px;
+  margin-bottom: 0px;
 }
 
-p {
-    color: #1e90ff;
+
+
+.btn-login[type="submit"] {
+  display: inline-block;
+
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.link {
+  margin-top: 15px;
+  text-align: center;
+}
+
+/* For tablets (768px to 1024px) */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .login-form {
+    max-width: 70%;
+  }
+}
+
+/* For mobile devices (up to 767px) */
+@media only screen and (max-width: 767px) {
+  .login-form {
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .login-form-group input {
+    font-size: 14px;
+  }
+
+
+  .btn-login[type="submit"] {
+    margin-top: 15px;
+    width: 50%;
+    margin-left: 25%;
+  }
+
+  .login-form-group option {
+    width: calc(10% - 56px);
+    max-width: 50%;
+    box-sizing: border-box;
+
+  }
 }
