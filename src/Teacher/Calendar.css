@@ -1,0 +1,82 @@
+.calendar-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+    overflow: auto;
+    height: 100%; 
+    /* border: 2px solid red; */
+  }
+  
+  .calendar-header {
+    text-align: left;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .date-picker-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .date-picker-container .react-datepicker-wrapper {
+    display: inline-block;
+  }
+  
+  .date-picker-container .react-datepicker-wrapper .react-datepicker__input-container {
+    display: inline-block;
+  }
+  
+  .search-icon {
+    color: #ccc;
+    margin-right: 10px;
+  }
+  
+  .rbc-toolbar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    /* flex-wrap: wrap; */
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .rbc-toolbar .rbc-toolbar-label {
+    width: 30%;
+    margin-left: 33%;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    flex-grow: 1;
+    color: white;
+    background-color: #3498db;
+    padding: 5px;
+    /* border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border: 2px solid red; */
+  }
+  .toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+  }
+  
+  .new-event-button {
+    padding: 5px 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  

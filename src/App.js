@@ -21,16 +21,25 @@ import SubjectDetails from './Components/SubjectDetails';
 import EditSubjectDetails from './Components/EditSubjectDetails';
 import EditTopicDetails from './Components/EditTopicDetails';
 import ConfirmModal from './Teacher/ConfirmModal';
+import Signin from './Components/Signin';
+import Leave from './Components/Leave';
+import Timetable from './Components/Timetable';
+import StudentTimetable from './Components/StudentTimetable';
+import LeaveForm from './Components/LeaveForm';
+import UpdateVideoForm from './Components/UpdateVideoForm';
+
+
+
 function App() {
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path='/login' element={<Login/>}/>
-        <Route path="/" element={<TeacherDashboard/>} />
-        <Route path="/calendar" element={<Calendar/>}/>
-        <Route path="/registration-form" element={<RegistrationForm />} />
-        <Route path="/reg" element={<RegistrationFormClgSchool/>}/>
+          <Route path='/login' element={<Login />} />
+          <Route path="/" element={<TeacherDashboard />} />
+          <Route path="/calendar" element={<Calendar />} />
+          <Route path="/registration-form" element={<RegistrationForm />} />
+          <Route path="/reg" element={<RegistrationFormClgSchool />} />
           {/* <Route path="/" element={<StudentDashboard/>} /> */}
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
@@ -48,6 +57,12 @@ function App() {
           <Route path='/edit-subject-details' element={<EditSubjectDetails />} />
           <Route path='/edit-topic-details' element={<EditTopicDetails />} />
           <Route path='/confirm-modal' element={<ConfirmModal />} />
+          <Route path='/signin' element={<Signin />} />
+          <Route path='/leave-table' element={<Leave />} />
+          <Route path='/timetable' element={<Timetable />} />
+          <Route path='/student-timetable' element={<StudentTimetable />} />
+          <Route path='/leave-form' element={<LeaveForm />} />
+          <Route path='/update-video-form' element={<UpdateVideoForm />} />
         </Routes>
       </Router>
     </div>

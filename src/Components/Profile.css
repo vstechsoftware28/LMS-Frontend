@@ -1,17 +1,27 @@
 .main-1{
-    width: 75%;
+    /* width: 70%;
     height: 650px;
    background-color:  #f9f9f9;
-   margin-left: 5%;
+   margin-left: 0%;
    margin-top: 5px;
-   padding: 20px;
+   padding: 20px; */
+   display: flex;
 }
-
+.profile-right{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+.profile-left{
+    width: 70%;
+}
 .info-1{
+    width: 91%;
+    height: auto;
     background-color: white;
-    width: 95%;
-    margin-left: 20px;
-    height: 120px;
+    margin-left: 2.7%;
+    position: relative;
+    border: 1px solid #ccc;
 }
 .name {
     display: flex;
@@ -56,11 +66,12 @@ span > p{
 }
 .details{
     background-color: white;
-    width: 95%;
+    width: 91%;
     margin-left: 20px;
     height: 470px;
     margin-top: 20px;
     display: flex;
+    border: 1px solid #ccc;
 }
 .user-details{
     width: 48%;
@@ -69,14 +80,14 @@ span > p{
 .user, .course, .misc{
     display: flex;
     flex-direction: column;
-    border: 2px solid #aaa;
+    border: 1px solid #ccc;
     margin: 5px;
     padding: 10px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); */
 
 }
 .user > a{
-    margin-left: 280px;
+    margin-left: 210px;
     cursor: pointer;
     
    
@@ -88,10 +99,10 @@ span > p{
 .report, .login{
     display: flex;
     flex-direction: column;
-    border: 2px solid #aaa;
+    border: 1px solid #ccc;
     margin: 5px;
     padding: 10px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); */
 
 }
 ul{

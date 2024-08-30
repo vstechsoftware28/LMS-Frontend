@@ -53,7 +53,7 @@ const SubjectForm = () => {
                     <h2>Subject Form</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
 
-                        <div className='form-group'>
+                        <div className='subject-form-group'>
                             <label htmlFor='code'>Subject Code:</label>
                             <input id='code' type='text' {...register('code', {
                                 required: 'Subject Code is required',
@@ -61,7 +61,7 @@ const SubjectForm = () => {
                             })} onBlur={() => trigger('code')} />
                             {errors.code && <p className='error'>{errors.code.message}</p>}
                         </div>
-                        <div className='form-group'>
+                        <div className='subject-form-group'>
                             <label htmlFor='name'>Subject Name:</label>
                             <input id='name' type='text' {...register('name', {
                                 required: 'Subject name is required',
@@ -69,7 +69,7 @@ const SubjectForm = () => {
                             })} onBlur={() => trigger('name')} />
                             {errors.name && <p className='error'>{errors.name.message}</p>}
                         </div>
-                        <div className='form-group'>
+                        <div className='subject-form-group'>
                             <label htmlFor='teacher'>Teacher Name:</label>
                             <input id='teacher' type='text' {...register('teacher', {
                                 required: 'Teacher name is required',
@@ -77,7 +77,7 @@ const SubjectForm = () => {
                             })} onBlur={() => trigger('teacher')} />
                             {errors.teacher && <p className='error'>{errors.teacher.message}</p>}
                         </div>
-                        <div className='form-group'>
+                        <div className='subject-form-group'>
                             <label htmlFor='classname'>Class Name:</label>
                             <select id='classname' {...register('classname', { required: 'Class Name is required' })} >
                                 <option value=''>Select Class</option>
@@ -88,7 +88,7 @@ const SubjectForm = () => {
                             </select>
                             {errors.classname && <p className='error'>{errors.classname.message}</p>}
                         </div>
-                        <div className='form-group'>
+                        <div className='subject-form-group'>
                             <label htmlFor='div'>Division:</label>
                             <select id='div' {...register('div', { required: 'Division is required' })} >
                                 <option value=''>Select Division</option>
@@ -98,7 +98,7 @@ const SubjectForm = () => {
                             </select>
                             {errors.div && <p className='error'>{errors.div.message}</p>}
                         </div>
-                        <div className='form-group'>
+                        <div className='subject-form-group'>
                             <label htmlFor='description'>Description:</label>
                             <input id='description' type='text' {...register('description', {
                                 required: 'Description is required',
@@ -106,7 +106,7 @@ const SubjectForm = () => {
                             })} onBlur={() => trigger('description')} />
                             {errors.description && <p className='error'>{errors.description.message}</p>}
                         </div>
-                        <div className='form-group'>
+                        <div className='subject-form-group'>
                             <label htmlFor='credit'>Credit:</label>
                             <input id='credit' type='text' {...register('credit', {
                                 required: 'Credit is required',
@@ -114,11 +114,11 @@ const SubjectForm = () => {
                             })} onBlur={() => trigger('credit')} />
                             {errors.credit && <p className="error">{errors.credit.message}</p>}
                         </div>
-                        <div className='form-group'>
+                        <div className='subject-form-group'>
                             <label htmlFor='file'>File:</label>
                             <input id='file' type='file' onChange={handleFileChange} />
                         </div>
-                        <button type='submit' className='btn btn-primary' disabled={!isValid}>
+                        <button type='submit' className='btn-subject btn-primary' disabled={!isValid}>
                             Submit
                         </button>
                     </form>

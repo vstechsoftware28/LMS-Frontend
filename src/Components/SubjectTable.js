@@ -24,8 +24,8 @@ const SubjectTable = () => {
 
     return (
         <>
-        <h2 className='h2'>Subject Table</h2>
-            <table className='table-1 table-bordered'>
+            <h2 className='h2'>Subject Table</h2>
+            <table className='table-subject table-bordered'>
                 <thead className='thead-light'>
                     <tr>
                         <th scope="col">Sr.No</th>
@@ -52,9 +52,9 @@ const SubjectTable = () => {
                         <td></td>
                         <td></td>
                         <td>
-                            <div className='action-button'>
-                                <button className='add-btn'>Add</button>
-                                <button className='delete-btn'>Delete</button>
+                            <div className='action-button-subject'>
+                                <button className='add-btn-subject'>Edit</button>
+                                <button className='delete-btn-subject'>Delete</button>
                             </div>
                         </td>
                     </tr>
@@ -69,9 +69,9 @@ const SubjectTable = () => {
                         <td></td>
                         <td></td>
                         <td>
-                            <div className='action-button'>
-                            <button className='add-btn'>Add</button>
-                                <button className='delete-btn'>Delete</button>
+                            <div className='action-button-subject'>
+                                <button className='add-btn-subject'>Edit</button>
+                                <button className='delete-btn-subject'>Delete</button>
                             </div>
                         </td>
                     </tr>
@@ -86,9 +86,9 @@ const SubjectTable = () => {
                         <td></td>
                         <td></td>
                         <td>
-                            <div className='action-button'>
-                            <button  className='add-btn'>Add</button>
-                                <button className='delete-btn'>Delete</button>
+                            <div className='action-button-subject'>
+                                <button className='add-btn-subject'>Edit</button>
+                                <button className='delete-btn-subject'>Delete</button>
                             </div>
                         </td>
                     </tr>
@@ -103,15 +103,15 @@ const SubjectTable = () => {
                         <td></td>
                         <td></td>
                         <td>
-                            <div className='action-button'>
-                            <button  className='add-btn'>Add</button>
-                                <button className='delete-btn'>Delete</button>
+                            <div className='action-button-subject'>
+                                <button className='add-btn-subject'>Edit</button>
+                                <button className='delete-btn-subject'>Delete</button>
                             </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
-
+            <head />
         </>
     );
 };

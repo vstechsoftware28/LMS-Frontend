@@ -22,7 +22,7 @@ const Preferences = ({onEditProfileClick,onDashboard}) => {
                 <div className="info">
                     <div className="name">
                         <span className="icon-with-text">
-                            <FaUser style={{ height: '60px', width: '60px' }} />
+                            <FaUser style={{ height: '80px', width: '80px' }} />
                             <p> Teacher Name</p>
                         </span>
                     </div>
@@ -32,7 +32,7 @@ const Preferences = ({onEditProfileClick,onDashboard}) => {
                     </div>
                 </div>
                 <div className="preference">
-                    <h2>Preferences</h2>
+                    <h3>Preferences</h3>
                     <div className="pref">
                         <div className="useracc">
                             <h5>User Account</h5>

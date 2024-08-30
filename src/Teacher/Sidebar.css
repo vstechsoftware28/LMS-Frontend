@@ -126,7 +126,7 @@
   }
   .centered-form-notice {
     position: fixed;
-    top: 50%;
+    top: 53%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #fff;
@@ -139,14 +139,14 @@
     border-radius: 8px;
   }
   .Closeform{
-    margin-left: 390px;
+    margin-left: 340px;
     cursor: pointer;
     font-size: 25px;
     margin-bottom: 0;
     color: #007bff;
   }
   .Closenoticeform{
-    margin-left: 405px;
+    margin-left: 355px;
     cursor: pointer;
     font-size: 25px;
     margin-bottom: 0;

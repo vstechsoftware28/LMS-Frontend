@@ -1,4 +1,4 @@
-.action-button-subject{
+.action-button-leave{
     display: flex;
     gap: 10px;
     width: 80px;
@@ -6,43 +6,53 @@
     cursor: pointer;
 }
 
-.add-btn-subject{
+.add-btn-leave{
     background-color: green;
     /* border-radius: 5px; */
     border: none;
 }
-.delete-btn-subject{
+.reject-btn-leave{
     background-color: red;
     /* border-radius: 5px; */
     border: none;
 }
-.table-subject{
+.table-leave{
     width: 80%;
    text-align: center;
-   margin-left: 50px;
    background-color: white;
   
 }
-.h2{
+.h3-leave{
     text-align: left;
     font-weight: bold;
-    margin-left: 50px;
-    margin-top: 100px;
+    
 }
-
+.pending{
+    margin-top: 10px;
+    margin-left: 50px;
+}
+.accepted{
+    margin-top: 30px;
+    margin-left: 50px;
+}
+.rejected{
+    margin-top: 30px;
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
 /* For devices with width of 1024px and above (like desktops) */
 @media only screen and (min-width: 1025px) {
-    .table-subject {
-        width: 80%;
+    .table-leave {
+        width: 85%;
     }
 }
 
 /* For tablets (768px to 1024px) */
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-    .table-subject {
+    .table-leave {
         width: 80%;
     }
-    .action-button-subject {
+    .action-button-leave {
         flex-direction: column;
         align-items: center;
     }
@@ -50,20 +60,26 @@
 
 /* For mobile devices (up to 767px) */
 @media only screen and (max-width: 767px) {
-    .table-subject {
+    .table-leave {
         width: 100%;
         font-size: 12px;
         margin-left: 0px;
     }
-    .action-button-subject {
+    .action-button-leave {
         flex-direction: column;
         align-items: center;
     }
     th, td {
         padding: 5px;
     }
-    .h2 {
+    .pending {
         margin-top: 50px;
-        margin-left: 0px;
+        margin: 10px;
+    }
+    .accepted{
+        margin: 10px;
+    }
+    .rejected{
+        margin: 10px;
     }
 }

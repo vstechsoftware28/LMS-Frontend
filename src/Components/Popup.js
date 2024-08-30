@@ -62,7 +62,7 @@ const Popup = () => {
             <div className="popup">
                 <h3>Notice</h3>
                 <form onSubmit={onSubmit}>
-                    <div className="form-group1">
+                    <div className="notice-form-group">
                         <label>Notice:</label>
                         <div className="notice">
                         <textarea name="text" rows={5} value={formData.text} onChange={handleChange}></textarea>
@@ -70,7 +70,7 @@ const Popup = () => {
                         </div>
                        
                     </div>
-                    <div className="form-group1">
+                    <div className="notice-form-group">
                         <label>Student:</label>
                         <div className="dropdown-notice">
                             <select name="studentStd" value={formData.studentStd} onChange={handleChange}>
@@ -95,25 +95,25 @@ const Popup = () => {
                             <input type="checkbox" name="studentCheckbox" checked={formData.studentCheckbox} onChange={handleChange} />
                         </div>
                     </div>
-                    <div className="form-group1">
+                    <div className="notice-form-group">
                         <label>Class Teacher:</label>
                         <div className="checkbox-group">
                             <input type="checkbox" name="classTeacherCheckbox" checked={formData.classTeacherCheckbox} onChange={handleChange} />
                         </div>
                     </div>
-                    <div className="form-group1">
+                    <div className="notice-form-group">
                         <label>Teacher:</label>
                         <div className="checkbox-group">
                             <input type="checkbox" name="teacherCheckbox" checked={formData.teacherCheckbox} onChange={handleChange} />
                         </div>
                     </div>
-                    <div className="form-group1">
+                    <div className="notice-form-group">
                         <label>Principal:</label>
                         <div className="checkbox-group">
                             <input type="checkbox" name="principalCheckbox" checked={formData.principalCheckbox} onChange={handleChange} />
                         </div>
                     </div>
-                    <button type="submit" className="btn btn-primary">Save</button>
+                    <button type="submit" className="btn-notice btn-primary">Save</button>
                 </form>
             </div>
         </>
